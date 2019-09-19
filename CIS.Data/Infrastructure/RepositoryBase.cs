@@ -144,6 +144,7 @@ namespace CIS.Data.Infrastructure
         {
             return dataContext.Set<T>().Count<T>(predicate) > 0;
         }
+        
         #endregion
     }
 }

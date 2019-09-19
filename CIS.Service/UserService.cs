@@ -22,7 +22,7 @@ namespace CIS.Service
       
         User GetById(int id);
 
-        void Save();
+        void SaveChanges();
     }
 
     public class UserService : IUserService
@@ -56,7 +56,7 @@ namespace CIS.Service
             return _userRepository.GetSingleById(id);
         }
 
-        public void Save()
+        public void SaveChanges()
         {
             _unitOfWork.Commit();
         }

@@ -19,6 +19,8 @@
         {
             CreateUserGroupSample(context);
             CreateUserSample(context);           
+            CreatePostCategorySample(context);           
+            CreatePostSample(context);           
         }
 
         private void CreateUserGroupSample(CISDbContext context)
@@ -47,6 +49,36 @@
                 new User() { Username="lmthien",Password="123456", GroupID=CommonConstant.AdminId, Status=true }
             };
                 context.Users.AddRange(listUser);
+                context.SaveChanges();
+            }
+
+        }
+
+        private void CreatePostCategorySample(CISDbContext context)
+        {
+            if (context.PostCategories.Count() == 0)
+            {
+                List<PostCategory> listPostCategory = new List<PostCategory>()
+            {
+                new PostCategory() { Name="tin tức", Alias="tin-tuc", Status=true},
+                new PostCategory() { Name="thông báo", Alias="thong-bao", Status=false},                
+            };
+                context.PostCategories.AddRange(listPostCategory);
+                context.SaveChanges();
+            }
+
+        }
+
+        private void CreatePostSample(CISDbContext context)
+        {
+            if (context.Posts.Count() == 0)
+            {
+                List<Post> listPost = new List<Post>()
+            {
+                new Post() { Name="tin tức 1", Alias="tin-tuc-1", CategoryID=1, Status=true},
+                new Post() { Name="tin tức 2", Alias="tin-tuc-2", CategoryID=1, Status=false},
+            };
+                context.Posts.AddRange(listPost);
                 context.SaveChanges();
             }
 

@@ -13,17 +13,19 @@ namespace CIS.Web.Areas.Admin.Controllers
             TempData["AlertMessage"] = message;
             if (type == "success")
             {
-                TempData["AlertType"] = "alert-success";
-                TempData["AlertIcon"] = "glyphicon-ok-sign";
-                TempData["AlertTitle"] = "Success";
+                TempData["AlertType"] = "toast-success";                
             }
             else if (type == "error")
             {
-                TempData["AlertType"] = "alert-danger";
+                TempData["AlertType"] = "toast-danger";
             }
             else if (type == "warning")
             {
-                TempData["AlertType"] = "alert-warning";
+                TempData["AlertType"] = "toast-warning";
+            }
+            else if (type == "info")
+            {
+                TempData["AlertType"] = "toast-info";
             }
         }
     }

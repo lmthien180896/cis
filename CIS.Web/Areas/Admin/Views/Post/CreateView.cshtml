@@ -1,0 +1,116 @@
+﻿@model CIS.Web.Models.PostViewModel
+@{
+    ViewBag.Title = "CreateView";
+    Layout = "~/Areas/Admin/Views/Shared/_LayoutAdmin.cshtml";
+}
+
+<h2>Thêm mới tin tức</h2>
+
+@section css {
+    <!-- Switchery -->
+    <link href="~/Assets/admin/vendors/switchery/dist/switchery.min.css" rel="stylesheet">
+}
+
+@section js {
+    <!-- validator -->
+    <script src="~/Assets/admin/vendors/validator/validator.js"></script>
+    <!-- Switchery -->
+    <script src="~/Assets/admin/vendors/switchery/dist/switchery.min.js"></script>
+    <!--CKEditor & CKFinder-->
+    <script src="~/Assets/admin/libs/ckeditor/ckeditor.js"></script>
+    <script src="~/Assets/admin/libs/ckfinder/ckfinder.js"></script>
+    <!-------->
+    <script src="~/Assets/admin/js/controller/postController.js"></script>
+    <script>
+        $('#btnSelectImage').off('click').on('click', function (e) {
+            //e.preventDefault();
+            var finder = new CKFinder();
+            finder.selectActionFunction = function (url) {
+                $('#txtImage').val(url);
+                $('#img').prop("src", url);
+                $('#btnDelteImage').removeClass('hide');
+            };
+            finder.popup();
+        });
+
+        var editor = CKEDITOR.replace('txtContent', {
+            customConfig: '/Assets/admin/libs/ckeditor/config.js'
+        });
+    </script>
+}
+
+<div class="col-md-12 col-sm-12 col-xs-12">
+    <div class="x_panel">
+        <div class="x_title">
+            <h2>Thông tin tin tức</h2>
+            <div class="clearfix"></div>
+        </div>
+        <div class="x_content">
+            <br />
+            <form action="/Admin/Post/Create" method="post" class="form-horizontal form-label-left" novalidate>
+                <input type="hidden" value="1" name="CategoryID" />
+                <div class="item form-group">
+                    <label class="control-label" for="title">Tiêu đề</label>
+                    <input class="form-control" id="txtName" name="name" placeholder="Tiêu đề" type="text" required="required">
+                </div>
+                <div class="item form-group">
+                    <label class="control-label" for="title">Tiêu đề SEO</label>
+                    <input class="form-control" id="txtAlias" name="alias" type="text" readonly>
+                </div>
+                <div class="item form-group">
+                    <label class="control-label" for="title">URL liên kết</label>
+                    <input class="form-control" id="txtReferenceUrl" name="referenceUrl" type="url">
+                </div>
+                <div class="item form-group">
+                    <label class="control-label" for="title">Mô tả ngắn</label>
+                    <textarea class="form-control" name="description" id="txtDescription"></textarea>
+                </div>
+                <div class="item form-group">
+                    <label class="control-label" for="title">Hình ảnh</label>
+                    <input type="text" id="txtImage" name="image" class="form-control" />
+                </div>
+                <div class="">
+                    <button id="btnSelectImage" type="button" class="btn btn-default">Chọn ảnh</button>
+                    <img id="img" style="height:100px" />
+                    <a href="#" id="btnDelteImage" class="text-danger hide">Xoá ảnh</a>
+                </div>
+                <div class="form-group">
+                    <label class="control-label col-md-1 col-sm-3 col-xs-12">Hiển thị trang chủ</label>
+                    <div style="margin-top: 5px">
+                        <label>
+                            <input type="checkbox" name="homeflag" value="true" class="js-switch" />
+                            <input name="homeflag" type="hidden" value="false" />
+                        </label>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="control-label col-md-1 col-sm-3 col-xs-12">Tin nổi bật</label>
+                    <div style="margin-top: 5px">
+                        <label>
+                            <input type="checkbox" name="hotflag" value="true" class="js-switch" />
+                            <input name="hotflag" type="hidden" value="false" />
+                        </label>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="control-label col-md-1 col-sm-3 col-xs-12">Đăng bài</label>
+                    <div style="margin-top: 5px">
+                        <label>
+                            <input type="checkbox" name="status" value="true" class="js-switch" />
+                            <input name="status" type="hidden" value="false" />
+                        </label>
+                    </div>
+                </div>
+                <div class="item form-group">
+                    <label class="control-label" for="title">Nội dung</label>
+                    <textarea id="txtContent" name="content"></textarea>
+                </div>
+                <div class="ln_solid"></div>
+                <div class="form-group">
+                    <a href="/Admin/Post/Index" class="btn btn-primary">Cancel</a>
+                    <button id="btnSubmit" type="submit" class="btn btn-success">Submit</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,14 @@
+C:\Users\Thien\Desktop\LeMinhThien\Visual Studio Projects\CIS\CIS\CIS.Model\bin\Debug\CIS.Model.dll.config
+C:\Users\Thien\Desktop\LeMinhThien\Visual Studio Projects\CIS\CIS\CIS.Model\bin\Debug\CIS.Model.dll
+C:\Users\Thien\Desktop\LeMinhThien\Visual Studio Projects\CIS\CIS\CIS.Model\bin\Debug\CIS.Model.pdb
+C:\Users\Thien\Desktop\LeMinhThien\Visual Studio Projects\CIS\CIS\CIS.Model\bin\Debug\EntityFramework.dll
+C:\Users\Thien\Desktop\LeMinhThien\Visual Studio Projects\CIS\CIS\CIS.Model\bin\Debug\EntityFramework.SqlServer.dll
+C:\Users\Thien\Desktop\LeMinhThien\Visual Studio Projects\CIS\CIS\CIS.Model\bin\Debug\EntityFramework.xml
+C:\Users\Thien\Desktop\LeMinhThien\Visual Studio Projects\CIS\CIS\CIS.Model\bin\Debug\EntityFramework.SqlServer.xml
+C:\Users\Thien\Desktop\LeMinhThien\Visual Studio Projects\CIS\CIS\CIS.Model\obj\Debug\CIS.Model.csproj.CoreCompileInputs.cache
+C:\Users\Thien\Desktop\LeMinhThien\Visual Studio Projects\CIS\CIS\CIS.Model\obj\Debug\CIS.Model.csproj.CopyComplete
+C:\Users\Thien\Desktop\LeMinhThien\Visual Studio Projects\CIS\CIS\CIS.Model\obj\Debug\CIS.Model.dll
+C:\Users\Thien\Desktop\LeMinhThien\Visual Studio Projects\CIS\CIS\CIS.Model\obj\Debug\CIS.Model.pdb
+C:\Users\Thien\Desktop\LeMinhThien\Visual Studio Projects\CIS\CIS\CIS.Model\bin\Debug\CIS.Common.dll
+C:\Users\Thien\Desktop\LeMinhThien\Visual Studio Projects\CIS\CIS\CIS.Model\bin\Debug\CIS.Common.pdb
+C:\Users\Thien\Desktop\LeMinhThien\Visual Studio Projects\CIS\CIS\CIS.Model\obj\Debug\CIS.Model.csprojAssemblyReference.cache

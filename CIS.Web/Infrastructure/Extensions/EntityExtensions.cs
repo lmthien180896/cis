@@ -56,6 +56,7 @@ namespace CIS.Web.Infrastructure.Extensions
             post.ReferenceUrl = postVm.ReferenceUrl;
             post.Image = postVm.Image;
             post.HomeFlag = postVm.HomeFlag;
+            post.HotFlag = postVm.HotFlag;
             post.ViewCount = postVm.ViewCount;
 
             post.CreatedDate = postVm.CreatedDate;

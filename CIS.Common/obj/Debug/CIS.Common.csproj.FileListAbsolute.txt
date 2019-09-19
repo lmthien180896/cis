@@ -1,0 +1,6 @@
+C:\Users\Thien\Desktop\LeMinhThien\Visual Studio Projects\CIS\CIS\CIS.Common\bin\Debug\CIS.Common.dll
+C:\Users\Thien\Desktop\LeMinhThien\Visual Studio Projects\CIS\CIS\CIS.Common\bin\Debug\CIS.Common.pdb
+C:\Users\Thien\Desktop\LeMinhThien\Visual Studio Projects\CIS\CIS\CIS.Common\obj\Debug\CIS.Common.csproj.CoreCompileInputs.cache
+C:\Users\Thien\Desktop\LeMinhThien\Visual Studio Projects\CIS\CIS\CIS.Common\obj\Debug\CIS.Common.dll
+C:\Users\Thien\Desktop\LeMinhThien\Visual Studio Projects\CIS\CIS\CIS.Common\obj\Debug\CIS.Common.pdb
+C:\Users\Thien\Desktop\LeMinhThien\Visual Studio Projects\CIS\CIS\CIS.Common\obj\Debug\CIS.Common.csprojAssemblyReference.cache

@@ -27,5 +27,7 @@ namespace CIS.Web.Models
 
         //thuộc tính khác
         public string GroupDisplayName { get; set; }
+
+        public IEnumerable<UGroup> UserGroups { get; set; }
     }
 }
