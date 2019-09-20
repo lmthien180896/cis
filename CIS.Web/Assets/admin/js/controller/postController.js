@@ -3,7 +3,7 @@
         postController.registerEvents();
     },
 
-    registerEvents: function () {       
+    registerEvents: function () {
         $('#btnDelteImage').off('click').on('click', function (e) {
             e.preventDefault();
             $('#txtImage').val("");
@@ -12,7 +12,7 @@
         });
 
         $('#txtName').on('change', function () {
-            var input = $('#txtName').val();           
+            var input = $('#txtName').val();
             $.ajax({
                 url: "/Admin/Post/GetAlias",
                 data: { title: input },
@@ -54,7 +54,7 @@
                         }
                     });
                 }
-            });            
+            });
         });
 
         $('.btnStatus').off('click').on('click', function (e) {
@@ -96,10 +96,15 @@
                         }
                     });
                 }
-            })
+            });
         });
-    },
-    
+
+        $('#sltFilter').on('change', function () {
+            var categoryId = $(this).val();
+            url = "/Admin/Post/Index?filterCategoryId=" + categoryId;
+            window.location.replace(url);
+        });
+    }
 };
 
 postController.init();

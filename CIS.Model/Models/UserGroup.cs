@@ -8,7 +8,7 @@ namespace CIS.Model.Models
     [Table("UserGroups")]
     public class UserGroup : Auditable
     {
-        [Key]        
+        [Key]
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         public int ID { get; set; }
 

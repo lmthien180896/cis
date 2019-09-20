@@ -11,7 +11,7 @@ namespace CIS.Model.Models
         [Key]
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         public int ID { get; set; }
-        
+
         [MaxLength(256)]
         public string Name { get; set; }
 

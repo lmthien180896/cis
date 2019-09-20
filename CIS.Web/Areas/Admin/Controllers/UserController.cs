@@ -1,23 +1,19 @@
 ﻿using AutoMapper;
-using CIS.Common;
-using CIS.Data;
 using CIS.Model.Models;
 using CIS.Service;
+using CIS.Web.Infrastructure.Extensions;
 using CIS.Web.Models;
 using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Web;
 using System.Web.Mvc;
-using CIS.Web.Infrastructure.Extensions;
 using System.Web.Script.Serialization;
 
 namespace CIS.Web.Areas.Admin.Controllers
 {
     public class UserController : BaseController
     {
-        IUserService _userService;
-        IUserGroupService _userGroupService;
+        private IUserService _userService;
+        private IUserGroupService _userGroupService;
 
         public UserController(IUserService userService, IUserGroupService userGroupService)
         {
@@ -73,7 +69,6 @@ namespace CIS.Web.Areas.Admin.Controllers
                 SetAlert("success", newUser.Username + " đã được thêm mới.");
                 return RedirectToAction("Index");
             }
-
         }
 
         [HttpPost]

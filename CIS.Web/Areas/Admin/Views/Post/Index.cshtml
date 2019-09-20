@@ -5,12 +5,6 @@
 }
 
 @section css{
-    <!-- DataTable -->
-    <link href="~/Assets/admin/vendors/datatables.net-bs/css/dataTables.bootstrap.min.css" rel="stylesheet">
-    <link href="~/Assets/admin/vendors/datatables.net-buttons-bs/css/buttons.bootstrap.min.css" rel="stylesheet">
-    <link href="~/Assets/admin/vendors/datatables.net-fixedheader-bs/css/fixedHeader.bootstrap.min.css" rel="stylesheet">
-    <link href="~/Assets/admin/vendors/datatables.net-responsive-bs/css/responsive.bootstrap.min.css" rel="stylesheet">
-    <link href="~/Assets/admin/vendors/datatables.net-scroller-bs/css/scroller.bootstrap.min.css" rel="stylesheet">
 
 }
 
@@ -42,6 +36,22 @@
             <h2>Danh sách tin tức</h2>
             <a class="btn btn-success pull-right" href="/Admin/Post/CreateView"><i class="fa fa-plus"></i> Đăng mới</a>
             <a class="btn btn-danger pull-right" id="btnDeleteAll" href="#"><i class="fa fa-trash"></i> Xoá</a>
+            <div class="col-md-2 pull-right">
+                <select class="form-control" id="sltFilter">
+                    <option value="">Tất cả</option>
+                    @foreach (var category in ViewBag.PostCategories)
+                    {
+                        if (category.ID == ViewBag.SelectedCategoryID)
+                        {
+                            <option value="@category.ID" selected>@category.Name</option>
+                        }
+                        else
+                        {
+                            <option value="@category.ID">@category.Name</option>
+                        }
+                    }
+                </select>
+            </div>
             <div class="clearfix"></div>
         </div>
         <div class="x_content">
@@ -71,7 +81,7 @@
                                         <td>@Html.Raw((post.Status) ? "<a href='#' class='btn btn-success btn-xs btnStatus' data-id=" + post.ID + ">Đăng</a>" : "<a href='#' class='btn btn-danger btn-xs btnStatus' data-id=" + post.ID + ">Khoá</a>")</td>
                                         <td>
                                             <a href="/Admin/Post/EditView/@post.ID" class="btn btn-info btn-sm"><i class="fa fa-pencil"></i></a>
-                                            <a href="#" data-id="@post.ID" class="btn btn-danger btn-sm"><i class="fa fa-trash"></i></a>
+                                            <a href="#" data-id="@post.ID" class="btn btn-danger btn-sm btnDelete"><i class="fa fa-trash"></i></a>
                                         </td>
                                     </tr>
                                 }

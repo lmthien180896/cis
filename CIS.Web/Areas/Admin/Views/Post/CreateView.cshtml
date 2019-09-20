@@ -4,18 +4,15 @@
     Layout = "~/Areas/Admin/Views/Shared/_LayoutAdmin.cshtml";
 }
 
-<h2>Thêm mới tin tức</h2>
-
-@section css {
-    <!-- Switchery -->
-    <link href="~/Assets/admin/vendors/switchery/dist/switchery.min.css" rel="stylesheet">
-}
+<h2>Thêm mới bài đăng</h2>
 
 @section js {
     <!-- validator -->
     <script src="~/Assets/admin/vendors/validator/validator.js"></script>
     <!-- Switchery -->
     <script src="~/Assets/admin/vendors/switchery/dist/switchery.min.js"></script>
+    <!-- jQuery Tags Input -->
+    <script src="~/Assets/admin/vendors/jquery.tagsinput/src/jquery.tagsinput.js"></script>
     <!--CKEditor & CKFinder-->
     <script src="~/Assets/admin/libs/ckeditor/ckeditor.js"></script>
     <script src="~/Assets/admin/libs/ckfinder/ckfinder.js"></script>
@@ -42,13 +39,21 @@
 <div class="col-md-12 col-sm-12 col-xs-12">
     <div class="x_panel">
         <div class="x_title">
-            <h2>Thông tin tin tức</h2>
+            <h2>Thông tin bài đăng</h2>
             <div class="clearfix"></div>
         </div>
         <div class="x_content">
             <br />
             <form action="/Admin/Post/Create" method="post" class="form-horizontal form-label-left" novalidate>
-                <input type="hidden" value="1" name="CategoryID" />
+                <div class="item form-group">
+                    <label class="control-label" for="categoryID">Loại bài đăng</label>
+                    <select class="form-control" name="categoryId">
+                        @foreach (var category in Model.PostCategories)
+                        {
+                            <option value="@category.ID">@category.Name</option>
+                        }
+                    </select>
+                </div>
                 <div class="item form-group">
                     <label class="control-label" for="title">Tiêu đề</label>
                     <input class="form-control" id="txtName" name="name" placeholder="Tiêu đề" type="text" required="required">
@@ -74,8 +79,19 @@
                     <img id="img" style="height:100px" />
                     <a href="#" id="btnDelteImage" class="text-danger hide">Xoá ảnh</a>
                 </div>
+                <div class="item form-group">
+                    <label class="control-label">Input Tags</label>
+                    <div class="">
+                        <input id="tags_1" type="text" name="tags" class="tags form-control" />
+                        <div id="suggestions-container" style="position: relative; float: left; width: 250px; margin: 10px;"></div>
+                    </div>
+                </div>
+                <div class="item form-group">
+                    <label class="control-label" for="title">Nội dung</label>
+                    <textarea id="txtContent" name="content"></textarea>
+                </div>
                 <div class="form-group">
-                    <label class="control-label col-md-1 col-sm-3 col-xs-12">Hiển thị trang chủ</label>
+                    <label class="col-sm-2">Hiển thị trang chủ</label>
                     <div style="margin-top: 5px">
                         <label>
                             <input type="checkbox" name="homeflag" value="true" class="js-switch" />
@@ -84,7 +100,7 @@
                     </div>
                 </div>
                 <div class="form-group">
-                    <label class="control-label col-md-1 col-sm-3 col-xs-12">Tin nổi bật</label>
+                    <label class="col-sm-2">Bài nổi bật</label>
                     <div style="margin-top: 5px">
                         <label>
                             <input type="checkbox" name="hotflag" value="true" class="js-switch" />
@@ -93,17 +109,13 @@
                     </div>
                 </div>
                 <div class="form-group">
-                    <label class="control-label col-md-1 col-sm-3 col-xs-12">Đăng bài</label>
+                    <label class="col-sm-2">Đăng bài</label>
                     <div style="margin-top: 5px">
                         <label>
                             <input type="checkbox" name="status" value="true" class="js-switch" />
                             <input name="status" type="hidden" value="false" />
                         </label>
                     </div>
-                </div>
-                <div class="item form-group">
-                    <label class="control-label" for="title">Nội dung</label>
-                    <textarea id="txtContent" name="content"></textarea>
                 </div>
                 <div class="ln_solid"></div>
                 <div class="form-group">

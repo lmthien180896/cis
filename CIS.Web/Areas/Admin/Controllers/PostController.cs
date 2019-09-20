@@ -6,8 +6,6 @@ using CIS.Web.Infrastructure.Extensions;
 using CIS.Web.Models;
 using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Web;
 using System.Web.Mvc;
 using System.Web.Script.Serialization;
 
@@ -15,8 +13,8 @@ namespace CIS.Web.Areas.Admin.Controllers
 {
     public class PostController : BaseController
     {
-        IPostService _postService;
-        IPostCategoryService _postCategoryService;
+        private IPostService _postService;
+        private IPostCategoryService _postCategoryService;
 
         public PostController(IPostService postService, IPostCategoryService postCategoryService)
         {
@@ -24,16 +22,24 @@ namespace CIS.Web.Areas.Admin.Controllers
             this._postCategoryService = postCategoryService;
         }
 
-        public ActionResult Index()
+        public ActionResult Index(int filterCategoryId = 1)
         {
-            var postModel = _postService.GetAll();
+            IEnumerable<Post> postModel;
+            if (filterCategoryId != 0)
+                postModel = _postService.GetAll(filterCategoryId);
+            else
+                postModel = _postService.GetAll();
             var postViewModel = Mapper.Map<IEnumerable<Post>, IEnumerable<PostViewModel>>(postModel);
+            ViewBag.PostCategories = _postCategoryService.GetAll();
+            ViewBag.SelectedCategoryID = filterCategoryId;
             return View(postViewModel);
         }
 
         public ActionResult CreateView()
         {
-            return View();
+            PostViewModel postViewModel = new PostViewModel();
+            postViewModel.PostCategories = _postCategoryService.GetAll();
+            return View(postViewModel);
         }
 
         [HttpPost]
@@ -69,6 +75,7 @@ namespace CIS.Web.Areas.Admin.Controllers
             }
         }
 
+        [HttpPost]
         public JsonResult Delete(int id)
         {
             if (!ModelState.IsValid)
@@ -135,6 +142,7 @@ namespace CIS.Web.Areas.Admin.Controllers
             var postModel = _postService.GetById(id);
             PostViewModel postViewModel = new PostViewModel();
             postViewModel = Mapper.Map<Post, PostViewModel>(postModel);
+            postViewModel.PostCategories = _postCategoryService.GetAll();
             return View(postViewModel);
         }
 
@@ -160,3 +168,4 @@ namespace CIS.Web.Areas.Admin.Controllers
             }
         }
     }
+}

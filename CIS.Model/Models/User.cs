@@ -30,7 +30,7 @@ namespace CIS.Model.Models
         [MaxLength(50)]
         public string Phone { get; set; }
 
-        [Required]        
+        [Required]
         public int GroupID { get; set; }
 
         public bool Status { get; set; }

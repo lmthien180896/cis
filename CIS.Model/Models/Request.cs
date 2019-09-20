@@ -13,7 +13,7 @@ namespace CIS.Model.Models
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         public int ID { get; set; }
 
-        [Required]        
+        [Required]
         public int CategoryID { get; set; }
 
         [Required]

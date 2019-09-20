@@ -1,10 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace CIS.Common
+﻿namespace CIS.Common
 {
     public class CommonConstant
     {
@@ -12,5 +6,6 @@ namespace CIS.Common
         public const int IntModId = 2;
         public const int WebModId = 3;
         public const int MemberId = 4;
+        public const string PostTag = "post";
     }
 }

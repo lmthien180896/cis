@@ -12,7 +12,7 @@ namespace CIS.Model.Models
         public int ID { get; set; }
 
         [Required]
-        [Column(Order = 1)]        
+        [Column(Order = 1)]
         public int UserGroupID { get; set; }
 
         [Required]

@@ -29,7 +29,7 @@
                         }
                     });
                 }
-            });      
+            });
         });
 
         $('.btnStatus').off('click').on('click', function (e) {
@@ -73,7 +73,7 @@
                 }
             })
         });
-    },   
+    },
 };
 
 userController.init();

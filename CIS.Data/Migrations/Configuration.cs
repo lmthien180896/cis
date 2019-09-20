@@ -2,9 +2,7 @@
 {
     using CIS.Common;
     using CIS.Model.Models;
-    using System;
     using System.Collections.Generic;
-    using System.Data.Entity;
     using System.Data.Entity.Migrations;
     using System.Linq;
 
@@ -18,9 +16,9 @@
         protected override void Seed(CIS.Data.CISDbContext context)
         {
             CreateUserGroupSample(context);
-            CreateUserSample(context);           
-            CreatePostCategorySample(context);           
-            CreatePostSample(context);           
+            CreateUserSample(context);
+            CreatePostCategorySample(context);
+            CreatePostSample(context);
         }
 
         private void CreateUserGroupSample(CISDbContext context)
@@ -37,7 +35,6 @@
                 context.UserGroups.AddRange(listUserGroup);
                 context.SaveChanges();
             }
-
         }
 
         private void CreateUserSample(CISDbContext context)
@@ -51,7 +48,6 @@
                 context.Users.AddRange(listUser);
                 context.SaveChanges();
             }
-
         }
 
         private void CreatePostCategorySample(CISDbContext context)
@@ -61,12 +57,11 @@
                 List<PostCategory> listPostCategory = new List<PostCategory>()
             {
                 new PostCategory() { Name="tin tức", Alias="tin-tuc", Status=true},
-                new PostCategory() { Name="thông báo", Alias="thong-bao", Status=false},                
+                new PostCategory() { Name="thông báo", Alias="thong-bao", Status=false},
             };
                 context.PostCategories.AddRange(listPostCategory);
                 context.SaveChanges();
             }
-
         }
 
         private void CreatePostSample(CISDbContext context)
@@ -81,7 +76,6 @@
                 context.Posts.AddRange(listPost);
                 context.SaveChanges();
             }
-
         }
     }
 }

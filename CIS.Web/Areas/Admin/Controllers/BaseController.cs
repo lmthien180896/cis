@@ -1,8 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Web;
-using System.Web.Mvc;
+﻿using System.Web.Mvc;
 
 namespace CIS.Web.Areas.Admin.Controllers
 {
@@ -13,7 +9,7 @@ namespace CIS.Web.Areas.Admin.Controllers
             TempData["AlertMessage"] = message;
             if (type == "success")
             {
-                TempData["AlertType"] = "toast-success";                
+                TempData["AlertType"] = "toast-success";
             }
             else if (type == "error")
             {

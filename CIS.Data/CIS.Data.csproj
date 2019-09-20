@@ -55,6 +55,18 @@
     <Compile Include="Migrations\201909180416260_AddGroupIDUser.Designer.cs">
       <DependentUpon>201909180416260_AddGroupIDUser.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201909200138338_addTags.cs" />
+    <Compile Include="Migrations\201909200138338_addTags.Designer.cs">
+      <DependentUpon>201909200138338_addTags.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201909200203004_addTagsForPost.cs" />
+    <Compile Include="Migrations\201909200203004_addTagsForPost.Designer.cs">
+      <DependentUpon>201909200203004_addTagsForPost.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201909200242168_addTagsTable.cs" />
+    <Compile Include="Migrations\201909200242168_addTagsTable.Designer.cs">
+      <DependentUpon>201909200242168_addTagsTable.cs</DependentUpon>
+    </Compile>
     <Compile Include="Repositories\ErrorRepository.cs" />
     <Compile Include="Infrastructure\IDbFactory.cs" />
     <Compile Include="Infrastructure\IRepository.cs" />
@@ -77,6 +89,8 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Repositories\PostCategoryRepository.cs" />
     <Compile Include="Repositories\PostRepository.cs" />
+    <Compile Include="Repositories\PostTag.cs" />
+    <Compile Include="Repositories\TagRepository.cs" />
     <Compile Include="Repositories\UserGroupRepository.cs" />
     <Compile Include="Repositories\UserRepository.cs" />
   </ItemGroup>
@@ -106,6 +120,15 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201909180416260_AddGroupIDUser.resx">
       <DependentUpon>201909180416260_AddGroupIDUser.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201909200138338_addTags.resx">
+      <DependentUpon>201909200138338_addTags.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201909200203004_addTagsForPost.resx">
+      <DependentUpon>201909200203004_addTagsForPost.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201909200242168_addTagsTable.resx">
+      <DependentUpon>201909200242168_addTagsTable.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

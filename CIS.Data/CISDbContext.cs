@@ -1,10 +1,5 @@
 ﻿using CIS.Model.Models;
-using System;
-using System.Collections.Generic;
 using System.Data.Entity;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace CIS.Data
 {
@@ -31,12 +26,13 @@ namespace CIS.Data
         public DbSet<Slide> Slides { get; set; }
         public DbSet<SupportOnline> SupportOnlines { get; set; }
         public DbSet<SystemConfig> SystemConfigs { get; set; }
+        public DbSet<Tag> Tags { get; set; }
         public DbSet<User> Users { get; set; }
         public DbSet<UserGroup> UserGroups { get; set; }
         public DbSet<VisitorStatistic> VisitorStatistics { get; set; }
 
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
-        {            
+        {
         }
     }
 }

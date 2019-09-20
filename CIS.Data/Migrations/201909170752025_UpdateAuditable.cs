@@ -1,8 +1,7 @@
 namespace CIS.Data.Migrations
 {
-    using System;
     using System.Data.Entity.Migrations;
-    
+
     public partial class UpdateAuditable : DbMigration
     {
         public override void Up()
@@ -58,7 +57,7 @@ namespace CIS.Data.Migrations
             AlterColumn("dbo.Requests", "CreatedBy", c => c.String(maxLength: 256));
             AlterColumn("dbo.Requests", "UpdatedBy", c => c.String(maxLength: 256));
         }
-        
+
         public override void Down()
         {
             AlterColumn("dbo.Requests", "UpdatedBy", c => c.String());

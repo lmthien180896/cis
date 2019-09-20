@@ -1,8 +1,6 @@
-﻿using System;
-using System.Collections;
-using System.Collections.Generic;
-using CIS.Data.Infrastructure;
+﻿using CIS.Data.Infrastructure;
 using CIS.Model.Models;
+using System.Collections.Generic;
 using System.Linq;
 
 namespace CIS.Data.Repositories
