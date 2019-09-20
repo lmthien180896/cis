@@ -37,6 +37,7 @@ namespace CIS.Web.Areas.Admin.Controllers
             requestCategory.UpdateRequestCategory(requestCategoryViewModel);
             if (requestCategory.ID == 0)
             {
+                requestCategory.CreatedDate = DateTime.Now;
                 var newRequestCategoryService = _requestCategoryService.Add(requestCategory);
                 if (newRequestCategoryService == null)
                 {
@@ -58,6 +59,7 @@ namespace CIS.Web.Areas.Admin.Controllers
             }
             else
             {
+                requestCategory.UpdatedDate = DateTime.Now;
                 _requestCategoryService.Update(requestCategory);
                 _requestCategoryService.SaveChanges();
                 SetAlert("success", "Chỉnh sửa thành công loại yêu cầu.");
@@ -128,7 +130,8 @@ namespace CIS.Web.Areas.Admin.Controllers
         public JsonResult ChangeStatus(int id)
         {
             var requestCategory = _requestCategoryService.GetById(id);
-            requestCategory.Status = !requestCategory.Status;
+            requestCategory.Status = !requestCategory.Status;            
+            requestCategory.UpdatedDate = DateTime.Now;            
             _requestCategoryService.Update(requestCategory);
             _requestCategoryService.SaveChanges();
             if (requestCategory.Status)

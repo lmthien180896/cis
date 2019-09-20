@@ -67,6 +67,10 @@
     <Compile Include="Migrations\201909200242168_addTagsTable.Designer.cs">
       <DependentUpon>201909200242168_addTagsTable.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201909200744446_addProgressField.cs" />
+    <Compile Include="Migrations\201909200744446_addProgressField.Designer.cs">
+      <DependentUpon>201909200744446_addProgressField.cs</DependentUpon>
+    </Compile>
     <Compile Include="Repositories\ErrorRepository.cs" />
     <Compile Include="Infrastructure\IDbFactory.cs" />
     <Compile Include="Infrastructure\IRepository.cs" />
@@ -132,6 +136,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201909200242168_addTagsTable.resx">
       <DependentUpon>201909200242168_addTagsTable.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201909200744446_addProgressField.resx">
+      <DependentUpon>201909200744446_addProgressField.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

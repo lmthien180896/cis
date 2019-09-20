@@ -98,6 +98,7 @@ namespace CIS.Web.Infrastructure.Extensions
             request.Files = requestVm.Files;
             request.Code = requestVm.Code;
             request.ClosedDate = requestVm.ClosedDate;
+            request.Progress = requestVm.Progress;
 
             request.CreatedDate = requestVm.CreatedDate;
             request.CreatedBy = requestVm.CreatedBy;

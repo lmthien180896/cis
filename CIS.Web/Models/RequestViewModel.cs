@@ -24,11 +24,14 @@ namespace CIS.Web.Models
 
         public string Code { get; set; }
 
+        public string Progress { get; set; }
+
         public DateTime? ClosedDate { get; set; }
 
         public DateTime? CreatedDate { get; set; }
 
         public string CreatedBy { get; set; }
+        
 
         public DateTime? UpdatedDate { get; set; }
 
@@ -43,5 +46,9 @@ namespace CIS.Web.Models
         public virtual RequestCategory RequestCategory { get; set; }
 
         public virtual IEnumerable<RequestReport> RequestReports { get; set; }
+
+
+        //Extra
+        public string SentDate { get; set; }
     }
 }

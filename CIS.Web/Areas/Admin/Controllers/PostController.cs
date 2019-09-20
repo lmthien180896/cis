@@ -125,6 +125,8 @@ namespace CIS.Web.Areas.Admin.Controllers
         {
             var post = _postService.GetById(id);
             post.Status = !post.Status;
+            post.UpdatedDate = DateTime.Now;
+
             _postService.Update(post);
             _postService.SaveChanges();
             if (post.Status)

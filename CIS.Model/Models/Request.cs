@@ -45,6 +45,8 @@ namespace CIS.Model.Models
 
         public DateTime? ClosedDate { get; set; }
 
+        public string Progress { get; set; }
+
         [ForeignKey("CategoryID")]
         public virtual RequestCategory RequestCategory { get; set; }
 

@@ -45,3 +45,4 @@ C:\Users\Thien\Desktop\LeMinhThien\Git\cis\CIS.Data\obj\Debug\CIS.Data.pdb
 C:\Users\Thien\Desktop\LeMinhThien\Git\cis\CIS.Data\obj\Debug\CIS.Data.Migrations.addTags.resources
 C:\Users\Thien\Desktop\LeMinhThien\Git\cis\CIS.Data\obj\Debug\CIS.Data.Migrations.addTagsForPost.resources
 C:\Users\Thien\Desktop\LeMinhThien\Git\cis\CIS.Data\obj\Debug\CIS.Data.Migrations.addTagsTable.resources
+C:\Users\Thien\Desktop\LeMinhThien\Git\cis\CIS.Data\obj\Debug\CIS.Data.Migrations.addProgressField.resources

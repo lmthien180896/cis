@@ -156,6 +156,7 @@
     <Compile Include="Areas\Admin\Controllers\HomeController.cs" />
     <Compile Include="Areas\Admin\Controllers\PostController.cs" />
     <Compile Include="Areas\Admin\Controllers\RequestCategoryController.cs" />
+    <Compile Include="Areas\Admin\Controllers\RequestController.cs" />
     <Compile Include="Areas\Admin\Controllers\UserController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
@@ -186,8 +187,10 @@
     <Content Include="Assets\admin\img\favicon.ico" />
     <Content Include="Assets\admin\img\img.jpg" />
     <Content Include="Assets\admin\js\common.js" />
+    <Content Include="Assets\admin\libs\mustache.min.js" />
     <Content Include="Assets\admin\js\controller\postController.js" />
     <Content Include="Assets\admin\js\controller\requestCategoryController.js" />
+    <Content Include="Assets\admin\js\controller\requestController.js" />
     <Content Include="Assets\admin\js\controller\userController.js" />
     <Content Include="Assets\admin\libs\bootbox.min.js" />
     <Content Include="Assets\admin\libs\ckeditor\adapters\jquery.js" />
@@ -5610,6 +5613,7 @@
     <Content Include="Assets\admin\libs\ckfinder\userfiles\.htaccess" />
     <Content Include="Areas\Admin\Views\Post\EditView.cshtml" />
     <Content Include="Areas\Admin\Views\RequestCategory\Index.cshtml" />
+    <Content Include="Areas\Admin\Views\Request\Index.cshtml" />
     <None Include="packages.config" />
     <Content Include="Resources\gentelella-master.zip" />
   </ItemGroup>
