@@ -19,6 +19,7 @@
             CreateUserSample(context);
             CreatePostCategorySample(context);
             CreatePostSample(context);
+            CreateRequestCategorySample(context);
         }
 
         private void CreateUserGroupSample(CISDbContext context)
@@ -74,6 +75,23 @@
                 new Post() { Name="tin tức 2", Alias="tin-tuc-2", CategoryID=1, Status=false},
             };
                 context.Posts.AddRange(listPost);
+                context.SaveChanges();
+            }
+        }
+
+        private void CreateRequestCategorySample(CISDbContext context)
+        {
+            if (context.RequestCategories.Count() == 0)
+            {
+                List<RequestCategory> listRequestCategory = new List<RequestCategory>()
+            {
+                new RequestCategory() { Name = "Internet/Wifi"},
+                new RequestCategory() { Name = "Blackboard/Turnitin"},
+                new RequestCategory() { Name = "Email"},
+                new RequestCategory() { Name = "Thiết bị"},                
+                new RequestCategory() { Name = "Đăng tin lên IU Web"},                
+            };
+                context.RequestCategories.AddRange(listRequestCategory);
                 context.SaveChanges();
             }
         }

@@ -80,7 +80,7 @@ namespace CIS.Web.Areas.Admin.Controllers
         {
             if (!ModelState.IsValid)
             {
-                SetAlert("error", "Đăng bài không thành công.");
+                SetAlert("error", "Xoá bài không thành công.");
                 return Json(new
                 {
                     status = false

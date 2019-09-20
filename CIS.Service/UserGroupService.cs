@@ -15,7 +15,7 @@ namespace CIS.Service
         
         UserGroup GetById(int id);
 
-        void Save();
+        void SaveChanges();
     }
 
     public class UserGroupService : IUserGroupService
@@ -39,7 +39,7 @@ namespace CIS.Service
             return _userGroupRepository.GetSingleById(id);
         }
 
-        public void Save()
+        public void SaveChanges()
         {
             _unitOfWork.Commit();
         }

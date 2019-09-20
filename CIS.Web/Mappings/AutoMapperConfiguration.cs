@@ -12,6 +12,9 @@ namespace CIS.Web.Mappings
             Mapper.CreateMap<PostCategory, PostCategoryViewModel>();
             Mapper.CreateMap<User, UserViewModel>();
             Mapper.CreateMap<UserGroup, UGroup>();
+            Mapper.CreateMap<Request, RequestViewModel>();
+            Mapper.CreateMap<RequestCategory, RequestCategoryViewModel>();
+            Mapper.CreateMap<RequestReport, RequestReportViewModel>();
         }
     }
 }

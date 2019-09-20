@@ -155,6 +155,7 @@
     <Compile Include="Areas\Admin\Controllers\BaseController.cs" />
     <Compile Include="Areas\Admin\Controllers\HomeController.cs" />
     <Compile Include="Areas\Admin\Controllers\PostController.cs" />
+    <Compile Include="Areas\Admin\Controllers\RequestCategoryController.cs" />
     <Compile Include="Areas\Admin\Controllers\UserController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
@@ -164,6 +165,9 @@
     <Compile Include="Models\CreateUserViewModel.cs" />
     <Compile Include="Models\PostCategoryViewModel.cs" />
     <Compile Include="Models\PostViewModel.cs" />
+    <Compile Include="Models\RequestCategoryViewModel.cs" />
+    <Compile Include="Models\RequestReportViewModel.cs" />
+    <Compile Include="Models\RequestViewModel.cs" />
     <Compile Include="Models\UserViewModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
@@ -183,6 +187,7 @@
     <Content Include="Assets\admin\img\img.jpg" />
     <Content Include="Assets\admin\js\common.js" />
     <Content Include="Assets\admin\js\controller\postController.js" />
+    <Content Include="Assets\admin\js\controller\requestCategoryController.js" />
     <Content Include="Assets\admin\js\controller\userController.js" />
     <Content Include="Assets\admin\libs\bootbox.min.js" />
     <Content Include="Assets\admin\libs\ckeditor\adapters\jquery.js" />
@@ -5604,6 +5609,7 @@
     <Content Include="Assets\admin\libs\ckfinder\plugins\fileeditor\codemirror\LICENSE" />
     <Content Include="Assets\admin\libs\ckfinder\userfiles\.htaccess" />
     <Content Include="Areas\Admin\Views\Post\EditView.cshtml" />
+    <Content Include="Areas\Admin\Views\RequestCategory\Index.cshtml" />
     <None Include="packages.config" />
     <Content Include="Resources\gentelella-master.zip" />
   </ItemGroup>

@@ -13,7 +13,7 @@ namespace CIS.Web.Areas.Admin.Controllers
             }
             else if (type == "error")
             {
-                TempData["AlertType"] = "toast-danger";
+                TempData["AlertType"] = "toast-error";
             }
             else if (type == "warning")
             {

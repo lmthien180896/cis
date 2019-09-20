@@ -20,7 +20,7 @@ namespace CIS.Service
 
         PostCategory GetById(int id);
 
-        void Save();
+        void SaveChanges();
     }
 
     public class PostCategoryService : IPostCategoryService
@@ -59,7 +59,7 @@ namespace CIS.Service
             return _postCategoryRepository.GetSingleById(id);
         }
 
-        public void Save()
+        public void SaveChanges()
         {
             _unitOfWork.Commit();
         }

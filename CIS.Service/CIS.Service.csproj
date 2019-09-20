@@ -45,6 +45,9 @@
     <Compile Include="PostCategoryService.cs" />
     <Compile Include="PostService.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="RequestCategoryService.cs" />
+    <Compile Include="RequestReportService.cs" />
+    <Compile Include="RequestService.cs" />
     <Compile Include="UserGroupService.cs" />
     <Compile Include="UserService.cs" />
   </ItemGroup>
