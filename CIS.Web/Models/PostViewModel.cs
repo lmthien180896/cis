@@ -28,6 +28,8 @@ namespace CIS.Web.Models
 
         public int? ViewCount { set; get; }
 
+        public string Tags { get; set; }
+
         public DateTime? CreatedDate { get; set; }
 
         public string CreatedBy { get; set; }
@@ -45,5 +47,8 @@ namespace CIS.Web.Models
         public virtual PostCategory PostCategory { set; get; }
 
         public virtual IEnumerable<PostTag> PostTags { set; get; }
+
+        //Extra
+        public IEnumerable<PostCategory> PostCategories { get; set; }
     }
 }
