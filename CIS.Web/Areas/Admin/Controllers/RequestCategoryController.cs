@@ -5,8 +5,6 @@ using CIS.Web.Infrastructure.Extensions;
 using CIS.Web.Models;
 using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Web;
 using System.Web.Mvc;
 using System.Web.Script.Serialization;
 
@@ -130,8 +128,8 @@ namespace CIS.Web.Areas.Admin.Controllers
         public JsonResult ChangeStatus(int id)
         {
             var requestCategory = _requestCategoryService.GetById(id);
-            requestCategory.Status = !requestCategory.Status;            
-            requestCategory.UpdatedDate = DateTime.Now;            
+            requestCategory.Status = !requestCategory.Status;
+            requestCategory.UpdatedDate = DateTime.Now;
             _requestCategoryService.Update(requestCategory);
             _requestCategoryService.SaveChanges();
             if (requestCategory.Status)

@@ -43,12 +43,14 @@ namespace CIS.Web.Models
 
         public bool Status { get; set; }
 
-        public virtual RequestCategory RequestCategory { get; set; }
+        public  RequestCategory RequestCategory { get; set; }
 
-        public virtual IEnumerable<RequestReport> RequestReports { get; set; }
+        public  IEnumerable<RequestReport> RequestReports { get; set; }
 
 
         //Extra
         public string SentDate { get; set; }
+
+        public string CategoryName { get; set; }
     }
 }

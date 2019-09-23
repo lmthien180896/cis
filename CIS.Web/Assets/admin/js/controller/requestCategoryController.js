@@ -105,7 +105,7 @@
             $('#modalAddUpdate').modal('show');
             var id = $(this).data("id");            
             requestCategoryController.loadDetail(id);
-        });
+        });        
     },
 
     loadDetail: function (id) {

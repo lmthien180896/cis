@@ -22,6 +22,8 @@ namespace CIS.Service
       
         User GetById(int id);
 
+        User CheckAuthen(User user);
+
         void SaveChanges();
     }
 
@@ -64,6 +66,12 @@ namespace CIS.Service
         public void Update(User user)
         {
             _userRepository.Update(user);
+        }
+
+        public User CheckAuthen(User user)
+        {
+            var checkUser = _userRepository.GetSingleByCondition(x => x.Username == user.Username && x.Password == user.Password);
+            return checkUser;
         }
     }
 

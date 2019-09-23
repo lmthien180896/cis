@@ -57,7 +57,7 @@
                         </div>
                         <div class="profile_info">
                             <span>Welcome,</span>
-                            <h2>John Doe</h2>
+                            <h2>@TempData["Username"]</h2>
                         </div>
                     </div>
                     <!-- /menu profile quick info -->
@@ -92,9 +92,18 @@
                                     <a><i class="fa fa-exclamation-triangle"></i> Yêu cầu <span class="fa fa-chevron-down"></span></a>
                                     <ul class="nav child_menu">
                                         <li><a href="/Admin/RequestCategory/Index">Loại yêu cầu</a></li>
-                                        <li><a href="/Admin/Request/Index">Danh sách yêu cầu</a></li>
+                                        <li>
+                                            <a>Yêu cầu<span class="fa fa-chevron-down"></span></a>
+                                            <ul class="nav child_menu">
+                                                <li><a href="/Admin/Request/Index">Danh sách yêu cầu</a></li>
+                                                <li><a href="/Admin/Request/WaitingQueue">Đang chờ xử lí</a></li>
+                                                <li><a href="/Admin/Request/SupportingQueue">Đang xử lí</a></li>
+                                                <li><a href="/Admin/Request/CompletedQueue">Hoàn thành</a></li>
+                                            </ul>
+                                        </li>
                                     </ul>
-                                </li>
+
+                                </li>                              
                             </ul>
                         </div>
                     </div>
@@ -110,7 +119,7 @@
                         <a data-toggle="tooltip" data-placement="top" title="Lock">
                             <span class="glyphicon glyphicon-eye-close" aria-hidden="true"></span>
                         </a>
-                        <a data-toggle="tooltip" data-placement="top" title="Logout" href="login.html">
+                        <a data-toggle="tooltip" data-placement="top" title="Logout" href="/Admin/Login/Logout">
                             <span class="glyphicon glyphicon-off" aria-hidden="true"></span>
                         </a>
                     </div>
@@ -129,7 +138,7 @@
                         <ul class="nav navbar-nav navbar-right">
                             <li class="">
                                 <a href="javascript:;" class="user-profile dropdown-toggle" data-toggle="dropdown" aria-expanded="false">
-                                    <img src="~/Assets/admin/img/img.jpg" alt="">John Doe
+                                    <img src="~/Assets/admin/img/img.jpg" alt="">@TempData["Username"]
                                     <span class=" fa fa-angle-down"></span>
                                 </a>
                                 <ul class="dropdown-menu dropdown-usermenu pull-right">
@@ -268,7 +277,8 @@
     <script src="~/Assets/admin/vendors/bootstrap-daterangepicker/daterangepicker.js"></script>
     <!-- toastr -->
     <script src="~/Assets/admin/js/notification.js"></script>
-
+    <!-- iCheck -->
+    <script src="~/Assets/admin/vendors/iCheck/icheck.min.js"></script>
     @RenderSection("js", required: false)
     <!-- Custom Theme Scripts -->
     <script src="~/Assets/admin/build/js/custom.min.js"></script>

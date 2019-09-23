@@ -1,5 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Linq.Expressions;
+using CIS.Common;
 using CIS.Data.Infrastructure;
 using CIS.Data.Repositories;
 using CIS.Model.Models;
@@ -16,7 +18,13 @@ namespace CIS.Service
 
         IEnumerable<Request> GetAll();
 
+        IEnumerable<Request> GetMany(Expression<Func<Request, bool>> where, string includes);
+
         Request GetById(int id);
+
+        void Support(int id);
+
+        void SendConfirm(int id);
 
         void SaveChanges();
     }
@@ -24,22 +32,26 @@ namespace CIS.Service
     public class RequestService : IRequestService
     {
         private IRequestRepository _requestRepository;
+        private IRequestReportRepository _requestReportRepository;
         private IUnitOfWork _unitOfWork;
 
-        public RequestService(IRequestRepository requestRepository, IUnitOfWork unitOfWork)
+        public RequestService(IRequestRepository requestRepository, IRequestReportRepository requestReportRepository, IUnitOfWork unitOfWork)
         {
             this._requestRepository = requestRepository;
             this._unitOfWork = unitOfWork;
+            this._requestReportRepository = requestReportRepository;
         }
 
         public Request Add(Request request)
         {
+
             return _requestRepository.Add(request);
         }
 
         public Request Delete(int id)
         {
-            return _requestRepository.Delete(id);
+            _requestReportRepository.DeleteMulti(x => x.RequestID == id);
+            return _requestRepository.Delete(id);            
         }
 
         public IEnumerable<Request> GetAll()
@@ -52,6 +64,11 @@ namespace CIS.Service
             return _requestRepository.GetSingleById(id);
         }
 
+        public IEnumerable<Request> GetMany(Expression<Func<Request, bool>> where, string includes)
+        {
+            return _requestRepository.GetMulti(where, null);
+        }
+
         public void SaveChanges()
         {
             _unitOfWork.Commit();
@@ -60,6 +77,31 @@ namespace CIS.Service
         public void Update(Request request)
         {
             _requestRepository.Update(request);
+        }
+
+        public void Support(int id)
+        {
+            var request = _requestRepository.GetSingleById(id);            
+            request.Progress = CommonConstant.SupportingProgress;
+            request.UpdatedDate = DateTime.Now;
+            _requestRepository.Update(request);
+
+            RequestReport report = new RequestReport();
+            report.CreatedDate = DateTime.Now;
+            report.Note = "Bắt đầu xử lí yêu cầu";
+            report.RequestID = request.ID;
+            //report.SupporterID = ...
+            //report.CreatedBy = ...
+            _requestReportRepository.Add(report);
+
+            _unitOfWork.Commit();
+        }
+
+        public void SendConfirm(int id)
+        {
+            var request = _requestRepository.GetSingleById(id);
+            //Send Email
+            MailHepler.SendMail(request.Email, "test subject", "Đóng yêu cầu");
         }
     }
 }

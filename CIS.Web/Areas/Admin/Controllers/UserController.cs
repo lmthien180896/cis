@@ -63,7 +63,7 @@ namespace CIS.Web.Areas.Admin.Controllers
             else
             {
                 User newUser = new User();
-                newUser.UpdateUser(userViewModel);                
+                newUser.UpdateUser(userViewModel);
                 _userService.Add(newUser);
                 _userService.SaveChanges();
                 SetAlert("success", newUser.Username + " đã được thêm mới.");

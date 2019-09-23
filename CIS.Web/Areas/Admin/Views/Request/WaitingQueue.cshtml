@@ -1,6 +1,6 @@
-﻿@model IEnumerable<CIS.Web.Models.RequestViewModel>
+﻿
 @{
-    ViewBag.Title = "Index";
+    ViewBag.Title = "SupportingQueue";
     Layout = "~/Areas/Admin/Views/Shared/_LayoutAdmin.cshtml";
 }
 
@@ -32,12 +32,11 @@
     <script src="~/Assets/admin/js/controller/requestController.js"></script>
 }
 
-<h3>Danh sách yêu cầu</h3>
+<h3>Danh sách yêu cầu đang chờ xử lí</h3>
 <div class="col-md-12 col-sm-12 col-xs-12">
     <div class="x_panel">
         <div class="x_title">
-            <h2>Danh sách yêu cầu</h2>
-            <a class="btn btn-success pull-right" href="#" id="btnAdd" data-toggle="modal" data-target="#modalAddUpdate"><i class="fa fa-plus"></i> Tạo mới</a>
+            <h2>Danh sách yêu cầu đang chờ xử lí</h2>
             <a class="btn btn-danger pull-right" id="btnDeleteAll" href="#"><i class="fa fa-trash"></i> Xoá</a>
             <div class="clearfix"></div>
         </div>
@@ -50,11 +49,10 @@
                                 <tr role="row">
                                     <th class="" style="width: 10px;"><input type="checkbox" id="chkAll" /></th>
                                     <th class="sorting_asc" tabindex="0" aria-controls="datatable" rowspan="1" colspan="1" aria-sort="ascending" aria-label="RequestCategory: activate to sort column descending" style="width: 50px;">ID</th>
-                                    <th class="sorting_asc" tabindex="0" aria-controls="datatable" rowspan="1" colspan="1" aria-sort="ascending" aria-label="RequestCategory: activate to sort column descending" style="width: 102px;">Loại yêu cầu</th>
-                                    <th class="sorting_asc" tabindex="0" aria-controls="datatable" rowspan="1" colspan="1" aria-sort="ascending" aria-label="RequestCategory: activate to sort column descending" style="width: 202px;">Người gửi</th>
-                                    <th class="sorting_asc" tabindex="0" aria-controls="datatable" rowspan="1" colspan="1" aria-sort="ascending" aria-label="RequestCategory: activate to sort column descending" style="width: 202px;">Nơi gửi</th>
-                                    <th class="sorting_asc" tabindex="0" aria-controls="datatable" rowspan="1" colspan="1" aria-sort="ascending" aria-label="RequestCategory: activate to sort column descending" style="width: 202px;">Ngày gửi</th>
-                                    <th class="sorting_asc" tabindex="0" aria-controls="datatable" rowspan="1" colspan="1" aria-sort="ascending" aria-label="Status: activate to sort column descending" style="width: 100px;">Trạng thái</th>
+                                    <th class="sorting_asc" tabindex="0" aria-controls="datatable" rowspan="1" colspan="1" aria-sort="ascending" aria-label="RequestCategory: activate to sort column descending" style="width: 102px;">Người gửi</th>
+                                    <th class="sorting_asc" tabindex="0" aria-controls="datatable" rowspan="1" colspan="1" aria-sort="ascending" aria-label="RequestCategory: activate to sort column descending" style="width: 102px;">Nơi gửi</th>
+                                    <th class="sorting_asc" tabindex="0" aria-controls="datatable" rowspan="1" colspan="1" aria-sort="ascending" aria-label="RequestCategory: activate to sort column descending" style="width: 102px;">Ngày gửi</th>
+                                    <th class="sorting_asc" tabindex="0" aria-controls="datatable" rowspan="1" colspan="1" aria-sort="ascending" aria-label="RequestCategory: activate to sort column descending" style="width: 202px;">Chi tiết</th>
                                     <th tabindex="0" aria-controls="datatable" rowspan="1" colspan="1" style="width: 180px;"></th>
                                 </tr>
                             </thead>
@@ -65,29 +63,19 @@
                                     <tr role="row" class="odd">
                                         <td><input type="checkbox" class="chkDelete" data-id=@request.ID /></td>
                                         <td>@request.ID</td>
-                                        <td class="sorting_1">@request.CategoryName</td>
-                                        <td class="sorting_1">@request.SenderName</td>
+                                        <td>@request.SenderName</td>
                                         <td>@request.Place</td>
-                                        <td>@request.CreatedDate.Value.ToString("dd/MM/yyyy")</td>
-                                        <td>@Html.Raw((request.Progress==ViewBag.WaitingProgress) ? "<span class='btn btn-warning btn-sm'>Chờ xử lí</span>" : (request.Progress == ViewBag.SupportingProgress) ? "<span class='btn btn-info btn-sm'>Đang xử lí</span>" : "<span class='btn btn-success btn-sm label-progress'>Hoàn tất</span>")</td>
+                                        <td>@request.SentDate</td>
+                                        <td>@request.Detail</td>
                                         <td>
                                             <a href="#" data-id=@request.ID class="btn btn-info btn-sm btnUpdate"><i class="fa fa-pencil"></i></a>
+                                            <a href="#" data-id=@request.ID class="btn btn-default btn-sm btnSupport"><i class="fa fa-wrench"></i></a>
                                             <a href="#" data-id=@request.ID class="btn btn-danger btn-sm btnDelete"><i class="fa fa-trash"></i></a>
-                                            @if (request.Progress != "waiting")
-                                            {
-                                                <a href="#" data-id=@request.ID class="btn btn-primary btn-sm btnView"><i class="fa fa-eye"></i></a>                                              
-                                            }
-                                            @if (request.Progress == "waiting")
-                                            {                                                
-                                                <a href="#" data-id=@request.ID class="btn btn-default btn-sm btnSupport"><i class="fa fa-wrench"></i></a>
-                                            }
-
                                         </td>
-
                                     </tr>
                                 }
 
-                            </tbody>                           
+                            </tbody>
                         </table>
                     </div>
                 </div>
