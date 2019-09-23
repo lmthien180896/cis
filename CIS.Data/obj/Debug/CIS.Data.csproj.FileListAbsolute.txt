@@ -46,3 +46,5 @@ C:\Users\Thien\Desktop\LeMinhThien\Git\cis\CIS.Data\obj\Debug\CIS.Data.Migration
 C:\Users\Thien\Desktop\LeMinhThien\Git\cis\CIS.Data\obj\Debug\CIS.Data.Migrations.addTagsForPost.resources
 C:\Users\Thien\Desktop\LeMinhThien\Git\cis\CIS.Data\obj\Debug\CIS.Data.Migrations.addTagsTable.resources
 C:\Users\Thien\Desktop\LeMinhThien\Git\cis\CIS.Data\obj\Debug\CIS.Data.Migrations.addProgressField.resources
+C:\Users\Thien\Desktop\LeMinhThien\Git\cis\CIS.Data\bin\Debug\System.Web.Mvc.dll
+C:\Users\Thien\Desktop\LeMinhThien\Git\cis\CIS.Data\bin\Debug\System.Web.Mvc.xml

@@ -158,18 +158,22 @@
     <Compile Include="Areas\Admin\Controllers\PostController.cs" />
     <Compile Include="Areas\Admin\Controllers\RequestCategoryController.cs" />
     <Compile Include="Areas\Admin\Controllers\RequestController.cs" />
+    <Compile Include="Areas\Admin\Controllers\RoleController.cs" />
     <Compile Include="Areas\Admin\Controllers\UserController.cs" />
+    <Compile Include="Areas\Admin\Controllers\UserGroupController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Infrastructure\Extensions\EntityExtensions.cs" />
     <Compile Include="Mappings\AutoMapperConfiguration.cs" />
+    <Compile Include="Models\UserGroupViewModel.cs" />
     <Compile Include="Models\CreateUserViewModel.cs" />
     <Compile Include="Models\PostCategoryViewModel.cs" />
     <Compile Include="Models\PostViewModel.cs" />
     <Compile Include="Models\RequestCategoryViewModel.cs" />
     <Compile Include="Models\RequestReportViewModel.cs" />
     <Compile Include="Models\RequestViewModel.cs" />
+    <Compile Include="Models\RoleViewModel.cs" />
     <Compile Include="Models\UserViewModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
@@ -5621,6 +5625,8 @@
     <Content Include="Areas\Admin\Views\Request\CompletedQueue.cshtml" />
     <Content Include="Areas\Admin\Views\Request\ViewDetail.cshtml" />
     <Content Include="Areas\Admin\Views\Login\Index.cshtml" />
+    <Content Include="Areas\Admin\Views\Role\Index.cshtml" />
+    <Content Include="Areas\Admin\Views\UserGroup\Index.cshtml" />
     <None Include="packages.config" />
     <Content Include="Resources\gentelella-master.zip" />
   </ItemGroup>

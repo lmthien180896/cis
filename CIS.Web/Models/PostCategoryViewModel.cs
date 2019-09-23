@@ -36,6 +36,6 @@ namespace CIS.Web.Models
 
         public bool Status { get; set; }
 
-        public virtual IEnumerable<Post> Posts { set; get; }
+        public IEnumerable<Post> Posts { set; get; }
     }
 }

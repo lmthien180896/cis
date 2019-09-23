@@ -26,6 +26,6 @@ namespace CIS.Web.Models
 
         public bool Status { get; set; }
 
-        public virtual IEnumerable<Request> Requests { get; set; }
+        public IEnumerable<Request> Requests { get; set; }
     }
 }

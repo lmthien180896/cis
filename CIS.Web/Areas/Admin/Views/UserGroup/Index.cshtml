@@ -1,0 +1,71 @@
+﻿@model IEnumerable<CIS.Web.Models.UserGroupViewModel>
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Areas/Admin/Views/Shared/_LayoutAdmin.cshtml";
+}
+
+
+@section js{
+    <!-- DatatTable -->
+    <script src="~/Assets/admin/vendors/datatables.net/js/jquery.dataTables.min.js"></script>
+    <script src="~/Assets/admin/vendors/datatables.net-bs/js/dataTables.bootstrap.min.js"></script>
+    <script src="~/Assets/admin/vendors/datatables.net-buttons/js/dataTables.buttons.min.js"></script>
+    <script src="~/Assets/admin/vendors/datatables.net-buttons-bs/js/buttons.bootstrap.min.js"></script>
+    <script src="~/Assets/admin/vendors/datatables.net-buttons/js/buttons.flash.min.js"></script>
+    <script src="~/Assets/admin/vendors/datatables.net-buttons/js/buttons.html5.min.js"></script>
+    <script src="~/Assets/admin/vendors/datatables.net-buttons/js/buttons.print.min.js"></script>
+    <script src="~/Assets/admin/vendors/datatables.net-fixedheader/js/dataTables.fixedHeader.min.js"></script>
+    <script src="~/Assets/admin/vendors/datatables.net-keytable/js/dataTables.keyTable.min.js"></script>
+    <script src="~/Assets/admin/vendors/datatables.net-responsive/js/dataTables.responsive.min.js"></script>
+    <script src="~/Assets/admin/vendors/datatables.net-responsive-bs/js/responsive.bootstrap.js"></script>
+    <script src="~/Assets/admin/vendors/datatables.net-scroller/js/dataTables.scroller.min.js"></script>
+    <script src="~/Assets/admin/vendors/jszip/dist/jszip.min.js"></script>
+    <script src="~/Assets/admin/vendors/pdfmake/build/pdfmake.min.js"></script>
+    <script src="~/Assets/admin/vendors/pdfmake/build/vfs_fonts.js"></script>
+    <!-- validator -->
+    <script src="~/Assets/admin/vendors/validator/validator.js"></script>
+    <!-- Switchery -->
+    <script src="~/Assets/admin/vendors/switchery/dist/switchery.min.js"></script>
+    <!--Controller-->
+    <script src="~/Assets/admin/js/controller/requestCategoryController.js"></script>
+}
+
+<h3>Danh sách nhóm người dùng</h3>
+<div class="col-md-12 col-sm-12 col-xs-12">
+    <div class="x_panel">
+        <div class="x_title">
+            <h2>Danh sách nhóm người dùng</h2>
+            <div class="clearfix"></div>
+        </div>
+        <div class="x_content">
+            <div id="datatable_wrapper" class="dataTables_wrapper form-inline dt-bootstrap no-footer">
+                <div class="row">
+                    <div class="col-sm-12">
+                        <table id="datatable" class="table table-striped table-bordered dataTable no-footer" usergroup="grid" aria-describedby="datatable_info">
+                            <thead>
+                                <tr usergroup="row">
+                                    <th class="sorting_asc" tabindex="0" aria-controls="datatable" rowspan="1" colspan="1" aria-sort="ascending" aria-label="RequestCategory: activate to sort column descending" style="width: 50px;">ID</th>
+                                    <th class="sorting_asc" tabindex="0" aria-controls="datatable" rowspan="1" colspan="1" aria-sort="ascending" aria-label="Status: activate to sort column descending" style="width: 200px;">Nhóm người dùng</th>
+                                    <th class="sorting_asc" tabindex="0" aria-controls="datatable" rowspan="1" colspan="1" aria-sort="ascending" aria-label="Status: activate to sort column descending" style="width: 200px;">Tên hiển thị</th>
+                                    <th class="sorting_asc" tabindex="0" aria-controls="datatable" rowspan="1" colspan="1" aria-sort="ascending" aria-label="Status: activate to sort column descending" style="width: 50px;"></th>
+                                </tr>
+                            </thead>
+
+                            <tbody>
+                                @foreach (var usergroup in Model)
+                                {
+                                    <tr usergroup="row" class="odd">
+                                        <td class="sorting_1">@usergroup.ID</td>
+                                        <td>@usergroup.Name</td>
+                                        <td>@usergroup.DisplayName</td>
+                                        <td><a href="#" class="btn btn-info btn-sm btnViewRole"><i class="fa fa-user"></i></a></td>
+                                    </tr>
+                                }
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

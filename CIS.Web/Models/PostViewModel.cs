@@ -44,9 +44,9 @@ namespace CIS.Web.Models
 
         public bool Status { get; set; }
 
-        public virtual PostCategory PostCategory { set; get; }
+        public  PostCategory PostCategory { set; get; }
 
-        public virtual IEnumerable<PostTag> PostTags { set; get; }
+        public  IEnumerable<PostTag> PostTags { set; get; }
 
         //Extra
         public IEnumerable<PostCategory> PostCategories { get; set; }

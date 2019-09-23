@@ -36,7 +36,7 @@ namespace CIS.Web.Areas.Admin.Controllers
         {
             var listUserGroup = _userGroupService.GetAll();
             CreateUserViewModel createUserViewModel = new CreateUserViewModel();
-            createUserViewModel.UserGroups = Mapper.Map<IEnumerable<UserGroup>, IEnumerable<UGroup>>(listUserGroup);
+            createUserViewModel.UserGroups = Mapper.Map<IEnumerable<Model.Models.UserGroup>, IEnumerable<UGroup>>(listUserGroup);
             return View(createUserViewModel);
         }
 
@@ -48,7 +48,7 @@ namespace CIS.Web.Areas.Admin.Controllers
             userViewModel.GroupDisplayName = _userGroupService.GetById(userViewModel.GroupID).DisplayName;
 
             var listUserGroup = _userGroupService.GetAll();
-            userViewModel.UserGroups = Mapper.Map<IEnumerable<UserGroup>, IEnumerable<UGroup>>(listUserGroup);
+            userViewModel.UserGroups = Mapper.Map<IEnumerable<Model.Models.UserGroup>, IEnumerable<UGroup>>(listUserGroup);
             return View(userViewModel);
         }
 

@@ -30,7 +30,7 @@ namespace CIS.Common
             filterContext.Result = new ViewResult
             {
                 ViewName = "~/Areas/Admin/Views/Shared/401.cshtml"
-            };
+            }; 
         }
 
         private List<string> GetCredentialByLoggedInUser(string userName)

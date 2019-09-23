@@ -48,6 +48,7 @@
     <Compile Include="RequestCategoryService.cs" />
     <Compile Include="RequestReportService.cs" />
     <Compile Include="RequestService.cs" />
+    <Compile Include="RoleService.cs" />
     <Compile Include="UserGroupService.cs" />
     <Compile Include="UserService.cs" />
   </ItemGroup>
