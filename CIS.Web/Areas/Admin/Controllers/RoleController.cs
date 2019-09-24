@@ -10,7 +10,7 @@ using System.Web.Mvc;
 
 namespace CIS.Web.Areas.Admin.Controllers
 {
-    public class RoleController : Controller
+    public class RoleController : BaseController
     {
         private IRoleService _roleService;        
 

@@ -20,6 +20,8 @@ namespace CIS.Model.Models
 
         public int? DisplayOrder { set; get; }
 
+        public int? ParentId { set; get; }
+
         [Required]
         public int GroupID { set; get; }
 

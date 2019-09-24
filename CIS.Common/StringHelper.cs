@@ -29,7 +29,7 @@ namespace CIS.Common
             {
                 str2 = str2.Replace("--", "-").ToLower();
             }
-            return str2;
+            return str2.ToLower();
         }
     }
 }

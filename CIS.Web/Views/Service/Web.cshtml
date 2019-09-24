@@ -1,0 +1,85 @@
+﻿@model CIS.Web.Models.ServiceViewModel
+@{
+    ViewBag.Title = "WebInfo";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+@section title{Thiết kế web}
+
+@section js {
+    <script>
+        $("#infoDisplay").off('click').on('click', function (e) {
+            e.preventDefault();
+            $('#info').show();
+            $('#contact').hide();
+        });
+        $("#contactDisplay").off('click').on('click', function (e) {
+            e.preventDefault();
+            $('#info').hide();
+            $('#contact').show();
+        })
+    </script>
+}
+
+@RenderPage("~/Views/Shared/Banner.cshtml")
+
+<div id='breadcrumbs-row'>
+    <div class='container'>
+        <div class="row-fluid">
+            <div class="span7">
+                <p class='breadcrumbs'>Bạn đang ở trang: <a href='#'>Dịch vụ</a> <span class='divider'>/</span> <span>Thiết kế web</span></p>
+            </div>
+            <!--span-->
+            <div class="span5">
+
+            </div>
+            <!--span-->
+        </div>
+        <!--row-fluid-->
+    </div>
+    <!-- / container -->
+</div>
+
+<div id="spread">
+    <div class="container">
+        <div class="row-fluid">
+            <div class="span3">
+                <div id="sidenav" class="sidebar">
+                    <div id="info-box">
+                        <a>Thiết kế web</a>
+                    </div>
+                    <hr>
+                    <div id="meet-team-box">
+                        <a href="#" class="text-center uptext" id="infoDisplay">Thông Tin </a>
+                        <img src="/Assets/client/CIS-pro/cis-img/thongtin-dm.png">
+                    </div>
+                    <div id="meet-team-box">
+                        <a href="@Model.PriceURL" target="_blank" class="text-center" id="priceDisplay"> Báo Giá </a>
+                        <img src="/Assets/client/CIS-pro/cis-img/baogia-dm.png">
+                    </div>
+                    <div id="meet-team-box">
+                        <a href="#" class="text-center" id="contactDisplay"> Liên Hệ  </a>
+                        <img src="/Assets/client/CIS-pro/cis-img/lienhe-dm.png">
+                    </div>
+                </div>
+            </div>
+            <div class="span9">
+                <div id="news-wrap">
+                    <div class="title ">
+                        <h1 class="">Thông Tin </h1>
+                    </div>
+                    <div class='row-fluid'>
+                        <div class="span12">
+                            <h1 class="text-center">DỊCH VỤ THIẾT KẾ WEB</h1>
+                            <span id="info">@Html.Raw(Model.Info.Content)</span>
+                            <span id="contact" style="display:none;">@Html.Raw(Model.Contact.Content)</span>
+                        </div>                       
+                    </div>
+                    <!--end content--->
+
+                </div><!--End news-wrap-->
+            </div>
+        </div>
+    </div>
+    <!-- / container -->
+</div>

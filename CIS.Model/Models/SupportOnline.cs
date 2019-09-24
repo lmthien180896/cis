@@ -17,9 +17,6 @@ namespace CIS.Model.Models
         [MaxLength(50)]
         public string Department { set; get; }
 
-        [MaxLength(256)]
-        public string Address { set; get; }
-
         [MaxLength(50)]
         public string Skype { set; get; }
 
@@ -34,9 +31,6 @@ namespace CIS.Model.Models
 
         [MaxLength(50)]
         public string Facebook { set; get; }
-
-        [MaxLength(256)]
-        public string Domain { set; get; }
 
         public bool Status { set; get; }
 

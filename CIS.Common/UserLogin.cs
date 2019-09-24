@@ -7,6 +7,6 @@ namespace CIS.Common
     {
         public long UserID { get; set; }
         public string UserName { get; set; }
-        public string GroupID { get; set; }
+        public int GroupID { get; set; }
     }
 }

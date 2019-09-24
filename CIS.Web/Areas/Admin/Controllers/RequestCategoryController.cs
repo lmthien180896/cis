@@ -1,4 +1,5 @@
 ﻿using AutoMapper;
+using CIS.Common;
 using CIS.Model.Models;
 using CIS.Service;
 using CIS.Web.Infrastructure.Extensions;
@@ -19,6 +20,7 @@ namespace CIS.Web.Areas.Admin.Controllers
             this._requestCategoryService = requestCategoryService;
         }
 
+        [HasCredential(RoleID = "R_REQUEST")]
         public ActionResult Index()
         {
             var listRequestCategory = _requestCategoryService.GetAll();
@@ -27,6 +29,7 @@ namespace CIS.Web.Areas.Admin.Controllers
         }
 
         [HttpPost]
+        [HasCredential(RoleID = "CUD_REQUEST")]
         public JsonResult AddOrUpdate(string model)
         {
             JavaScriptSerializer serializer = new JavaScriptSerializer();
@@ -36,6 +39,7 @@ namespace CIS.Web.Areas.Admin.Controllers
             if (requestCategory.ID == 0)
             {
                 requestCategory.CreatedDate = DateTime.Now;
+                requestCategory.CreatedBy = currentUserName; 
                 var newRequestCategoryService = _requestCategoryService.Add(requestCategory);
                 if (newRequestCategoryService == null)
                 {
@@ -58,6 +62,7 @@ namespace CIS.Web.Areas.Admin.Controllers
             else
             {
                 requestCategory.UpdatedDate = DateTime.Now;
+                requestCategory.UpdatedBy = currentUserName;
                 _requestCategoryService.Update(requestCategory);
                 _requestCategoryService.SaveChanges();
                 SetAlert("success", "Chỉnh sửa thành công loại yêu cầu.");
@@ -69,6 +74,7 @@ namespace CIS.Web.Areas.Admin.Controllers
         }
 
         [HttpGet]
+        [HasCredential(RoleID = "R_REQUEST")]
         public JsonResult LoadDetail(int id)
         {
             var requestCategory = _requestCategoryService.GetById(id);
@@ -80,6 +86,7 @@ namespace CIS.Web.Areas.Admin.Controllers
         }
 
         [HttpPost]
+        [HasCredential(RoleID = "CUD_REQUEST")]
         public JsonResult Delete(int id)
         {
             if (!ModelState.IsValid)
@@ -103,6 +110,7 @@ namespace CIS.Web.Areas.Admin.Controllers
         }
 
         [HttpPost]
+        [HasCredential(RoleID = "CUD_REQUEST")]
         public JsonResult DeleteAll(string listId)
         {
             JavaScriptSerializer serializer = new JavaScriptSerializer();
@@ -125,11 +133,13 @@ namespace CIS.Web.Areas.Admin.Controllers
         }
 
         [HttpPost]
+        [HasCredential(RoleID = "CUD_REQUEST")]
         public JsonResult ChangeStatus(int id)
         {
             var requestCategory = _requestCategoryService.GetById(id);
             requestCategory.Status = !requestCategory.Status;
             requestCategory.UpdatedDate = DateTime.Now;
+            requestCategory.UpdatedBy = currentUserName;
             _requestCategoryService.Update(requestCategory);
             _requestCategoryService.SaveChanges();
             if (requestCategory.Status)

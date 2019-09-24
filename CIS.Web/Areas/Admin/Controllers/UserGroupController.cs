@@ -10,7 +10,7 @@ using System.Web.Mvc;
 
 namespace CIS.Web.Areas.Admin.Controllers
 {
-    public class UserGroupController : Controller
+    public class UserGroupController : BaseController
     {
         private IUserGroupService _userGroupService;
 
@@ -19,6 +19,7 @@ namespace CIS.Web.Areas.Admin.Controllers
             this._userGroupService = userGroupService;
 
         }
+
 
         public ActionResult Index()
         {

@@ -1,4 +1,5 @@
 ﻿using AutoMapper;
+using CIS.Common;
 using CIS.Model.Models;
 using CIS.Service;
 using CIS.Web.Infrastructure.Extensions;
@@ -20,7 +21,7 @@ namespace CIS.Web.Areas.Admin.Controllers
             this._userService = userService;
             this._userGroupService = userGroupService;
         }
-
+        [HasCredential(RoleID = "R_USER")]
         public ActionResult Index()
         {
             var userModel = _userService.GetAll();
@@ -32,6 +33,7 @@ namespace CIS.Web.Areas.Admin.Controllers
             return View(userViewModel);
         }
 
+        [HasCredential(RoleID = "CUD_USER")]
         public ActionResult CreateView()
         {
             var listUserGroup = _userGroupService.GetAll();
@@ -40,6 +42,7 @@ namespace CIS.Web.Areas.Admin.Controllers
             return View(createUserViewModel);
         }
 
+        [HasCredential(RoleID = "CUD_USER")]
         public ActionResult EditView(int id)
         {
             var userModel = _userService.GetById(id);
@@ -53,6 +56,7 @@ namespace CIS.Web.Areas.Admin.Controllers
         }
 
         [HttpPost]
+        [HasCredential(RoleID = "CUD_USER")]
         public ActionResult Create(UserViewModel userViewModel)
         {
             if (!ModelState.IsValid)
@@ -72,6 +76,7 @@ namespace CIS.Web.Areas.Admin.Controllers
         }
 
         [HttpPost]
+        [HasCredential(RoleID = "CUD_USER")]
         public ActionResult Update(UserViewModel userViewModel)
         {
             if (!ModelState.IsValid)
@@ -88,6 +93,7 @@ namespace CIS.Web.Areas.Admin.Controllers
         }
 
         [HttpPost]
+        [HasCredential(RoleID = "CUD_USER")]
         public JsonResult Delete(int id)
         {
             if (!ModelState.IsValid)
@@ -108,6 +114,7 @@ namespace CIS.Web.Areas.Admin.Controllers
         }
 
         [HttpPost]
+        [HasCredential(RoleID = "CUD_USER")]
         public JsonResult DeleteAll(string listId)
         {
             if (!ModelState.IsValid)
@@ -138,6 +145,7 @@ namespace CIS.Web.Areas.Admin.Controllers
         }
 
         [HttpPost]
+        [HasCredential(RoleID = "CUD_USER")]
         public JsonResult ChangeStatus(int id)
         {
             var user = _userService.GetById(id);

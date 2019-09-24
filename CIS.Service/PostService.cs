@@ -26,6 +26,8 @@ namespace CIS.Service
 
         IEnumerable<Post> GetAllByTagPaging(string tag, int page, int pageSize, out int totalRow);
 
+        List<Post> GetTwoHotNews();
+
         void SaveChanges();
     }
 
@@ -110,6 +112,20 @@ namespace CIS.Service
         public void SaveChanges()
         {
             _unitOfWork.Commit();
+        }
+
+        public List<Post> GetTwoHotNews() {
+            var listNews = _postRepository.GetMulti(x => x.HotFlag && x.HomeFlag && x.Status && !string.IsNullOrEmpty(x.ReferenceUrl));
+            int count = 0;
+            List<Post> twoNews = new List<Post>();
+            foreach (var news in listNews)
+            {
+                twoNews.Add(news);
+                count++;
+                if (count == 2)
+                    break;
+            }
+            return twoNews;
         }
 
         public void Update(Post post)

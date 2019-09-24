@@ -75,7 +75,7 @@
                                             <a href="#" data-id=@request.ID class="btn btn-danger btn-sm btnDelete"><i class="fa fa-trash"></i></a>
                                             @if (request.Progress != "waiting")
                                             {
-                                                <a href="#" data-id=@request.ID class="btn btn-primary btn-sm btnView"><i class="fa fa-eye"></i></a>                                              
+                                                <a href="/Admin/Request/ViewDetail/@request.ID" data-id=@request.ID class="btn btn-primary btn-sm btnView"><i class="fa fa-eye"></i></a>                                              
                                             }
                                             @if (request.Progress == "waiting")
                                             {                                                

@@ -1,0 +1,63 @@
+﻿@model CIS.Web.Models.ContactDetailViewModel
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+@section title{ Liên hệ}
+
+@RenderPage("~/Views/Shared/Banner.cshtml")
+
+<div id='breadcrumbs-row'>
+    <div class='container'>
+        <p class='breadcrumbs'>Bạn đang ở trang: <a href='/Contact/Index'>Liên hệ</a></p>
+    </div>
+    <!-- / container -->
+</div>
+<!-- / breadcrumbs-row -->
+<div id="spread" class="contact">
+    <div class="container">
+        <h1>Liên Hệ</h1>
+        <div class="row-fluid no-gutter">
+            <div class="span6 contact-info">
+                * <img alt="Phone 028 37244270" src="~/assets/client/CIS-pro/cis-img/icon-phone2.png"> @Model.Phone
+            </div>
+            <div class="span6 contact-info">
+                <img alt="Email" src="~/assets/client/CIS-pro/cis-img/icon-email2.png">
+                <a href="mailto:@Model.Email">
+                    @Model.Email
+                </a>
+            </div>
+        </div>
+        <div class="row-fluid">
+            <div class="span6 offset3">
+                <div class="h2 getintouch">Giờ làm việc</div>
+                <p>Sáng: 8:00 - 11:30</p>
+                <p>Chiều: 13:00 - 16:00</p>
+                <p>Thứ 2 - Thứ 6</p>
+            </div>
+        </div>
+    </div>
+    <!-- / container -->
+
+
+    <div class="contact-items-wrap">
+        <div class="container">
+            <div class="h1">Địa chỉ Liên hệ</div>
+            <div class="row-fluid no-gutter">
+                <!-- <div class="span3 contact-item"> -->
+                <div class="span12">
+                    <p>
+                        <a href="#" target="_blank">
+                            <iframe src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d15672.526878588902!2d106.8016196!3d10.8775848!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x550c2b41569376f9!2zVHLGsOG7nW5nIMSQ4bqhaSBo4buNYyBRdeG7kWMgVOG6vyAtIMSQ4bqhaSBo4buNYyBRdeG7kWMgZ2lhIFRQLkhDTQ!5e0!3m2!1svi!2s!4v1562636725153!5m2!1svi!2s" width="600" height="450" frameborder="0" style="border:0" allowfullscreen></iframe>
+                        </a>
+                    </p>
+                    <h5>Trung Tâm Dịch Vụ Công Nghệ Thông Tin </h5>
+                    <p>
+                        Phòng A1.312,<br /> Khu phố 6, P.Linh Trung, Q. Thủ Đức, TP.HCM
+                    </p><a href="https://goo.gl/maps/ngkEUfurrWrTRsb19" target="_blank">Chọn đường đi trực tiếp google map</a>
+                </div>
+            </div>
+        </div><!-- / container -->
+    </div>
+</div><!-- / contact-items-wrap -->

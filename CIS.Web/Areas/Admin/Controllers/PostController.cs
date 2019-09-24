@@ -19,10 +19,11 @@ namespace CIS.Web.Areas.Admin.Controllers
         public PostController(IPostService postService, IPostCategoryService postCategoryService)
         {
             this._postService = postService;
-            this._postCategoryService = postCategoryService;
+            this._postCategoryService = postCategoryService;            
         }
 
-        public ActionResult Index(int filterCategoryId = 1)
+        [HasCredential(RoleID = "R_POST")]
+        public ActionResult Index(int filterCategoryId = 0)
         {
             IEnumerable<Post> postModel;
             if (filterCategoryId != 0)
@@ -35,6 +36,7 @@ namespace CIS.Web.Areas.Admin.Controllers
             return View(postViewModel);
         }
 
+        [HasCredential(RoleID = "CUD_POST")]
         public ActionResult CreateView()
         {
             PostViewModel postViewModel = new PostViewModel();
@@ -55,6 +57,7 @@ namespace CIS.Web.Areas.Admin.Controllers
 
         [HttpPost]
         [ValidateInput(false)]
+        [HasCredential(RoleID = "CUD_POST")]
         public ActionResult Create(PostViewModel postViewModel)
         {
             if (!ModelState.IsValid)
@@ -67,7 +70,7 @@ namespace CIS.Web.Areas.Admin.Controllers
                 Post newPost = new Post();
                 newPost.UpdatePost(postViewModel);
                 newPost.CreatedDate = DateTime.Now;
-
+                newPost.CreatedBy = currentUserName;
                 _postService.Add(newPost);
                 _postService.SaveChanges();
                 SetAlert("success", "Đăng bài thành công.");
@@ -76,6 +79,7 @@ namespace CIS.Web.Areas.Admin.Controllers
         }
 
         [HttpPost]
+        [HasCredential(RoleID = "CUD_POST")]
         public JsonResult Delete(int id)
         {
             if (!ModelState.IsValid)
@@ -99,6 +103,7 @@ namespace CIS.Web.Areas.Admin.Controllers
         }
 
         [HttpPost]
+        [HasCredential(RoleID = "CUD_POST")]
         public JsonResult DeleteAll(string listId)
         {
             JavaScriptSerializer serializer = new JavaScriptSerializer();
@@ -121,12 +126,13 @@ namespace CIS.Web.Areas.Admin.Controllers
         }
 
         [HttpPost]
+        [HasCredential(RoleID = "CUD_POST")]
         public JsonResult ChangeStatus(int id)
         {
             var post = _postService.GetById(id);
             post.Status = !post.Status;
             post.UpdatedDate = DateTime.Now;
-
+            post.UpdatedBy = currentUserName;
             _postService.Update(post);
             _postService.SaveChanges();
             if (post.Status)
@@ -139,6 +145,7 @@ namespace CIS.Web.Areas.Admin.Controllers
             });
         }
 
+        [HasCredential(RoleID = "CUD_POST")]
         public ActionResult EditView(int id)
         {
             var postModel = _postService.GetById(id);
@@ -150,6 +157,7 @@ namespace CIS.Web.Areas.Admin.Controllers
 
         [HttpPost]
         [ValidateInput(false)]
+        [HasCredential(RoleID = "CUD_POST")]
         public ActionResult Update(PostViewModel postViewModel)
         {
             if (!ModelState.IsValid)
@@ -162,7 +170,7 @@ namespace CIS.Web.Areas.Admin.Controllers
                 Post updatedPost = new Post();
                 updatedPost.UpdatePost(postViewModel);
                 updatedPost.UpdatedDate = DateTime.Now;
-
+                updatedPost.UpdatedBy = currentUserName;
                 _postService.Update(updatedPost);
                 _postService.SaveChanges();
                 SetAlert("success", updatedPost.Name + " đã được chỉnh sửa.");

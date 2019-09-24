@@ -39,25 +39,34 @@
                 <dt class="col-sm-2" style="text-align:right;">Loại yêu cầu: </dt>
                 <dd class="col-sm-6" style="text-align:left;">@Model.CategoryName</dd>
                 <br /><br />
-                <dt class="col-sm-2" style="text-align:right;">yêu cầu: </dt>
+                <dt class="col-sm-2" style="text-align:right;">Yêu cầu: </dt>
                 <dd class="col-sm-6" style="text-align:left;">@Model.Detail</dd>
                 <br /><br />
                 <dt class="col-sm-2" style="text-align:right;">Nơi xảy ra: </dt>
                 <dd class="col-sm-6" style="text-align:left;">@Model.Place</dd>
                 <br /><br />
+                <dt class="col-sm-2" style="text-align:right;">Người gửi: </dt>
+                <dd class="col-sm-6" style="text-align:left;">@Model.SenderName</dd>
+                <br /><br />
+                <dt class="col-sm-2" style="text-align:right;">Email: </dt>
+                <dd class="col-sm-6" style="text-align:left;">@Model.Email</dd>
+                <br /><br />
+                <dt class="col-sm-2" style="text-align:right;">Số điện thoại: </dt>
+                <dd class="col-sm-6" style="text-align:left;">@Model.Phone</dd>
+                <br /><br />                
                 <dt class="col-sm-2" style="text-align:right;">Ngày xảy ra: </dt>
                 <dd class="col-sm-6" style="text-align:left;">@Model.SentDate</dd>
                 <br /><br />
                 <dt class="col-sm-2" style="text-align:right;">File đính kèm: </dt>
                 @*<dd class="col-sm-6" style="text-align:left;">
-            @if (ViewBag.Files != null)
-            {
-                foreach (var file in ViewBag.Files)
-                {
-                    <a href=@file target="_blank">@file</a><br />
-                }
-            }
-        </dd>*@
+                    @if (ViewBag.Files != null)
+                    {
+                        foreach (var file in ViewBag.Files)
+                        {
+                            <a href=@file target="_blank">@file</a><br />
+                        }
+                    }
+                </dd>*@
                 <br /><br />
                 <dt class="col-sm-2" style="text-align:right;">Chuyên viên xử lí: </dt>
                 @*<dd class="col-sm-6" style="text-align:left;">@Model.Supporter</dd>*@

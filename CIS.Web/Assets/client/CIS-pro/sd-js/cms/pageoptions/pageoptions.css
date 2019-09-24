@@ -1,0 +1,15 @@
+#menus_container h6 {margin:0px 0px 0px 0px;  width:290px; background:#343434; padding:8px 0px 7px 10px;}
+#menus_container ul {margin:0px; padding:0px;}
+#menus_container ul li {margin:0px; padding:0px; list-style:none; }
+#menus_container ul li p { background:#ffffff; display:block; margin:0px 0px 0px 0px; min-height:36px; height:auto !important; height:40px; padding:0px 5px 0px 5px; clear:both;}
+#menus_container ul li ul li p { background:#E9E9E9; }
+#menus_container ul li p input {display:block; float:left; margin:14px 0px 0px 16px;}
+#menus_container ul li p label {display:block; float:right; height:20px; padding:10px 5px 6px 9px; text-align:left; width:224px; border-left:1px solid #fff;}
+*+html #menus_container ul li p input {margin:8px 0px 0px 16px;}
+*html #menus_container ul li p input {margin:8px 0px 0px 8px;}
+		
+#menus_container ul li p.selected {background:#99CC00 !important;} 
+#menus_container ul li p label.children { cursor:pointer;  }
+
+.arrow_left {background:url('../../../images/platform/admin/arrow_right.gif') transparent no-repeat right center !important;}
+.arrow_down {background:url('../../../images/platform/admin/arrow-down.gif') transparent no-repeat right center !important;}

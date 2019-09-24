@@ -6,7 +6,9 @@ namespace CIS.Web.Areas.Admin.Controllers
 {
     public class BaseController : Controller
     {
-        protected string GroupID;
+        protected int groupId;
+
+        public string currentUserName;
 
         protected override void OnActionExecuting(ActionExecutingContext filterContext)
         {
@@ -18,16 +20,16 @@ namespace CIS.Web.Areas.Admin.Controllers
             }
             else
             {
-                DisplayUser(session.UserName, session.GroupID);
-                GroupID = session.GroupID;
+                currentUserName = session.UserName;
+                DisplayUser(session.UserName);
+                groupId = session.GroupID;
             }
             base.OnActionExecuting(filterContext);
         }
 
-        protected void DisplayUser(string userName, string GroupID)
+        protected void DisplayUser(string userName)
         {
-            TempData["UserName"] = userName;
-            TempData["GroupID"] = GroupID;
+            TempData["UserName"] = userName;          
         }
 
         protected void SetAlert(string type, string message)

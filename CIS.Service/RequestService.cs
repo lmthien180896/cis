@@ -22,7 +22,7 @@ namespace CIS.Service
 
         Request GetById(int id);
 
-        void Support(int id);
+        void Support(int id, string currentUserName);
 
         void SendConfirm(int id);
 
@@ -79,11 +79,12 @@ namespace CIS.Service
             _requestRepository.Update(request);
         }
 
-        public void Support(int id)
+        public void Support(int id, string currentUserName)
         {
             var request = _requestRepository.GetSingleById(id);            
             request.Progress = CommonConstant.SupportingProgress;
             request.UpdatedDate = DateTime.Now;
+            request.UpdatedBy = currentUserName;           
             _requestRepository.Update(request);
 
             RequestReport report = new RequestReport();

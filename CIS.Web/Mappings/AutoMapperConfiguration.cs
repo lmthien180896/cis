@@ -17,6 +17,10 @@ namespace CIS.Web.Mappings
             Mapper.CreateMap<RequestCategory, RequestCategoryViewModel>();
             Mapper.CreateMap<RequestReport, RequestReportViewModel>();
             Mapper.CreateMap<Role, RoleViewModel>();
+            Mapper.CreateMap<Footer, FooterViewModel>();
+            Mapper.CreateMap<Menu, MenuViewModel>();
+            Mapper.CreateMap<ContactDetail, ContactDetailViewModel>();
+            Mapper.CreateMap<Slide, SlideViewModel>();
         }
     }
 }

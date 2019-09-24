@@ -71,6 +71,20 @@
     <Compile Include="Migrations\201909200744446_addProgressField.Designer.cs">
       <DependentUpon>201909200744446_addProgressField.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201909240503184_addParentIDMenu.cs" />
+    <Compile Include="Migrations\201909240503184_addParentIDMenu.Designer.cs">
+      <DependentUpon>201909240503184_addParentIDMenu.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201909240604502_addContactDetail.cs" />
+    <Compile Include="Migrations\201909240604502_addContactDetail.Designer.cs">
+      <DependentUpon>201909240604502_addContactDetail.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201909240844279_removeEmptyBool.cs" />
+    <Compile Include="Migrations\201909240844279_removeEmptyBool.Designer.cs">
+      <DependentUpon>201909240844279_removeEmptyBool.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Repositories\ContactDetailRepository.cs" />
+    <Compile Include="Repositories\CredentialRepository.cs" />
     <Compile Include="Repositories\ErrorRepository.cs" />
     <Compile Include="Infrastructure\IDbFactory.cs" />
     <Compile Include="Infrastructure\IRepository.cs" />
@@ -91,6 +105,8 @@
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Repositories\FooterRepository.cs" />
+    <Compile Include="Repositories\MenuRepository.cs" />
     <Compile Include="Repositories\PostCategoryRepository.cs" />
     <Compile Include="Repositories\PostRepository.cs" />
     <Compile Include="Repositories\PostTag.cs" />
@@ -98,6 +114,7 @@
     <Compile Include="Repositories\RequestReportRepository.cs" />
     <Compile Include="Repositories\RequestRepository.cs" />
     <Compile Include="Repositories\RoleRepository.cs" />
+    <Compile Include="Repositories\SlideRepository.cs" />
     <Compile Include="Repositories\TagRepository.cs" />
     <Compile Include="Repositories\UserGroupRepository.cs" />
     <Compile Include="Repositories\UserRepository.cs" />
@@ -140,6 +157,15 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201909200744446_addProgressField.resx">
       <DependentUpon>201909200744446_addProgressField.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201909240503184_addParentIDMenu.resx">
+      <DependentUpon>201909240503184_addParentIDMenu.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201909240604502_addContactDetail.resx">
+      <DependentUpon>201909240604502_addContactDetail.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201909240844279_removeEmptyBool.resx">
+      <DependentUpon>201909240844279_removeEmptyBool.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

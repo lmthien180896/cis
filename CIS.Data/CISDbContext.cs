@@ -25,6 +25,7 @@ namespace CIS.Data
         public DbSet<Role> Roles { get; set; }
         public DbSet<Slide> Slides { get; set; }
         public DbSet<SupportOnline> SupportOnlines { get; set; }
+        public DbSet<ContactDetail> ContactDetails { get; set; }
         public DbSet<SystemConfig> SystemConfigs { get; set; }
         public DbSet<Tag> Tags { get; set; }
         public DbSet<User> Users { get; set; }

@@ -1,0 +1,29 @@
+﻿@model IEnumerable<CIS.Web.Models.MenuViewModel>
+
+
+<nav id="top-nav">
+    <a id="menu-toggle" class="anchor-link" href="#">Menu</a>
+    <ul id="menu">
+
+        @foreach (var parentMenu in Model.Where(x => x.ParentId == null).OrderBy(x => x.DisplayOrder))
+        {
+            var listChildrenMenu = Model.Where(x => x.ParentId == parentMenu.ID).ToList();
+            if (listChildrenMenu.Count() > 0)
+            {
+                <li>
+                    <a class="parent">@parentMenu.Name</a>
+                    <ul id="menu-toggle1">
+                        @foreach (var childMenu in listChildrenMenu)
+                        {
+                            <li><a href='@childMenu.URL' target="@childMenu.Target" class="parent">@childMenu.Name</a></li>
+                        }
+                    </ul>
+                </li>
+            }
+            else
+            {
+                <li><a href='@parentMenu.URL' target="@parentMenu.Target">@parentMenu.Name</a></li>
+            }
+        }       
+    </ul>
+</nav>

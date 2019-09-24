@@ -31,7 +31,7 @@ namespace CIS.Web.Models
         public DateTime? CreatedDate { get; set; }
 
         public string CreatedBy { get; set; }
-        
+
 
         public DateTime? UpdatedDate { get; set; }
 
@@ -43,14 +43,15 @@ namespace CIS.Web.Models
 
         public bool Status { get; set; }
 
-        public  RequestCategory RequestCategory { get; set; }
+        public RequestCategory RequestCategory { get; set; }
 
-        public  IEnumerable<RequestReport> RequestReports { get; set; }
+        public IEnumerable<RequestReport> RequestReports { get; set; }
 
 
         //Extra
         public string SentDate { get; set; }
 
         public string CategoryName { get; set; }
+        
     }
 }

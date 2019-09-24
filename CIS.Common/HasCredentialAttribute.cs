@@ -14,7 +14,7 @@ namespace CIS.Common
             var session = (UserLogin)HttpContext.Current.Session[CommonConstant.USER_SESSION];  // Kiểm tra session user
             if (session == null) // chưa đăng nhập
                 return true;   // ==> ở đây sẽ đi tiếp vào BaseController và dẫn về trang login
-            if (session.GroupID == "ADMIN") return true; // Nếu là admin thì không cần kiểm tra quyền
+            if (session.GroupID == CommonConstant.AdminId) return true; // Nếu là admin thì không cần kiểm tra quyền
 
             List<string> privilegeLevels = this.GetCredentialByLoggedInUser(session.UserName); // Lấy tất cả quyền của user
             if (privilegeLevels.Contains(this.RoleID)) // Nếu trang truy cập có quyền nằm trong list tất cả quyền thì cho đăng nhập
@@ -24,12 +24,11 @@ namespace CIS.Common
             else return false;
         }
 
-        // KIỂM TRA QUYỀN KHÔNG BẰNG SESSION
         protected override void HandleUnauthorizedRequest(AuthorizationContext filterContext)
         {
             filterContext.Result = new ViewResult
             {
-                ViewName = "~/Areas/Admin/Views/Shared/401.cshtml"
+                ViewName = "~/Areas/Admin/Views/Shared/_AccessDenied.cshtml"
             }; 
         }
 

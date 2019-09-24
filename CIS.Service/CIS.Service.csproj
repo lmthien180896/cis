@@ -41,7 +41,10 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="ContactDetailService.cs" />
     <Compile Include="ErrorService.cs" />
+    <Compile Include="FooterService.cs" />
+    <Compile Include="MenuService.cs" />
     <Compile Include="PostCategoryService.cs" />
     <Compile Include="PostService.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -49,6 +52,7 @@
     <Compile Include="RequestReportService.cs" />
     <Compile Include="RequestService.cs" />
     <Compile Include="RoleService.cs" />
+    <Compile Include="SlideService.cs" />
     <Compile Include="UserGroupService.cs" />
     <Compile Include="UserService.cs" />
   </ItemGroup>

@@ -38,7 +38,7 @@
             <a class="btn btn-danger pull-right" id="btnDeleteAll" href="#"><i class="fa fa-trash"></i> Xoá</a>
             <div class="col-md-2 pull-right">
                 <select class="form-control" id="sltFilter">
-                    <option value="">Tất cả</option>
+                    <option value="0">Tất cả</option>
                     @foreach (var category in ViewBag.PostCategories)
                     {
                         if (category.ID == ViewBag.SelectedCategoryID)

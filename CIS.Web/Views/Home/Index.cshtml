@@ -1,0 +1,126 @@
+﻿@model CIS.Web.Models.HomeViewModel
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+
+@section title { Trang chủ}
+
+@{Html.RenderAction("Slide", "Home");}
+
+<div id="services-row">
+    <div class="container">
+        <div class="row">
+            <span class="services-title">DỊCH VỤ </span>
+            <div class="col-sm-15">
+                <a href="#" class="">
+                    <img alt="IT Security" src="/assets/client/CIS-pro/cis-img/web.png">
+                    <h2 class="aligncenter">Thiết kế Web</h2>
+                </a>
+            </div>
+            <div class="col-sm-15">
+                <!--empty -->
+            </div>
+            <div class="col-sm-15">
+                <a href="#" class="">
+                    <img alt="dohoa" src="/assets/client/CIS-pro/cis-img/dohoa.png">
+                    <h2 class="aligncenter">Thiết kế Đồ Họa</h2>
+                </a>
+            </div>
+            <div class="col-sm-15">
+                <!--empty -->
+            </div>
+            <div class="col-sm-15">
+                <a href="#" class="">
+                    <img alt="hethong" src="/assets/client/CIS-pro/cis-img/hethong.png">
+                    <h2 class="aligncenter">Hệ thống</h2>
+                </a>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div id="index-banner" style="background:url('/assets/client/CIS-pro/cis-img/cis-deparments.jpg') no-repeat top center;">
+    <div class="container">
+        <div class="row-fluid">
+            <div class="span12 text-center">
+                <h1 class=" tnb">Tin Nổi Bật</h1>
+            </div>
+        </div>
+        <div class="row-fluid">
+            @foreach (var news in Model.HotNews)
+            {
+                <div class="span6 pd25">
+                    <a href="@news.ReferenceUrl"><p>@news.Name</p></a>
+                </div>
+            }           
+            <div class="text-right">
+                <a href="#" class="more text-left">Xem tất cả tin </a>
+            </div>
+        </div>
+
+    </div><!-- .container -->
+</div><!-- #index-banner -->
+
+
+<div id="index-main" class="new">
+    <div class="container">
+        <div class="row-fluid">
+            <div class="span7">
+                <div class="block-title">Về chúng tôi</div>
+                @*<h2 style="text-align:justify;">Circle IT is an award winning IT solutions provider that helps customers to use the latest technology solutions to achieve growth and reach their broader businesses goals and objectives. <span style="color:#8d247f;font-size:13px;line-height:1.6em;"> </span></h2>*@
+                @*<hr>*@
+                <p style="text-align:justify;"><b>Trung tâm Dịch vụ Công nghệ Thông tin</b> chịu trách nhiệm quản lý và hỗ trợ kỹ thuật cho toàn bộ hệ thống mạng Internet, mạng điện thoại và các trang Web của trường ĐH Quốc Tế. Trung tâm còn có chức năng hỗ trợ đăng tin những hình ảnh hoạt động thường xuyên của nhà trường nhằm xây dựng quảng bá hình ảnh thương hiệu trường ngày càng được nhiều người biết đến. Ngoài ra, Trung tâm cũng hỗ trợ phát triển phần mềm ứng dụng Web cho các đơn vị trong và ngoài trường ĐH Quốc Tế.</p>
+                <p><a class="more" href="/gioi-thieu/ve-chung-toi">Xem thêm</a></p>
+            </div>
+            <div class="span5 case-studies-wrap">
+                <div class="block-title">Dịch vụ Web</div>
+                <p>Phát triển phần mềm theo yêu cầu Cơ quan và Doanh nghiệp: TT DV CNTT nhận các dự án phát triển phầm mềm ứng dụng Web trên nền ASP.Net và PHP nhằm quảng bá thương hiệu và tạo hệ thống tương tác người dùng thông qua các ứng dựng Web như: trang giới thiệu sản phẩm, bán hàng trực tuyến, tích hợp hệ thống thông minh phân tích hành vi người dùng.</p>
+                <a class="more" href="#">Xem bảng giá DV</a>
+            </div>
+        </div>
+    </div>
+    <!-- / container -->
+</div>
+
+<div id="index-twitter">
+    <div class="container">
+        <div class="row-fluid">
+            <div class="logoiu">
+                <a href='https://hcmiu.edu.vn' class="logoiu">
+                    <img src="/assets/client/CIS-pro/cis-img/iu-logo.png">
+                </a>
+            </div>
+            <div class="text-iu">
+                <div class="tweet">
+                    <a href="/assets/client/CIS-pro/https://hcmiu.edu.vn" target="_blank" class="iulogo">
+                        <h2 class="clWhite">Đại học Quốc Gia TP.HCM - Trường Đại học Quốc Tế </h2>
+                        <span>website</span>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div id="index-news">
+    <div class="container">
+        <div class="row-fluid">
+            <a href="/assets/client/CIS-pro/news/index.html" class="news-title">TIN TỨC</a>
+            <div class="row-fluid">
+                @*@foreach (var news in ViewBag.News)
+                    {
+                        <div class="span4">
+                            <a class="latest-news-item" href="/tin-tuc/@news.MetaTitle">
+                                <img alt="@news.Name" src="@news.Image" /><span class="latest-news-date">@news.CreateDate.ToString("dd MMMM yyyy")</span>
+                                <h5>@news.Name</h5>
+                                <p>@news.Description</p><span class="more-circle"></span>
+                            </a>
+                        </div>
+                    }*@
+            </div>
+            <!--End News-->
+        </div>
+    </div>
+</div>

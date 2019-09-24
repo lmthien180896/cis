@@ -36,8 +36,10 @@ namespace CIS.Web.Areas.Admin.Controllers
                 var userSession = new UserLogin();  // tạo user session
                 userSession.UserID = checkUser.ID; // gán userID vào session
                 userSession.UserName = checkUser.Username; // gán userName vào session
-                userSession.GroupID = _userGroupService.GetById(checkUser.GroupID).DisplayName; // gán GroupID vào session
-                Session.Add(CommonConstant.USER_SESSION, userSession); // Gán user vào session
+                userSession.GroupID = checkUser.GroupID; // gán GroupID vào session
+                var listCredentials = _userService.GetCredentials(checkUser.GroupID);
+                Session.Add(CommonConstant.CREDENTIAL_SESSION, listCredentials); // Gán credentials vào session                
+                Session.Add(CommonConstant.USER_SESSION, userSession); // Gán user vào session                
                 TempData["Username"] = checkUser.Username;
                 return RedirectToAction("Index", "Home");
             }

@@ -24,6 +24,7 @@ namespace CIS.Web.Areas.Admin.Controllers
             this._requestReportService = requestReportService;
         }
 
+        [HasCredential(RoleID = "R_REQUEST")]
         public ActionResult Index()
         {
             var listRequestCategory = _requestCategoryService.GetAll();
@@ -41,6 +42,7 @@ namespace CIS.Web.Areas.Admin.Controllers
             return View(listRequestViewModel);
         }
 
+        [HasCredential(RoleID = "R_REQUEST")]
         public ActionResult WaitingQueue()
         {
             var listRequestCategory = _requestCategoryService.GetAll();
@@ -56,6 +58,7 @@ namespace CIS.Web.Areas.Admin.Controllers
             return View(listWaitingingRequestViewModel);
         }
 
+        [HasCredential(RoleID = "R_REQUEST")]
         public ActionResult SupportingQueue()
         {
             var listSupportingRequest = _requestService.GetMany(x => x.Progress == CommonConstant.SupportingProgress, null);
@@ -67,6 +70,7 @@ namespace CIS.Web.Areas.Admin.Controllers
             return View(listSupportingRequestViewModel);
         }
 
+        [HasCredential(RoleID = "R_REQUEST")]
         public ActionResult CompletedQueue()
         {
             var listSupportingRequest = _requestService.GetMany(x => x.Progress == CommonConstant.CompletedProgress, null);
@@ -78,9 +82,10 @@ namespace CIS.Web.Areas.Admin.Controllers
             return View(listSupportingRequestViewModel);
         }
 
+        [HasCredential(RoleID = "R_REQUEST")]
         public ActionResult ViewDetail(int id)
         {
-            var request = _requestService.GetById(id);            
+            var request = _requestService.GetById(id);
             var listReport = _requestReportService.GetAll(id);
             RequestViewModel requestViewModel = Mapper.Map<Request, RequestViewModel>(request);
             requestViewModel.SentDate = requestViewModel.CreatedDate.Value.ToString("dd MMMM yyyy");
@@ -90,6 +95,7 @@ namespace CIS.Web.Areas.Admin.Controllers
         }
 
         [HttpPost]
+        [HasCredential(RoleID = "CUD_REQUEST")]
         public JsonResult Delete(int id)
         {
             if (!ModelState.IsValid)
@@ -113,6 +119,7 @@ namespace CIS.Web.Areas.Admin.Controllers
         }
 
         [HttpPost]
+        [HasCredential(RoleID = "CUD_REQUEST")]
         public JsonResult DeleteAll(string listId)
         {
             JavaScriptSerializer serializer = new JavaScriptSerializer();
@@ -135,6 +142,7 @@ namespace CIS.Web.Areas.Admin.Controllers
         }
 
         [HttpGet]
+        [HasCredential(RoleID = "R_REQUEST")]
         public JsonResult LoadDetail(int id)
         {
             Request request = _requestService.GetById(id);
@@ -148,6 +156,7 @@ namespace CIS.Web.Areas.Admin.Controllers
         }
 
         [HttpPost]
+        [HasCredential(RoleID = "CUD_REQUEST")]
         public JsonResult AddOrUpdate(string model)
         {
             JavaScriptSerializer serializer = new JavaScriptSerializer();
@@ -159,6 +168,7 @@ namespace CIS.Web.Areas.Admin.Controllers
             {
                 if (!request.CreatedDate.HasValue)
                     request.CreatedDate = DateTime.Now;
+                    request.CreatedBy = currentUserName;
                 var newRequestCategoryService = _requestService.Add(request);
                 if (newRequestCategoryService == null)
                 {
@@ -183,6 +193,7 @@ namespace CIS.Web.Areas.Admin.Controllers
                 var updatedRequest = _requestService.GetById(request.ID);
                 updatedRequest.UpdateRequest(requestViewModel);
                 updatedRequest.UpdatedDate = DateTime.Now;
+                updatedRequest.UpdatedBy = currentUserName;
                 _requestService.Update(updatedRequest);
                 _requestService.SaveChanges();
                 SetAlert("success", "Chỉnh sửa thành công yêu cầu.");
@@ -193,37 +204,35 @@ namespace CIS.Web.Areas.Admin.Controllers
             }
         }
 
-        public ActionResult View(int id)
-        {
-            return View();
-        }
-
+        [HasCredential(RoleID = "CUD_REQUEST")]
         public JsonResult Support(int id)
         {
-            _requestService.Support(id);
-            SetAlert("info", "Chuyển yêu cầu" + id.ToString() + "sang Đang xử lí");
+            _requestService.Support(id, currentUserName);
+            SetAlert("info", "Chuyển yêu cầu " + id.ToString() + " sang Đang xử lí");
             return Json(new
             {
                 status = true
             });
         }
 
+        [HasCredential(RoleID = "CUD_REQUEST")]
         public JsonResult SendConfirm(int id)
         {
             _requestService.SendConfirm(id);
-            SetAlert("info", "Đã gửi email xác nhận yêu cầu" + id.ToString());
+            SetAlert("info", "Đã gửi email xác nhận yêu cầu " + id.ToString());
             return Json(new
             {
                 status = true
             });
         }
 
+        [HasCredential(RoleID = "CUD_REQUEST")]
         public JsonResult SubmitNote(string model)
         {
             JavaScriptSerializer serializer = new JavaScriptSerializer();
             var reportViewModel = serializer.Deserialize<RequestReportViewModel>(model);
             reportViewModel.CreatedDate = DateTime.Now;
-            //reportViewModel.CreatedBy
+            reportViewModel.CreatedBy = currentUserName;
 
             RequestReport requestReport = new RequestReport();
             requestReport.UpdateRequestReport(reportViewModel);

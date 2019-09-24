@@ -24,17 +24,23 @@ namespace CIS.Service
 
         User CheckAuthen(User user);
 
+        List<string> GetCredentials(int groupId);
+
         void SaveChanges();
     }
 
     public class UserService : IUserService
     {
         private IUserRepository _userRepository;
+        private IUserGroupRepository _userGroupRepository;
+        private IRoleRepository _roleRepository;
+        private ICredentialRepository _credentialRepository;
         private IUnitOfWork _unitOfWork;
 
-        public UserService(IUserRepository userRepository, IUnitOfWork unitOfWork)
+        public UserService(IUserRepository userRepository, ICredentialRepository credentialRepository, IUnitOfWork unitOfWork)
         {
             _userRepository = userRepository;
+            _credentialRepository = credentialRepository;
             _unitOfWork = unitOfWork;
         }
 
@@ -72,6 +78,12 @@ namespace CIS.Service
         {
             var checkUser = _userRepository.GetSingleByCondition(x => x.Username == user.Username && x.Password == user.Password);
             return checkUser;
+        }
+
+        public List<string> GetCredentials(int groupId)
+        {
+            var listRole = _credentialRepository.GetMulti(x => x.UserGroupID == groupId).Select(x => x.RoleID).ToList(); ;
+            return listRole;
         }
     }
 
