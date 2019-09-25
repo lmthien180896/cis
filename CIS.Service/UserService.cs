@@ -24,6 +24,8 @@ namespace CIS.Service
 
         User CheckAuthen(User user);
 
+        User GetUserByUsername(string username);
+
         List<string> GetCredentials(int groupId);
 
         void SaveChanges();
@@ -84,6 +86,11 @@ namespace CIS.Service
         {
             var listRole = _credentialRepository.GetMulti(x => x.UserGroupID == groupId).Select(x => x.RoleID).ToList(); ;
             return listRole;
+        }
+
+        public User GetUserByUsername(string username)
+        {
+            return _userRepository.GetUserByUsername(username);
         }
     }
 

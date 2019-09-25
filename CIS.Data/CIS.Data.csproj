@@ -83,6 +83,10 @@
     <Compile Include="Migrations\201909240844279_removeEmptyBool.Designer.cs">
       <DependentUpon>201909240844279_removeEmptyBool.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201909250727061_updateRequestReport.cs" />
+    <Compile Include="Migrations\201909250727061_updateRequestReport.Designer.cs">
+      <DependentUpon>201909250727061_updateRequestReport.cs</DependentUpon>
+    </Compile>
     <Compile Include="Repositories\ContactDetailRepository.cs" />
     <Compile Include="Repositories\CredentialRepository.cs" />
     <Compile Include="Repositories\ErrorRepository.cs" />
@@ -166,6 +170,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201909240844279_removeEmptyBool.resx">
       <DependentUpon>201909240844279_removeEmptyBool.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201909250727061_updateRequestReport.resx">
+      <DependentUpon>201909250727061_updateRequestReport.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

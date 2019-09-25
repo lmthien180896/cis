@@ -1,0 +1,25 @@
+﻿
+@{
+    ViewBag.Title = "EnterCode";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+@section title{
+    Nhập code yêu cầu
+}
+<br /><br /><br />
+<div class="container">
+    <form action="/RequestFunctions/ValidateCode" method="post">
+        <input type="hidden" name="ID" value="@ViewBag.ID" />
+        <div class="form-group">
+            <label class="control-label">Nhập code: </label>
+            <input type="text" name="Code" class="form-control" autocomplete="off" />
+            @if (ViewBag.Check == 0)
+            {
+                <span style="color: red">Code đăng nhập yêu cầu không chính xác</span>
+            }
+        </div>
+        <button type="submit">Gửi</button>
+    </form>
+</div>
+

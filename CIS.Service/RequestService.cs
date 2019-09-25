@@ -32,7 +32,7 @@ namespace CIS.Service
 
         void Support(int id, string currentUserName);
 
-        void SendConfirm(int id);
+        void Close(int id);
 
         void SaveChanges();
     }
@@ -41,13 +41,15 @@ namespace CIS.Service
     {
         private IRequestRepository _requestRepository;
         private IRequestReportRepository _requestReportRepository;
+        private IUserRepository _userRepository;
         private IUnitOfWork _unitOfWork;
 
-        public RequestService(IRequestRepository requestRepository, IRequestReportRepository requestReportRepository, IUnitOfWork unitOfWork)
+        public RequestService(IRequestRepository requestRepository, IRequestReportRepository requestReportRepository, IUserRepository userRepository, IUnitOfWork unitOfWork)
         {
             this._requestRepository = requestRepository;
             this._unitOfWork = unitOfWork;
             this._requestReportRepository = requestReportRepository;
+            this._userRepository = userRepository;
         }
 
         public Request Add(Request request)
@@ -99,19 +101,11 @@ namespace CIS.Service
             report.CreatedDate = DateTime.Now;
             report.Note = "Bắt đầu xử lí yêu cầu";
             report.RequestID = request.ID;
-            //report.SupporterID = ...
-            //report.CreatedBy = ...
+            report.SupporterID = _userRepository.GetUserByUsername(currentUserName).ID;
             _requestReportRepository.Add(report);
 
             _unitOfWork.Commit();
-        }
-
-        public void SendConfirm(int id)
-        {
-            var request = _requestRepository.GetSingleById(id);
-            //Send Email
-            MailHepler.SendMail(request.Email, "test subject", "Đóng yêu cầu");
-        }
+        }      
 
         public IEnumerable<Request> GetAllRequests()
         {
@@ -129,6 +123,21 @@ namespace CIS.Service
         public IEnumerable<Request> GetAllCompletedRequests()
         {
             return _requestRepository.GetAllCompletedRequests();
+        }
+
+        public void Close(int id)
+        {
+            var request = _requestRepository.GetSingleById(id);
+            request.Progress = CommonConstant.CompletedProgress;
+            _requestRepository.Update(request);
+
+            RequestReport closedReport = new RequestReport();
+            closedReport.RequestID = id;
+            closedReport.Note = "Xác nhận đóng yêu cầu";
+            closedReport.CreatedDate = DateTime.Now;
+            _requestReportRepository.Add(closedReport);
+
+            _unitOfWork.Commit();
         }
     }
 }

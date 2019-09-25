@@ -43,9 +43,9 @@ namespace CIS.Web.Models
 
         public bool Status { get; set; }
 
-        public RequestCategory RequestCategory { get; set; }
+        public RequestCategoryViewModel RequestCategory { get; set; }
 
-        public IEnumerable<RequestReport> RequestReports { get; set; }
+        public IEnumerable<RequestReportViewModel> RequestReports { get; set; }
 
 
         //Extra
@@ -53,7 +53,10 @@ namespace CIS.Web.Models
 
         public string CategoryName { get; set; }
 
-        public IEnumerable<RequestCategory> RequestCategories { get; set; }
-        
+        public IEnumerable<RequestCategoryViewModel> RequestCategories { get; set; }
+
+        public List<string> ListFiles { get; set; }        
+
+
     }
 }

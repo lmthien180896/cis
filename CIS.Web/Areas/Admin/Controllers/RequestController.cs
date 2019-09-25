@@ -16,18 +16,20 @@ namespace CIS.Web.Areas.Admin.Controllers
         private IRequestService _requestService;
         private IRequestCategoryService _requestCategoryService;
         private IRequestReportService _requestReportService;
+        private IUserService _userService;
 
-        public RequestController(IRequestService requestService, IRequestCategoryService requestCategoryService, IRequestReportService requestReportService)
+        public RequestController(IRequestService requestService, IRequestCategoryService requestCategoryService, IRequestReportService requestReportService, IUserService userService)
         {
             this._requestService = requestService;
             this._requestCategoryService = requestCategoryService;
             this._requestReportService = requestReportService;
+            this._userService = userService;
         }
 
         [HasCredential(RoleID = "R_REQUEST")]
         public ActionResult Index()
         {
-            var listRequestCategory = _requestCategoryService.GetAll() ;
+            var listRequestCategory = _requestCategoryService.GetAll();
             var listRequestCategoryViewModel = Mapper.Map<IEnumerable<RequestCategory>, IEnumerable<RequestCategoryViewModel>>(listRequestCategory);
             ViewBag.ListRequestCategory = listRequestCategoryViewModel;
             var listRequest = _requestService.GetAllRequests();
@@ -80,19 +82,7 @@ namespace CIS.Web.Areas.Admin.Controllers
                 request.SentDate = request.CreatedDate.Value.ToString("dd/MM/yyyy");
             }
             return View(listSupportingRequestViewModel);
-        }
-
-        [HasCredential(RoleID = "R_REQUEST")]
-        public ActionResult ViewDetail(int id)
-        {
-            var request = _requestService.GetById(id);
-            var listReport = _requestReportService.GetAll(id);
-            RequestViewModel requestViewModel = Mapper.Map<Request, RequestViewModel>(request);
-            requestViewModel.SentDate = requestViewModel.CreatedDate.Value.ToString("dd MMMM yyyy");
-            requestViewModel.CategoryName = _requestCategoryService.GetById(request.CategoryID).Name;
-            requestViewModel.RequestReports = listReport;
-            return View(requestViewModel);
-        }
+        }               
 
         [HttpPost]
         [HasCredential(RoleID = "CUD_REQUEST")]
@@ -168,7 +158,7 @@ namespace CIS.Web.Areas.Admin.Controllers
             {
                 if (!request.CreatedDate.HasValue)
                     request.CreatedDate = DateTime.Now;
-                    request.CreatedBy = currentUserName;
+                request.CreatedBy = currentUserName;
                 var newRequestCategoryService = _requestService.Add(request);
                 if (newRequestCategoryService == null)
                 {
@@ -205,6 +195,31 @@ namespace CIS.Web.Areas.Admin.Controllers
         }
 
         [HasCredential(RoleID = "CUD_REQUEST")]
+        public ActionResult ViewDetail(int id)
+        {
+            List<string> listFiles = new List<string>();
+            var request = _requestService.GetById(id);
+            var listReport = _requestReportService.GetAll(id);
+            RequestViewModel requestViewModel = Mapper.Map<Request, RequestViewModel>(request);
+            requestViewModel.SentDate = requestViewModel.CreatedDate.Value.ToString("dd MMMM yyyy");
+            if (request.Files != null)
+            {
+                foreach (var file in request.Files.Split(','))
+                {
+                    listFiles.Add(file);
+                }
+                requestViewModel.ListFiles = listFiles;
+            }
+            requestViewModel.CategoryName = _requestCategoryService.GetById(request.CategoryID).Name;
+            requestViewModel.RequestReports = Mapper.Map<IEnumerable<RequestReport>, IEnumerable<RequestReportViewModel>>(listReport);
+            foreach (var report in requestViewModel.RequestReports)
+            {
+                report.SupporterName = _userService.GetById(report.SupporterID).Username;
+            }
+            return View(requestViewModel);
+        }
+
+        [HasCredential(RoleID = "CUD_REQUEST")]
         public JsonResult Support(int id)
         {
             _requestService.Support(id, currentUserName);
@@ -218,7 +233,23 @@ namespace CIS.Web.Areas.Admin.Controllers
         [HasCredential(RoleID = "CUD_REQUEST")]
         public JsonResult SendConfirm(int id)
         {
-            _requestService.SendConfirm(id);
+            var request = _requestService.GetById(id);
+            var requestCategory = _requestCategoryService.GetById(request.CategoryID).Name;
+            //Send Email
+            var filepath = ConfigHelper.GetByKey("ConfirmClosingRequest");
+            var mes = System.IO.File.ReadAllText(Server.MapPath(filepath));
+            mes = mes.Replace("{{SenderName}}", request.SenderName);
+            mes = mes.Replace("{{RequestCategory}}", requestCategory);
+            mes = mes.Replace("{{Detail}}", request.Detail);
+            mes = mes.Replace("{{IssueID}}", request.ID.ToString());
+            mes = mes.Replace("{{EnterCodeLink}}", ConfigHelper.GetByKey("CurrentLink") + "/RequestFunctions/EnterCode");
+            mes = mes.Replace("{{Code}}", request.Code);
+
+            var emails = request.Email.Replace(" ", "").Split(',');
+            foreach (var toEmail in emails)
+            {
+                MailHepler.SendMail(toEmail, requestCategory, mes);
+            }
             SetAlert("info", "Đã gửi email xác nhận yêu cầu " + id.ToString());
             return Json(new
             {
@@ -232,7 +263,7 @@ namespace CIS.Web.Areas.Admin.Controllers
             JavaScriptSerializer serializer = new JavaScriptSerializer();
             var reportViewModel = serializer.Deserialize<RequestReportViewModel>(model);
             reportViewModel.CreatedDate = DateTime.Now;
-            reportViewModel.CreatedBy = currentUserName;
+            reportViewModel.SupporterID = _userService.GetUserByUsername(currentUserName).ID;
 
             RequestReport requestReport = new RequestReport();
             requestReport.UpdateRequestReport(reportViewModel);

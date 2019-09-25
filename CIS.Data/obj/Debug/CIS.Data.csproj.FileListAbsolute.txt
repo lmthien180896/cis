@@ -51,3 +51,4 @@ C:\Users\Thien\Desktop\LeMinhThien\Git\cis\CIS.Data\bin\Debug\System.Web.Mvc.xml
 C:\Users\Thien\Desktop\LeMinhThien\Git\cis\CIS.Data\obj\Debug\CIS.Data.Migrations.addParentIDMenu.resources
 C:\Users\Thien\Desktop\LeMinhThien\Git\cis\CIS.Data\obj\Debug\CIS.Data.Migrations.addContactDetail.resources
 C:\Users\Thien\Desktop\LeMinhThien\Git\cis\CIS.Data\obj\Debug\CIS.Data.Migrations.removeEmptyBool.resources
+C:\Users\Thien\Desktop\LeMinhThien\Git\cis\CIS.Data\obj\Debug\CIS.Data.Migrations.updateRequestReport.resources

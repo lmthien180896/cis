@@ -11,25 +11,9 @@
     <link href="~/Assets/admin/libs/toastr/toastr.min.css" rel="stylesheet" />
 }
 
-@section js{
-    <script src="~/Assets/admin/libs/ckfinder/ckfinder.js"></script>
-    <script>
-        $('#btnSelectFiles').off('click').on('click', function (e) {
-            //e.preventDefault();
-            var finder = new CKFinder();
-            finder.selectActionFunction = function (url) {
-                $('#txtImage').val(url);
-                $('#img').prop("src", url);
-                $('#btnDelteImage').removeClass('hide');
-            };
-            finder.popup();
-        });
-
-        var editor = CKEDITOR.replace('txtContent', {
-            customConfig: '/Assets/admin/libs/ckeditor/config.js'
-        });
-    </script>
+@section js{   
     <script src="~/Assets/admin/libs/toastr/toastr.min.js"></script>
+    <script src="~/Assets/admin/js/notification.js"></script>
     <script src="~/Assets/client/js/controller/requestController.js"></script>
 }
 

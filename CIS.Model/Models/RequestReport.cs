@@ -14,7 +14,7 @@ namespace CIS.Model.Models
         [Required]
         public int RequestID { get; set; }
 
-        public int? SupporterID { get; set; }
+        public int SupporterID { get; set; }
 
         [MaxLength(500)]
         public string Note { get; set; }

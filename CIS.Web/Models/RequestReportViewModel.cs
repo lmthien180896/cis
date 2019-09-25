@@ -9,7 +9,7 @@ namespace CIS.Web.Models
 
         public int RequestID { get; set; }
 
-        public int? SupporterID { get; set; }
+        public int SupporterID { get; set; }
 
         public string Note { get; set; }
 
@@ -28,5 +28,8 @@ namespace CIS.Web.Models
         public bool Status { get; set; }
 
         public Request Request { get; set; }
+
+        //extra
+        public string SupporterName { get; set; }
     }
 }

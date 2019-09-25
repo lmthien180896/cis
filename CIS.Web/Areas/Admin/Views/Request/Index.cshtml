@@ -55,7 +55,7 @@
                                     <th class="sorting_asc" tabindex="0" aria-controls="datatable" rowspan="1" colspan="1" aria-sort="ascending" aria-label="RequestCategory: activate to sort column descending" style="width: 202px;">Nơi gửi</th>
                                     <th class="sorting_asc" tabindex="0" aria-controls="datatable" rowspan="1" colspan="1" aria-sort="ascending" aria-label="RequestCategory: activate to sort column descending" style="width: 202px;">Ngày gửi</th>
                                     <th class="sorting_asc" tabindex="0" aria-controls="datatable" rowspan="1" colspan="1" aria-sort="ascending" aria-label="Status: activate to sort column descending" style="width: 100px;">Trạng thái</th>
-                                    <th tabindex="0" aria-controls="datatable" rowspan="1" colspan="1" style="width: 180px;"></th>
+                                    <th tabindex="0" aria-controls="datatable" rowspan="1" colspan="1" style="width: 200px;"></th>
                                 </tr>
                             </thead>
 
@@ -71,17 +71,16 @@
                                         <td>@request.CreatedDate.Value.ToString("dd/MM/yyyy")</td>
                                         <td>@Html.Raw((request.Progress==ViewBag.WaitingProgress) ? "<span class='btn btn-warning btn-sm'>Chờ xử lí</span>" : (request.Progress == ViewBag.SupportingProgress) ? "<span class='btn btn-info btn-sm'>Đang xử lí</span>" : "<span class='btn btn-success btn-sm label-progress'>Hoàn tất</span>")</td>
                                         <td>
-                                            <a href="#" data-id=@request.ID class="btn btn-info btn-sm btnUpdate"><i class="fa fa-pencil"></i></a>
-                                            <a href="#" data-id=@request.ID class="btn btn-danger btn-sm btnDelete"><i class="fa fa-trash"></i></a>
+                                            @if (request.Progress == "waiting")
+                                            {
+                                                <a href="#" data-id=@request.ID class="btn btn-info btn-xs btnUpdate"><i class="fa fa-pencil"> Edit</i></a>
+                                                <a href="#" data-id=@request.ID class="btn btn-default btn-xs btnSupport"><i class="fa fa-wrench"> Support</i></a>
+                                            }
                                             @if (request.Progress != "waiting")
                                             {
-                                                <a href="/Admin/Request/ViewDetail/@request.ID" data-id=@request.ID class="btn btn-primary btn-sm btnView"><i class="fa fa-eye"></i></a>                                              
+                                                <a href="/Admin/Request/ViewDetail/@request.ID" data-id=@request.ID class="btn btn-primary btn-xs btnView"><i class="fa fa-eye"> View</i></a>
                                             }
-                                            @if (request.Progress == "waiting")
-                                            {                                                
-                                                <a href="#" data-id=@request.ID class="btn btn-default btn-sm btnSupport"><i class="fa fa-wrench"></i></a>
-                                            }
-
+                                            <a href="#" data-id=@request.ID class="btn btn-danger btn-xs btnDelete"><i class="fa fa-trash"> Delete</i></a>
                                         </td>
 
                                     </tr>
