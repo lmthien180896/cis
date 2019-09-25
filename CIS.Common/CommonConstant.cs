@@ -19,6 +19,10 @@
         public const int DesignInfoPostId = 17;
         public const int DesignPricePostId = 18;
         public const int DesignContactPostId = 19;
+        public const int AboutUsPostID = 23;
+
+        public const int NewsPostCategoryID = 1;
+        public const int NotificationPostCategoryID = 2;            
 
         public const string PostTag = "post";
 

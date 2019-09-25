@@ -52,6 +52,8 @@ namespace CIS.Web.Models
         public string SentDate { get; set; }
 
         public string CategoryName { get; set; }
+
+        public IEnumerable<RequestCategory> RequestCategories { get; set; }
         
     }
 }

@@ -2,7 +2,9 @@
 using CIS.Data.Infrastructure;
 using CIS.Data.Repositories;
 using CIS.Model.Models;
+using System;
 using System.Collections.Generic;
+using System.Linq.Expressions;
 
 namespace CIS.Service
 {
@@ -14,7 +16,7 @@ namespace CIS.Service
 
         void Delete(int id);
 
-        IEnumerable<Post> GetAll();
+        IEnumerable<Post> GetAll();       
 
         IEnumerable<Post> GetAll(int postCategoryId);
 
@@ -26,7 +28,9 @@ namespace CIS.Service
 
         IEnumerable<Post> GetAllByTagPaging(string tag, int page, int pageSize, out int totalRow);
 
-        List<Post> GetTwoHotNews();
+        IEnumerable<Post> GetTwoHotNews();
+
+        IEnumerable<Post> GetThreeNews();
 
         void SaveChanges();
     }
@@ -70,7 +74,7 @@ namespace CIS.Service
                     _postTagRepository.Add(postTag);
                     _unitOfWork.Commit();
                 }
-            }           
+            }
         }
 
         public void Delete(int id)
@@ -112,20 +116,16 @@ namespace CIS.Service
         public void SaveChanges()
         {
             _unitOfWork.Commit();
+        }       
+
+        public IEnumerable<Post> GetTwoHotNews()
+        {
+            return _postRepository.GetTwoHotNews();
         }
 
-        public List<Post> GetTwoHotNews() {
-            var listNews = _postRepository.GetMulti(x => x.HotFlag && x.HomeFlag && x.Status && !string.IsNullOrEmpty(x.ReferenceUrl));
-            int count = 0;
-            List<Post> twoNews = new List<Post>();
-            foreach (var news in listNews)
-            {
-                twoNews.Add(news);
-                count++;
-                if (count == 2)
-                    break;
-            }
-            return twoNews;
+        public IEnumerable<Post> GetThreeNews()
+        {
+            return _postRepository.GetThreeNews();
         }
 
         public void Update(Post post)

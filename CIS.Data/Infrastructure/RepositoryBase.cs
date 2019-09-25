@@ -145,7 +145,7 @@ namespace CIS.Data.Infrastructure
         public bool CheckContains(Expression<Func<T, bool>> predicate)
         {
             return dataContext.Set<T>().Count<T>(predicate) > 0;
-        }
+        }        
 
         #endregion Implementation
     }

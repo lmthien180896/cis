@@ -161,8 +161,10 @@
     <Compile Include="Areas\Admin\Controllers\RoleController.cs" />
     <Compile Include="Areas\Admin\Controllers\UserController.cs" />
     <Compile Include="Areas\Admin\Controllers\UserGroupController.cs" />
+    <Compile Include="Controllers\BaseController.cs" />
     <Compile Include="Controllers\ContactController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Controllers\RecruitmentController.cs" />
     <Compile Include="Controllers\RequestController.cs" />
     <Compile Include="Controllers\ServiceController.cs" />
     <Compile Include="Global.asax.cs">
@@ -4809,6 +4811,7 @@
     <Content Include="Assets\client\CIS-pro\images\slider\sl2.jpeg" />
     <Content Include="Assets\client\CIS-pro\images\slider\sl3.jpeg" />
     <Content Include="Assets\client\js\controller\issueController.js" />
+    <Content Include="Assets\client\js\controller\requestController.js" />
     <Content Include="Content\bootstrap-theme.css" />
     <Content Include="Content\bootstrap-theme.min.css" />
     <Content Include="Content\bootstrap.css" />
@@ -4837,7 +4840,8 @@
     <Folder Include="Assets\admin\css\" />
     <Folder Include="Assets\client\css\" />
     <Folder Include="Infrastructure\Core\" />
-    <Folder Include="UploadedFiles\" />
+    <Folder Include="UploadedFiles\network_files\" />
+    <Folder Include="UploadedFiles\web_files\" />
     <Folder Include="Views\Base\" />
   </ItemGroup>
   <ItemGroup>
@@ -5791,6 +5795,8 @@
     <Content Include="Views\Service\Web.cshtml" />
     <Content Include="Views\Service\System.cshtml" />
     <Content Include="Views\Service\Design.cshtml" />
+    <Content Include="Views\Home\AboutUs.cshtml" />
+    <Content Include="Views\Recruitment\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\CIS.Common\CIS.Common.csproj">

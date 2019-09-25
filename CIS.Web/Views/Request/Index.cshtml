@@ -7,6 +7,31 @@
     Gửi yêu cầu
 }
 
+@section css {
+    <link href="~/Assets/admin/libs/toastr/toastr.min.css" rel="stylesheet" />
+}
+
+@section js{
+    <script src="~/Assets/admin/libs/ckfinder/ckfinder.js"></script>
+    <script>
+        $('#btnSelectFiles').off('click').on('click', function (e) {
+            //e.preventDefault();
+            var finder = new CKFinder();
+            finder.selectActionFunction = function (url) {
+                $('#txtImage').val(url);
+                $('#img').prop("src", url);
+                $('#btnDelteImage').removeClass('hide');
+            };
+            finder.popup();
+        });
+
+        var editor = CKEDITOR.replace('txtContent', {
+            customConfig: '/Assets/admin/libs/ckeditor/config.js'
+        });
+    </script>
+    <script src="~/Assets/admin/libs/toastr/toastr.min.js"></script>
+    <script src="~/Assets/client/js/controller/requestController.js"></script>
+}
 
 @RenderPage("~/Views/Shared/Banner.cshtml")
 
@@ -21,6 +46,14 @@
 <div id="spread" class="contact">
     <div class="container">
         <div class="row-fluid">
+            @if (TempData["AlertMessage"] != null)
+            {
+                <div id="toast-container" class="toast-top-right hide">
+                    <div class="toast @TempData["AlertType"]" aria-live="polite" style="display: block;">
+                        <div class="toast-message">@TempData["AlertMessage"]</div>
+                    </div>
+                </div>
+            }
             <div class="span6 offset3">
                 <div class="h2 getintouch">MAKE A REQUEST</div>
                 <p>Gửi yêu cầu</p>
@@ -31,23 +64,23 @@
                         </div>
                     </div>
                 </div>
-                <form id="contactPageForm" name="contactPageForm" method="post" action="/Issue/SubmitIssue" enctype="multipart/form-data">
+                <form id="contactPageForm" name="contactPageForm" method="post" action="/Request/SubmitRequest" enctype="multipart/form-data">
 
                     <div class="field_wrap">
                         <div class="field_wrap">
                             <div class="label_wrap">
-                                <label data-input="category" for="contactPageForm-category" class="">Issue topic (loại yêu cầu) <span class="required">*</span></label>
+                                <label data-input="category" for="contactPageForm-category" class="">Request topic (loại yêu cầu) <span class="required">*</span></label>
                             </div>
                             <div class="input_wrap">
-                                <select class="form-control" name="Topic" id="sltTopic" required>
-                                    <option value="">-- Choose an issue topic (Chọn loại yêu cầu) --</option>
-                                    @*@foreach (var topic in ViewBag.Topic)
+                                <select class="form-control" name="categoryId" id="sltCategoryId" required>
+                                    <option value="">-- Choose an request topic (Chọn loại yêu cầu) --</option>
+                                    @foreach (var category in ViewBag.RequestCategories)
                                     {
-                                        <option value="@topic">@topic</option>
-                                    }*@
-                                    <option value="Vấn đề khác">Other topics (Vấn đề khác)</option>
+                                        <option value="@category.ID">@category.Name</option>
+                                    }
+                                    <option value="">Other topics (Vấn đề khác)</option>
                                 </select>
-                                <span style="color: red" id="warning-topic"></span>
+                                <span style="color: red" id="warning-category"></span>
                             </div>
                         </div>
                     </div>
@@ -58,8 +91,8 @@
                                 <label class="">Name(tên)*<span class="required">*</span></label>
                             </div>
                             <div class="input_wrap">
-                                <input type="text" name="FullName" id="txtFullname" value="" placeholder="Name (Tên)*" required>
-                                <span style="color: red" id="warning-fullname"></span>
+                                <input type="text" name="senderName" id="txtSenderName" placeholder="Name (Tên)*" required>
+                                <span style="color: red" id="warning-senderName"></span>
                             </div>
                         </div>
                     </div>
@@ -69,7 +102,7 @@
                                 <label>Email <span class="required">*</span></label>
                             </div>
                             <div class="input_wrap">
-                                <input type="text" name="Email" id="txtEmail" value="" class=" " placeholder="Email (các email cách nhau bằng dấu ';')*" required>
+                                <input type="text" name="email" id="txtEmail" value="" class=" " placeholder="Email (các email cách nhau bằng dấu ',')*" required>
                                 <span style="color: red" id="warning-email"></span>
                             </div>
                         </div>
@@ -80,7 +113,7 @@
                                 <label>Số điện thoại</label>
                             </div>
                             <div class="input_wrap">
-                                <input type="text" name="Phone" id="txtPhone" value="" class=" " placeholder="Phone (Số điện thoại)">
+                                <input type="text" name="phone" id="txtPhone" value="" class=" " placeholder="Phone (Số điện thoại)">
                             </div>
                         </div>
                     </div>
@@ -90,7 +123,7 @@
                                 <label>Place<span class="required">*</span></label>
                             </div>
                             <div class="input_wrap">
-                                <input type="text" name="Place" id="txtPlace" value="" placeholder="Place (Vị trí gửi yêu cầu)*" required>
+                                <input type="text" name="place" id="txtPlace" value="" placeholder="Place (Vị trí gửi yêu cầu)*" required>
                                 <span style="color: red" id="warning-place"></span>
                             </div>
                         </div>
@@ -102,8 +135,8 @@
                                 <label>Your Request(Yêu cầu của bạn) <span class="required">*</span></label>
                             </div>
                             <div class="input_wrap">
-                                <textarea name="IssueDetails" id="txtIssueDetails" placeholder="Your Request (Yêu cầu)*" rows="2" required></textarea>
-                                <span style="color: red" id="warning-issuedetails"></span>
+                                <textarea name="detail" id="txtDetail" placeholder="Your Request (Yêu cầu)*" rows="2" required></textarea>
+                                <span style="color: red" id="warning-detail"></span>
                             </div>
                         </div>
                     </div>

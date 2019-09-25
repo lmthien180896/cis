@@ -29,10 +29,18 @@ namespace CIS.Web.Controllers
         public ActionResult Index()
         {
             HomeViewModel homeViewModel = new HomeViewModel();
-            var hotNews =  _postService.GetTwoHotNews();
+            var hotNews = _postService.GetTwoHotNews();
+            var listNews = _postService.GetThreeNews();
             homeViewModel.HotNews = hotNews;
-            //var listNews = _postService.GetAllNews();
+            homeViewModel.ListNews = listNews;
             return View(homeViewModel);
+        }
+
+        public ActionResult AboutUs()
+        {
+            var aboutUsPost = _postService.GetById(CommonConstant.AboutUsPostID);
+            PostViewModel postViewModel = Mapper.Map<Post, PostViewModel>(aboutUsPost); 
+            return View(postViewModel);
         }
 
         [ChildActionOnly]

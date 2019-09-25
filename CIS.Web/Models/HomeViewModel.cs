@@ -8,7 +8,7 @@ namespace CIS.Web.Models
 {
     public class HomeViewModel
     {
-        public List<Post> HotNews { get; set; }
-        public IEnumerable<Post> News { get; set; }
+        public IEnumerable<Post> HotNews { get; set; }
+        public IEnumerable<Post> ListNews { get; set; }
     }
 }

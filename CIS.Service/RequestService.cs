@@ -18,6 +18,14 @@ namespace CIS.Service
 
         IEnumerable<Request> GetAll();
 
+        IEnumerable<Request> GetAllRequests();
+
+        IEnumerable<Request> GetAllWaitingRequests();
+
+        IEnumerable<Request> GetAllSupportingRequests();
+
+        IEnumerable<Request> GetAllCompletedRequests();
+
         IEnumerable<Request> GetMany(Expression<Func<Request, bool>> where, string includes);
 
         Request GetById(int id);
@@ -103,6 +111,24 @@ namespace CIS.Service
             var request = _requestRepository.GetSingleById(id);
             //Send Email
             MailHepler.SendMail(request.Email, "test subject", "Đóng yêu cầu");
+        }
+
+        public IEnumerable<Request> GetAllRequests()
+        {
+            return _requestRepository.GetAllRequests();
+        }
+
+        public IEnumerable<Request> GetAllWaitingRequests()
+        {
+            return _requestRepository.GetAllWaitingRequests();
+        }
+        public IEnumerable<Request> GetAllSupportingRequests()
+        {
+            return _requestRepository.GetAllSupportingRequests();
+        }
+        public IEnumerable<Request> GetAllCompletedRequests()
+        {
+            return _requestRepository.GetAllCompletedRequests();
         }
     }
 }

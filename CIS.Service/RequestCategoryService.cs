@@ -14,7 +14,7 @@ namespace CIS.Service
 
         RequestCategory Delete(int id);
 
-        IEnumerable<RequestCategory> GetAll();       
+        IEnumerable<RequestCategory> GetAll();
 
         RequestCategory GetById(int id);         
 
@@ -50,7 +50,7 @@ namespace CIS.Service
         public IEnumerable<RequestCategory> GetAll()
         {
             return _requestCategoryRepository.GetAll();
-        }        
+        }      
 
         public RequestCategory GetById(int id)
         {

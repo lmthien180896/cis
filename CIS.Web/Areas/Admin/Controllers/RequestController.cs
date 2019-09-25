@@ -27,10 +27,10 @@ namespace CIS.Web.Areas.Admin.Controllers
         [HasCredential(RoleID = "R_REQUEST")]
         public ActionResult Index()
         {
-            var listRequestCategory = _requestCategoryService.GetAll();
+            var listRequestCategory = _requestCategoryService.GetAll() ;
             var listRequestCategoryViewModel = Mapper.Map<IEnumerable<RequestCategory>, IEnumerable<RequestCategoryViewModel>>(listRequestCategory);
             ViewBag.ListRequestCategory = listRequestCategoryViewModel;
-            var listRequest = _requestService.GetAll();
+            var listRequest = _requestService.GetAllRequests();
             var listRequestViewModel = Mapper.Map<IEnumerable<Request>, IEnumerable<RequestViewModel>>(listRequest);
             foreach (var request in listRequestViewModel)
             {
@@ -48,7 +48,7 @@ namespace CIS.Web.Areas.Admin.Controllers
             var listRequestCategory = _requestCategoryService.GetAll();
             var listRequestCategoryViewModel = Mapper.Map<IEnumerable<RequestCategory>, IEnumerable<RequestCategoryViewModel>>(listRequestCategory);
             ViewBag.ListRequestCategory = listRequestCategoryViewModel;
-            var listWaitingingRequest = _requestService.GetMany(x => x.Progress == CommonConstant.WaitingProgress, null);
+            var listWaitingingRequest = _requestService.GetAllWaitingRequests();
             var listWaitingingRequestViewModel = Mapper.Map<IEnumerable<Request>, IEnumerable<RequestViewModel>>(listWaitingingRequest);
             foreach (var request in listWaitingingRequestViewModel)
             {
@@ -61,7 +61,7 @@ namespace CIS.Web.Areas.Admin.Controllers
         [HasCredential(RoleID = "R_REQUEST")]
         public ActionResult SupportingQueue()
         {
-            var listSupportingRequest = _requestService.GetMany(x => x.Progress == CommonConstant.SupportingProgress, null);
+            var listSupportingRequest = _requestService.GetAllSupportingRequests();
             var listSupportingRequestViewModel = Mapper.Map<IEnumerable<Request>, IEnumerable<RequestViewModel>>(listSupportingRequest);
             foreach (var request in listSupportingRequestViewModel)
             {
@@ -73,7 +73,7 @@ namespace CIS.Web.Areas.Admin.Controllers
         [HasCredential(RoleID = "R_REQUEST")]
         public ActionResult CompletedQueue()
         {
-            var listSupportingRequest = _requestService.GetMany(x => x.Progress == CommonConstant.CompletedProgress, null);
+            var listSupportingRequest = _requestService.GetAllCompletedRequests();
             var listSupportingRequestViewModel = Mapper.Map<IEnumerable<Request>, IEnumerable<RequestViewModel>>(listSupportingRequest);
             foreach (var request in listSupportingRequestViewModel)
             {
