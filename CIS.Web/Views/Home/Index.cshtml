@@ -2,6 +2,9 @@
 @{
     ViewBag.Title = "Index";
     Layout = "~/Views/Shared/_Layout.cshtml";
+    var aboutUs = (CIS.Web.Models.PostViewModel)ViewBag.AboutUs;
+    var webPost = (CIS.Web.Models.PostViewModel)ViewBag.Web;
+    var systemPost = (CIS.Web.Models.PostViewModel)ViewBag.System;
 }
 
 
@@ -14,8 +17,8 @@
         <div class="row">
             <span class="services-title">DỊCH VỤ </span>
             <div class="col-sm-15">
-                <a href="#" class="">
-                    <img alt="IT Security" src="/assets/client/CIS-pro/cis-img/web.png">
+                <a href="/dich-vu-web" class="">
+                    <img alt="web" src="/Assets/client/CIS-pro/cis-img/web.png">
                     <h2 class="aligncenter">Thiết kế Web</h2>
                 </a>
             </div>
@@ -23,8 +26,8 @@
                 <!--empty -->
             </div>
             <div class="col-sm-15">
-                <a href="#" class="">
-                    <img alt="dohoa" src="/assets/client/CIS-pro/cis-img/dohoa.png">
+                <a href="/dich-vu-thiet-ke-do-hoa" class="">
+                    <img alt="dohoa" src="/Assets/client/CIS-pro/cis-img/dohoa.png">
                     <h2 class="aligncenter">Thiết kế Đồ Họa</h2>
                 </a>
             </div>
@@ -32,8 +35,8 @@
                 <!--empty -->
             </div>
             <div class="col-sm-15">
-                <a href="#" class="">
-                    <img alt="hethong" src="/assets/client/CIS-pro/cis-img/hethong.png">
+                <a href="/dich-vu-he-thong" class="">
+                    <img alt="hethong" src="/Assets/client/CIS-pro/cis-img/hethong.png">
                     <h2 class="aligncenter">Hệ thống</h2>
                 </a>
             </div>
@@ -41,7 +44,7 @@
     </div>
 </div>
 
-<div id="index-banner" style="background:url('/assets/client/CIS-pro/cis-img/cis-deparments.jpg') no-repeat top center;">
+<div id="index-banner" style="background:url('/Assets/client/CIS-pro/cis-img/cis-deparments.jpg') no-repeat top center;">
     <div class="container">
         <div class="row-fluid">
             <div class="span12 text-center">
@@ -55,9 +58,9 @@
                     <a href="@news.ReferenceUrl"><p>@news.Name</p></a>
                 </div>
             }           
-            <div class="text-right">
+            @*<div class="text-right">
                 <a href="#" class="more text-left">Xem tất cả tin </a>
-            </div>
+            </div>*@
         </div>
 
     </div><!-- .container -->
@@ -67,15 +70,20 @@
 <div id="index-main" class="new">
     <div class="container">
         <div class="row-fluid">
-            <div class="span6">
-                <div class="block-title">Về chúng tôi</div>                
-                <p style="text-align:justify;"><b>Trung tâm Dịch vụ Công nghệ Thông tin</b> chịu trách nhiệm quản lý và hỗ trợ kỹ thuật cho toàn bộ hệ thống mạng Internet, mạng điện thoại và các trang Web của trường ĐH Quốc Tế. Trung tâm còn có chức năng hỗ trợ đăng tin những hình ảnh hoạt động thường xuyên của nhà trường nhằm xây dựng quảng bá hình ảnh thương hiệu trường ngày càng được nhiều người biết đến. Ngoài ra, Trung tâm cũng hỗ trợ phát triển phần mềm ứng dụng Web cho các đơn vị trong và ngoài trường ĐH Quốc Tế.</p>
-                <p><a class="more" href="/gioi-thieu/ve-chung-toi">Xem thêm</a></p>
+            <div class="span4">
+                <div class="block-title">Về chúng tôi</div>
+                <p style="text-align:justify;">@aboutUs.Description</p>
+                <p><a class="more" href="/gioi-thieu">Xem thêm</a></p>
             </div>
-            <div class="span6 case-studies-wrap">
+            <div class="span4 case-studies-wrap">
                 <div class="block-title">Dịch vụ Web</div>
-                <p>Phát triển phần mềm theo yêu cầu Cơ quan và Doanh nghiệp: TT DV CNTT nhận các dự án phát triển phầm mềm ứng dụng Web trên nền ASP.Net và PHP nhằm quảng bá thương hiệu và tạo hệ thống tương tác người dùng thông qua các ứng dựng Web như: trang giới thiệu sản phẩm, bán hàng trực tuyến, tích hợp hệ thống thông minh phân tích hành vi người dùng.</p>
-                <a class="more" href="#">Xem bảng giá DV</a>
+                <p>@webPost.Description</p>
+                <a class="more" href="/dich-vu-web">Xem chi tiết</a>
+            </div>
+            <div class="span4 case-studies-wrap">
+                <div class="block-title">Dịch vụ Hệ thống</div>
+                <p>@systemPost.Description</p>
+                <a class="more" href="/dich-vu-he-thong">Xem chi tiết</a>
             </div>
         </div>
     </div>
@@ -87,12 +95,12 @@
         <div class="row-fluid">
             <div class="logoiu">
                 <a href='https://hcmiu.edu.vn' class="logoiu">
-                    <img src="/assets/client/CIS-pro/cis-img/iu-logo.png">
+                    <img src="/Assets/client/CIS-pro/cis-img/iu-logo.png">
                 </a>
             </div>
             <div class="text-iu">
                 <div class="tweet">
-                    <a href="/assets/client/CIS-pro/https://hcmiu.edu.vn" target="_blank" class="iulogo">
+                    <a href="/Assets/client/CIS-pro/https://hcmiu.edu.vn" target="_blank" class="iulogo">
                         <h2 class="clWhite">Đại học Quốc Gia TP.HCM - Trường Đại học Quốc Tế </h2>
                         <span>website</span>
                     </a>
@@ -105,7 +113,7 @@
 <div id="index-news">
     <div class="container">
         <div class="row-fluid">
-            <a href="/assets/client/CIS-pro/news/index.html" class="news-title">TIN TỨC</a>
+            <span class="news-title">TIN TỨC</span>
             <div class="row-fluid">
                @foreach (var news in Model.ListNews)
                     {

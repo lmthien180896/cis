@@ -15,7 +15,7 @@
     <link rel="icon" sizes="16x16 32x32 64x64" href="~/Assets/client/CIS-pro/cis-img/favicon.jpg">
     <!-- 	=================  CSS	================== -->
     <link rel="stylesheet" href="~/Assets/client/CIS-pro/owlcarousel/css/owl.carousel.min.css">
-    <link rel="stylesheet" href="~/Assets/client/CIS-pro/owlcarousel/css/owl.theme.default.min.css">
+    <link rel="stylesheet" href="~/Assets/client/CIS-pro/owlcarousel/css/owl.theme.default.min.css">     
     <link rel="stylesheet" href="~/Assets/client/CIS-pro/css/bootstrap.min.css" />
     <link rel="stylesheet" href="~/Assets/client/CIS-pro/css/styleClone.css" />
     <link rel="stylesheet" href="~/Assets/client/CIS-pro/css/cisstyle.css" />
@@ -45,8 +45,15 @@
         </div>
     </header>
     <!-- / header -->
-    <!-- Carousel -->  
-
+    <!-- Carousel -->
+    @if (TempData["AlertMessage"] != null)
+    {
+        <div id="toast-container" class="toast-top-right hide">
+            <div class="toast @TempData["AlertType"]" aria-live="polite" style="display: block;">
+                <div class="toast-message">@TempData["AlertMessage"]</div>
+            </div>
+        </div>
+    }
     @RenderBody()
 
     <!-- =====================================	Footer  ======================== -->
@@ -82,7 +89,7 @@
             autoplayHoverPause: true
         });
     </script>
-    @RenderSection("js", false)    
+    @RenderSection("js", false)
 
 </body>
 </html>

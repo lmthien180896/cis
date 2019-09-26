@@ -67,7 +67,7 @@
                                         <td>@request.Place</td>
                                         <td>@request.SentDate</td>
                                         <td>@request.Detail</td>
-                                        <td>@((request.ClosedDate.HasValue) ? request.ClosedDate.Value.ToString("dd/MM/yyyy") : "Chưa đóng")</td>
+                                        <td>@((request.ClosedDate != null) ? request.ClosedDate.ToString("dd/MM/yyyy") : "Chưa đóng")</td>
 
                                     </tr>
                                 }

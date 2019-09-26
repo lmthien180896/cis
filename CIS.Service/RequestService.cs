@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Web;
 using System.Collections.Generic;
 using System.Linq.Expressions;
 using CIS.Common;
@@ -127,13 +128,14 @@ namespace CIS.Service
 
         public void Close(int id)
         {
-            var request = _requestRepository.GetSingleById(id);
+            var request = _requestRepository.GetSingleById(id);           
             request.Progress = CommonConstant.CompletedProgress;
+            request.ClosedDate = DateTime.Now;
             _requestRepository.Update(request);
 
             RequestReport closedReport = new RequestReport();
             closedReport.RequestID = id;
-            closedReport.Note = "Xác nhận đóng yêu cầu";
+            closedReport.Note = "Xác nhận đóng yêu cầu";          
             closedReport.CreatedDate = DateTime.Now;
             _requestReportRepository.Add(closedReport);
 

@@ -15,6 +15,8 @@ namespace CIS.Service
 
         Slide GetById(int id);
 
+        void Update(Slide slide);
+
         void SaveChanges();
     }
 
@@ -44,5 +46,9 @@ namespace CIS.Service
             _unitOfWork.Commit();
         }
 
+        public void Update(Slide slide)
+        {
+            _slideRepository.Update(slide);
+        }
     }
 }

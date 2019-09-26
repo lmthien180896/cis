@@ -112,7 +112,7 @@ namespace CIS.Web.Controllers
                 mes = mes.Replace("{{RequestCategory}}", requestCategory);
                 mes = mes.Replace("{{Detail}}", request.Detail);
                 mes = mes.Replace("{{Code}}", request.Code);
-                mes = mes.Replace("{{EnterCodeLink}}", ConfigHelper.GetByKey("CurrentLink") + "/RequestFunctions/ConfirmClosing");
+                mes = mes.Replace("{{EnterCodeLink}}", ConfigHelper.GetByKey("CurrentLink") + "RequestFunctions/EnterCode");
                 mes = mes.Replace("{{IssueID}}", request.ID.ToString());
 
                 var emails = request.Email.Replace(" ", "").Split(',');
@@ -134,6 +134,7 @@ namespace CIS.Web.Controllers
                 mes = mes.Replace("{{Email}}", request.Email);
                 mes = mes.Replace("{{Phone}}", request.Phone);
                 mes = mes.Replace("{{IssueID}}", request.ID.ToString());
+                mes = mes.Replace("{{SendRequestToTeamLink}}", ConfigHelper.GetByKey("CurrentLink") + "/Admin/Request/ViewDetail");
                 if (requestCategory == "Đăng tin lên IU Web")
                 {
                     mes = mes.Replace("{{Team}}", "Web Team");

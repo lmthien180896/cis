@@ -15,6 +15,8 @@ namespace CIS.Service
 
         IEnumerable<Footer> GetAll();
 
+        Footer GetById(int id);
+
         Footer GetByName(string name);
 
         void SaveChanges();
@@ -49,6 +51,11 @@ namespace CIS.Service
         public Footer GetByName(string name)
         {
             return _footerRepository.GetSingleByCondition(x=> x.Name == name);
+        }
+
+        public Footer GetById(int id)
+        {
+            return _footerRepository.GetSingleById(id);
         }
 
         public void SaveChanges()

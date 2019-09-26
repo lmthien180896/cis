@@ -11,7 +11,7 @@ using System.Web.Mvc;
 
 namespace CIS.Web.Controllers
 {
-    public class RequestFunctionsController : Controller
+    public class RequestFunctionsController : BaseController
     {
         private IRequestService _requestService;
         private IRequestCategoryService _requestCategoryService;
@@ -75,10 +75,26 @@ namespace CIS.Web.Controllers
         }
 
         public ActionResult ConfirmClosing(int id)
-        {            
-            _requestService.Close(id);         
-
-            return View();
+        {
+            var request = _requestService.GetById(id);
+            if (request.Progress == CommonConstant.CompletedProgress)
+            {
+                var requestCategory = _requestCategoryService.GetById(request.CategoryID).Name;
+                var filepath = ConfigHelper.GetByKey("WarningClosingRequest");
+                var mes = System.IO.File.ReadAllText(Server.MapPath(filepath));
+                var emails = request.Email.Replace(" ", "").Split(',');
+                foreach (var toEmail in emails)
+                {
+                    MailHepler.SendMail(toEmail, requestCategory, mes);
+                }
+                SetAlert("error", "Yêu cầu của bạn đã đóng rồi");
+            }
+            else
+            {
+                _requestService.Close(id);
+                SetAlert("success", "Đã xác nhận đóng yêu cầu");
+            }            
+            return RedirectToAction("Index","Home");
         }
     }
 }

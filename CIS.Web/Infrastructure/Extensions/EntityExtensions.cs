@@ -126,5 +126,20 @@ namespace CIS.Web.Infrastructure.Extensions
 
         }
 
+        //Footer
+        public static void UpdateFooter(this Footer footer, FooterViewModel footerVm)
+        {
+            footer.ID = footerVm.ID;      
+            footer.Name = footerVm.Name;      
+            footer.Content = footerVm.Content;            
+        }
+
+        //Slide
+        public static void UpdateSlide(this Slide slide, SlideViewModel slideVm)
+        {
+            slide.ID = slideVm.ID;
+            slide.Name = slideVm.Name;
+            slide.Image = slideVm.Image;
+        }
     }
 }

@@ -242,7 +242,7 @@ namespace CIS.Web.Areas.Admin.Controllers
             mes = mes.Replace("{{RequestCategory}}", requestCategory);
             mes = mes.Replace("{{Detail}}", request.Detail);
             mes = mes.Replace("{{IssueID}}", request.ID.ToString());
-            mes = mes.Replace("{{EnterCodeLink}}", ConfigHelper.GetByKey("CurrentLink") + "/RequestFunctions/EnterCode");
+            mes = mes.Replace("{{ConfirmClosingRequestLink}}", ConfigHelper.GetByKey("CurrentLink") + "RequestFunctions/ConfirmClosing");
             mes = mes.Replace("{{Code}}", request.Code);
 
             var emails = request.Email.Replace(" ", "").Split(',');

@@ -1,0 +1,49 @@
+﻿@model IEnumerable<CIS.Web.Models.FooterViewModel>
+@{
+    Layout = "~/Areas/Admin/Views/Shared/_LayoutAdmin.cshtml";
+}
+
+@section js{
+    <script src="~/Assets/admin/js/controller/footer.js"></script>
+}
+
+<h2>Danh sách Footer</h2>
+
+<div class="col-md-12 col-sm-12 col-xs-12">
+    <div class="x_panel">
+        <div class="x_title">
+            <h2>Danh sách Footer</h2>
+            <div class="clearfix"></div>
+        </div>
+        <div class="x_content">
+            <div id="datatable_wrapper" class="dataTables_wrapper form-inline dt-bootstrap no-footer">
+                <div class="row">
+                    <div class="col-sm-12">
+                        <table id="datatable" class="table table-striped table-bordered dataTable no-footer" usergroup="grid" aria-describedby="datatable_info">
+                            <thead>
+                                <tr usergroup="row">
+                                    <th class="sorting_asc" tabindex="0" aria-controls="datatable" rowspan="1" colspan="1" aria-sort="ascending" aria-label="RequestCategory: activate to sort column descending" style="width: 10px;">ID</th>
+                                    <th class="sorting_asc" tabindex="0" aria-controls="datatable" rowspan="1" colspan="1" aria-sort="ascending" aria-label="Status: activate to sort column descending" style="width: 50px;">Tên footer</th>
+                                    <th class="sorting_asc" tabindex="0" aria-controls="datatable" rowspan="1" colspan="1" aria-sort="ascending" aria-label="Status: activate to sort column descending" style="width: 500px;">Nội dung</th>
+                                    <th class="sorting_asc" tabindex="0" aria-controls="datatable" rowspan="1" colspan="1" aria-sort="ascending" aria-label="Status: activate to sort column descending" style="width: 50px;"></th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                @foreach (var footer in Model)
+                                {
+                                <tr>
+                                    <td>@footer.ID</td>
+                                    <td><input class="form-control" id="footerName-@footer.ID" value="@footer.Name" /></td>
+                                    <td><textarea rows="20" style="width: 100%" id="footerContent-@footer.ID">@footer.Content</textarea></td>
+                                    <td><a href="#" data-id="@footer.ID" class="btn btn-primary btn-xs btnSaveFooter"><i class="fa fa-save"> Save</i></a></td>
+                                </tr>
+                                }
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+

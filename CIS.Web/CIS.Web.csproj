@@ -154,10 +154,14 @@
     <Compile Include="Areas\Admin\AdminAreaRegistration.cs" />
     <Compile Include="Areas\Admin\Controllers\BaseController.cs" />
     <Compile Include="Areas\Admin\Controllers\HomeController.cs" />
+    <Compile Include="Areas\Admin\Controllers\InterfaceComponentController.cs" />
     <Compile Include="Areas\Admin\Controllers\LoginController.cs" />
     <Compile Include="Areas\Admin\Controllers\PostController.cs" />
     <Compile Include="Areas\Admin\Controllers\RequestCategoryController.cs" />
     <Compile Include="Areas\Admin\Controllers\RequestController.cs" />
+    <Compile Include="Controllers\ErrorController.cs" />
+    <Compile Include="Controllers\NewsController.cs" />
+    <Compile Include="Controllers\NotificationController.cs" />
     <Compile Include="Controllers\RequestFunctionsController.cs" />
     <Compile Include="Areas\Admin\Controllers\RoleController.cs" />
     <Compile Include="Areas\Admin\Controllers\UserController.cs" />
@@ -171,6 +175,7 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="Infrastructure\Core\PaginationSet.cs" />
     <Compile Include="Infrastructure\Extensions\EntityExtensions.cs" />
     <Compile Include="Mappings\AutoMapperConfiguration.cs" />
     <Compile Include="Models\ContactDetailViewModel.cs" />
@@ -205,6 +210,7 @@
     <Content Include="Assets\admin\img\favicon.ico" />
     <Content Include="Assets\admin\img\img.jpg" />
     <Content Include="Assets\admin\js\common.js" />
+    <Content Include="Assets\admin\js\controller\interfaceComponentController.js" />
     <Content Include="Assets\admin\js\controller\loginController.js" />
     <Content Include="Assets\admin\libs\mustache.min.js" />
     <Content Include="Assets\admin\js\controller\postController.js" />
@@ -4840,7 +4846,6 @@
     <Folder Include="Areas\Admin\Views\Base\" />
     <Folder Include="Assets\admin\css\" />
     <Folder Include="Assets\client\css\" />
-    <Folder Include="Infrastructure\Core\" />
     <Folder Include="UploadedFiles\network_files\" />
     <Folder Include="UploadedFiles\web_files\" />
     <Folder Include="Views\Base\" />
@@ -5776,6 +5781,8 @@
     <Content Include="Assets\client\CIS-pro\OwlCarousel2-2.3.4\vendors\jquery.min.map" />
     <Content Include="Assets\client\CIS-pro\owlcarousel\README.md" />
     <Content Include="Documents\Bang gia dich vu web-CIS.pdf" />
+    <Content Include="Areas\Admin\Views\InterfaceComponent\ListFooter.cshtml" />
+    <Content Include="Areas\Admin\Views\InterfaceComponent\ListSlide.cshtml" />
     <None Include="packages.config" />
     <Content Include="Resources\gentelella-master.zip" />
     <Content Include="Views\Shared\Error.cshtml" />
@@ -5796,6 +5803,12 @@
     <Content Include="Views\Recruitment\Index.cshtml" />
     <Content Include="Views\RequestFunctions\ViewDetail.cshtml" />
     <Content Include="Views\RequestFunctions\EnterCode.cshtml" />
+    <Content Include="Views\News\Index.cshtml" />
+    <Content Include="Views\Notification\Index.cshtml" />
+    <Content Include="Views\News\ViewNews.cshtml" />
+    <Content Include="Views\Error\NotFound.cshtml" />
+    <Content Include="Views\Notification\ViewNotification.cshtml" />
+    <Content Include="Views\Shared\Services.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\CIS.Common\CIS.Common.csproj">

@@ -4,6 +4,7 @@ using CIS.Data.Repositories;
 using CIS.Model.Models;
 using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Linq.Expressions;
 
 namespace CIS.Service
@@ -31,6 +32,8 @@ namespace CIS.Service
         IEnumerable<Post> GetTwoHotNews();
 
         IEnumerable<Post> GetThreeNews();
+
+        IEnumerable<Post> GetListPostByCategoryIdPaging(int categoryId, int page, int pageSize, out int totalRow);
 
         void SaveChanges();
     }
@@ -156,6 +159,15 @@ namespace CIS.Service
                 }
             }
             _unitOfWork.Commit();
+        }
+
+        public IEnumerable<Post> GetListPostByCategoryIdPaging(int categoryId, int page, int pageSize, out int totalRow)
+        {
+            var query = _postRepository.GetMulti(x => x.Status && x.CategoryID == categoryId).OrderBy(x => x.CreatedDate);
+
+            totalRow = query.Count();
+
+            return query.Skip((page - 1) * pageSize).Take(pageSize);
         }
     }
 }
