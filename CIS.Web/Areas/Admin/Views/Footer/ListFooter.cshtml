@@ -4,7 +4,7 @@
 }
 
 @section js{
-    <script src="~/Assets/admin/js/controller/footer.js"></script>
+    <script src="~/Assets/admin/js/controller/footerController.js"></script>
 }
 
 <h2>Danh sách Footer</h2>
@@ -35,7 +35,7 @@
                                     <td>@footer.ID</td>
                                     <td><input class="form-control" id="footerName-@footer.ID" value="@footer.Name" /></td>
                                     <td><textarea rows="20" style="width: 100%" id="footerContent-@footer.ID">@footer.Content</textarea></td>
-                                    <td><a href="#" data-id="@footer.ID" class="btn btn-primary btn-xs btnSaveFooter"><i class="fa fa-save"> Save</i></a></td>
+                                    <td><a href="#" data-id="@footer.ID" class="btn btn-primary btn-xs btnSave"><i class="fa fa-save"> Save</i></a></td>
                                 </tr>
                                 }
                             </tbody>

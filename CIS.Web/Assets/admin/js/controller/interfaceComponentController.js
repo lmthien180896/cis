@@ -31,6 +31,37 @@
             });
         });
 
+        $('#btnDelteImage').off('click').on('click', function (e) {
+            e.preventDefault();
+            $('#txtImage').val("");
+            $('#img').prop("src", "");
+            $('#btnDelteImage').addClass('hide');
+        });
+
+        $('.btnDeleteSlide').off('click').on('click', function (e) {
+            e.preventDefault();
+            var id = $(this).data("id");
+            bootbox.confirm("Bạn có chắc muốn xoá bản ghi này?", function (result) {
+                if (result) {
+                    $.ajax({
+                        url: "/Admin/InterfaceC/Delete",
+                        data: { id: id },
+                        dataType: "json",
+                        type: "POST",
+                        success: function (response) {
+                            if (response.status === true) {
+                                window.location.reload();
+                            }
+                            else {
+                                console(response.message);
+                            }
+                        }
+                    });
+                }
+            });
+        });
+
+
         $('.btnSaveSlide').off('click').on('click', function () {
             var id = $(this).data("id");
             var slideName = "#slideName-" + id;

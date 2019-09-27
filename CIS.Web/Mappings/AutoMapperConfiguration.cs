@@ -21,6 +21,7 @@ namespace CIS.Web.Mappings
             Mapper.CreateMap<Menu, MenuViewModel>();
             Mapper.CreateMap<ContactDetail, ContactDetailViewModel>();
             Mapper.CreateMap<Slide, SlideViewModel>();            
+            Mapper.CreateMap<Job, JobViewModel>();            
         }
     }
 }

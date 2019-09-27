@@ -1,7 +1,6 @@
 ﻿var requestController = {
     init: function () {
-        requestController.registerEvents();
-        requestController.loadAllRequests();        
+        requestController.registerEvents();           
     },
 
     registerEvents: function () {

@@ -141,5 +141,15 @@ namespace CIS.Web.Infrastructure.Extensions
             slide.Name = slideVm.Name;
             slide.Image = slideVm.Image;
         }
+
+        //Job
+        public static void UpdateJob(this Job job, JobViewModel jobVm)
+        {
+            job.ID = jobVm.ID;
+            job.Name = jobVm.Name;
+            job.Description = job.Description;
+            job.CreatedDate = jobVm.CreatedDate;
+            job.Status = jobVm.Status;
+        }
     }
 }

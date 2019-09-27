@@ -11,6 +11,10 @@ namespace CIS.Service
 {
     public interface ISlideService
     {
+        Slide Add(Slide slide);
+
+        Slide Delete(int id);
+
         IEnumerable<Slide> GetAll();
 
         Slide GetById(int id);
@@ -29,6 +33,17 @@ namespace CIS.Service
         {
             _slideRepository = slideRepository;
             _unitOfWork = unitOfWork;
+        }
+
+        public Slide Add(Slide slide)
+        {
+            return _slideRepository.Add(slide);
+        }
+
+        public Slide Delete(int id)
+        {
+            var slide = _slideRepository.GetSingleById(id);
+            return _slideRepository.Delete(slide);
         }
 
         public IEnumerable<Slide> GetAll()
