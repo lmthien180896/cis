@@ -1,0 +1,11 @@
+﻿.job-table {
+    border: 2px solid black;    
+}
+    .job-table td  {
+        border: 2px solid black;
+    }
+
+    .job-table thead {
+        background-color: #8F237F;
+        color: white;
+    }

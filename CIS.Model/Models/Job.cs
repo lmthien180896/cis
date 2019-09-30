@@ -25,5 +25,7 @@ namespace CIS.Model.Models
         public DateTime? CreatedDate { get; set; }
 
         public bool Status { get; set; }
+
+        public virtual IEnumerable<Applicant> Applicants { set; get; }
     }
 }

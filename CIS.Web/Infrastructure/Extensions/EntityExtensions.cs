@@ -147,9 +147,33 @@ namespace CIS.Web.Infrastructure.Extensions
         {
             job.ID = jobVm.ID;
             job.Name = jobVm.Name;
-            job.Description = job.Description;
+            job.Description = jobVm.Description;
             job.CreatedDate = jobVm.CreatedDate;
             job.Status = jobVm.Status;
+        }
+
+        //Feedback
+        public static void UpdateFeedback(this Feedback feedback, FeedbackViewModel feedbackVm)
+        {
+            feedback.ID = feedbackVm.ID;
+            feedback.Name = feedbackVm.Name;
+            feedback.Email = feedbackVm.Email;
+            feedback.Phone = feedbackVm.Phone;
+            feedback.Unit = feedbackVm.Unit;
+            feedback.Message = feedbackVm.Message;
+            feedback.CreatedDate = feedbackVm.CreatedDate;
+            feedback.Status = feedbackVm.Status;
+        }
+
+        //Applicant
+        public static void UpdateApplicant(this Applicant applicant, ApplicantViewModel applicantVm)
+        {
+            applicant.ID = applicantVm.ID;
+            applicant.Fullname = applicantVm.Fullname;
+            applicant.Email = applicantVm.Email;
+            applicant.Phone = applicantVm.Phone;
+            applicant.CreatedDate = applicantVm.CreatedDate;
+            applicant.JobID = applicantVm.JobID;            
         }
     }
 }

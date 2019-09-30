@@ -53,3 +53,8 @@ C:\Users\Thien\Desktop\LeMinhThien\Git\cis\CIS.Data\obj\Debug\CIS.Data.Migration
 C:\Users\Thien\Desktop\LeMinhThien\Git\cis\CIS.Data\obj\Debug\CIS.Data.Migrations.removeEmptyBool.resources
 C:\Users\Thien\Desktop\LeMinhThien\Git\cis\CIS.Data\obj\Debug\CIS.Data.Migrations.updateRequestReport.resources
 C:\Users\Thien\Desktop\LeMinhThien\Git\cis\CIS.Data\obj\Debug\CIS.Data.Migrations.addJob.resources
+C:\Users\Thien\Desktop\LeMinhThien\Git\cis\CIS.Data\obj\Debug\CIS.Data.Migrations.addFeedback.resources
+C:\Users\Thien\Desktop\LeMinhThien\Git\cis\CIS.Data\obj\Debug\CIS.Data.Migrations.addUnitFiled.resources
+C:\Users\Thien\Desktop\LeMinhThien\Git\cis\CIS.Data\obj\Debug\CIS.Data.Migrations.addPhoneField.resources
+C:\Users\Thien\Desktop\LeMinhThien\Git\cis\CIS.Data\obj\Debug\CIS.Data.Migrations.addApplicant.resources
+C:\Users\Thien\Desktop\LeMinhThien\Git\cis\CIS.Data\obj\Debug\CIS.Data.Migrations.addCreatedDate.resources

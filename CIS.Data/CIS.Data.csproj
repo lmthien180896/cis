@@ -91,6 +91,27 @@
     <Compile Include="Migrations\201909270234435_addJob.Designer.cs">
       <DependentUpon>201909270234435_addJob.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201909270411061_addFeedback.cs" />
+    <Compile Include="Migrations\201909270411061_addFeedback.Designer.cs">
+      <DependentUpon>201909270411061_addFeedback.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201909270412249_addUnitFiled.cs" />
+    <Compile Include="Migrations\201909270412249_addUnitFiled.Designer.cs">
+      <DependentUpon>201909270412249_addUnitFiled.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201909270416389_addPhoneField.cs" />
+    <Compile Include="Migrations\201909270416389_addPhoneField.Designer.cs">
+      <DependentUpon>201909270416389_addPhoneField.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201909270639356_addApplicant.cs" />
+    <Compile Include="Migrations\201909270639356_addApplicant.Designer.cs">
+      <DependentUpon>201909270639356_addApplicant.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201909270642052_addCreatedDate.cs" />
+    <Compile Include="Migrations\201909270642052_addCreatedDate.Designer.cs">
+      <DependentUpon>201909270642052_addCreatedDate.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Repositories\ApplicantRepository.cs" />
     <Compile Include="Repositories\ContactDetailRepository.cs" />
     <Compile Include="Repositories\CredentialRepository.cs" />
     <Compile Include="Repositories\ErrorRepository.cs" />
@@ -113,6 +134,7 @@
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Repositories\FeedbackRepository.cs" />
     <Compile Include="Repositories\FooterRepository.cs" />
     <Compile Include="Repositories\JobRepository.cs" />
     <Compile Include="Repositories\MenuRepository.cs" />
@@ -181,6 +203,21 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201909270234435_addJob.resx">
       <DependentUpon>201909270234435_addJob.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201909270411061_addFeedback.resx">
+      <DependentUpon>201909270411061_addFeedback.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201909270412249_addUnitFiled.resx">
+      <DependentUpon>201909270412249_addUnitFiled.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201909270416389_addPhoneField.resx">
+      <DependentUpon>201909270416389_addPhoneField.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201909270639356_addApplicant.resx">
+      <DependentUpon>201909270639356_addApplicant.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201909270642052_addCreatedDate.resx">
+      <DependentUpon>201909270642052_addCreatedDate.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

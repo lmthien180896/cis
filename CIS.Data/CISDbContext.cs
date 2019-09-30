@@ -32,6 +32,8 @@ namespace CIS.Data
         public DbSet<User> Users { get; set; }
         public DbSet<UserGroup> UserGroups { get; set; }
         public DbSet<VisitorStatistic> VisitorStatistics { get; set; }
+        public DbSet<Feedback> Feedbacks { get; set; }
+        public DbSet<Applicant> Applicants { get; set; }        
 
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {

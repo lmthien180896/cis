@@ -152,7 +152,9 @@
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="App_Start\Startup.cs" />
     <Compile Include="Areas\Admin\AdminAreaRegistration.cs" />
+    <Compile Include="Areas\Admin\Controllers\ApplicantController.cs" />
     <Compile Include="Areas\Admin\Controllers\BaseController.cs" />
+    <Compile Include="Areas\Admin\Controllers\FeedbackController.cs" />
     <Compile Include="Areas\Admin\Controllers\FooterController.cs" />
     <Compile Include="Areas\Admin\Controllers\HomeController.cs" />
     <Compile Include="Areas\Admin\Controllers\LoginController.cs" />
@@ -171,7 +173,7 @@
     <Compile Include="Controllers\BaseController.cs" />
     <Compile Include="Controllers\ContactController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
-    <Compile Include="Controllers\RecruitmentController.cs" />
+    <Compile Include="Controllers\JobController.cs" />
     <Compile Include="Controllers\RequestController.cs" />
     <Compile Include="Controllers\ServiceController.cs" />
     <Compile Include="Global.asax.cs">
@@ -180,10 +182,14 @@
     <Compile Include="Infrastructure\Core\PaginationSet.cs" />
     <Compile Include="Infrastructure\Extensions\EntityExtensions.cs" />
     <Compile Include="Mappings\AutoMapperConfiguration.cs" />
+    <Compile Include="Models\ApplicantViewModel.cs" />
+    <Compile Include="Models\ApplyViewModel.cs" />
     <Compile Include="Models\ContactDetailViewModel.cs" />
+    <Compile Include="Models\FeedbackViewModel.cs" />
     <Compile Include="Models\FooterViewModel.cs" />
     <Compile Include="Models\HomeViewModel.cs" />
     <Compile Include="Models\JobViewModel.cs" />
+    <Compile Include="Models\MailViewModel.cs" />
     <Compile Include="Models\MenuViewModel.cs" />
     <Compile Include="Models\SlideViewModel.cs" />
     <Compile Include="Models\UserGroupViewModel.cs" />
@@ -213,8 +219,11 @@
     <Content Include="Assets\admin\img\favicon.ico" />
     <Content Include="Assets\admin\img\img.jpg" />
     <Content Include="Assets\admin\js\common.js" />
+    <Content Include="Assets\admin\js\controller\applicantController.js" />
+    <Content Include="Assets\admin\js\controller\feedbackController.js" />
     <Content Include="Assets\admin\js\controller\footerController.js" />
     <Content Include="Assets\admin\js\controller\interfaceComponentController.js" />
+    <Content Include="Assets\admin\js\controller\jobController.js" />
     <Content Include="Assets\admin\js\controller\loginController.js" />
     <Content Include="Assets\admin\js\controller\slideController.js" />
     <Content Include="Assets\admin\libs\mustache.min.js" />
@@ -4822,8 +4831,11 @@
     <Content Include="Assets\client\CIS-pro\images\slider\sl1.jpg" />
     <Content Include="Assets\client\CIS-pro\images\slider\sl2.jpeg" />
     <Content Include="Assets\client\CIS-pro\images\slider\sl3.jpeg" />
+    <Content Include="Assets\client\css\styles.css" />
+    <Content Include="Assets\client\js\common.js" />
     <Content Include="Assets\client\js\controller\issueController.js" />
     <Content Include="Assets\client\js\controller\requestController.js" />
+    <Content Include="Assets\client\mail-template\confirm_applicant.html" />
     <Content Include="Assets\client\mail-template\confirm_closing_request.html" />
     <Content Include="Assets\client\mail-template\confirm_sending_request.html" />
     <Content Include="Assets\client\mail-template\sending_request_to_team.html" />
@@ -4850,8 +4862,8 @@
     <Folder Include="Areas\Admin\Models\" />
     <Folder Include="Areas\Admin\Views\Base\" />
     <Folder Include="Assets\admin\css\" />
-    <Folder Include="Assets\client\css\" />
     <Folder Include="UploadedFiles\network_files\" />
+    <Folder Include="UploadedFiles\resume\" />
     <Folder Include="UploadedFiles\web_files\" />
     <Folder Include="Views\Base\" />
   </ItemGroup>
@@ -5788,6 +5800,8 @@
     <Content Include="Areas\Admin\Views\Footer\ListFooter.cshtml" />
     <Content Include="Areas\Admin\Views\Slide\ListSlide.cshtml" />
     <Content Include="Areas\Admin\Views\Job\Index.cshtml" />
+    <Content Include="Areas\Admin\Views\Applicant\Index.cshtml" />
+    <Content Include="Areas\Admin\Views\Feedback\Index.cshtml" />
     <None Include="packages.config" />
     <Content Include="Resources\gentelella-master.zip" />
     <Content Include="Views\Shared\Error.cshtml" />
@@ -5805,7 +5819,7 @@
     <Content Include="Views\Service\System.cshtml" />
     <Content Include="Views\Service\Design.cshtml" />
     <Content Include="Views\Home\AboutUs.cshtml" />
-    <Content Include="Views\Recruitment\Index.cshtml" />
+    <Content Include="Views\Job\Index.cshtml" />
     <Content Include="Views\RequestFunctions\ViewDetail.cshtml" />
     <Content Include="Views\RequestFunctions\EnterCode.cshtml" />
     <Content Include="Views\News\Index.cshtml" />
@@ -5814,6 +5828,7 @@
     <Content Include="Views\Error\NotFound.cshtml" />
     <Content Include="Views\Notification\ViewNotification.cshtml" />
     <Content Include="Views\Shared\Services.cshtml" />
+    <Content Include="Views\Job\ApplyView.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\CIS.Common\CIS.Common.csproj">

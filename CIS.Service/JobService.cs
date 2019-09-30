@@ -19,6 +19,8 @@ namespace CIS.Service
 
         IEnumerable<Job> GetAll();
 
+        IEnumerable<Job> GetAllAvailable();
+
         Job GetById(int id);
     
 
@@ -49,6 +51,11 @@ namespace CIS.Service
         public IEnumerable<Job> GetAll()
         {
             return _jobRepository.GetAll();
+        }
+
+        public IEnumerable<Job> GetAllAvailable()
+        {
+            return _jobRepository.GetMulti(x => x.Status).OrderBy(x => x.CreatedDate);
         }        
 
         public Job GetById(int id)

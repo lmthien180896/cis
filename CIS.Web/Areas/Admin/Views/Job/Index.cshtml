@@ -6,8 +6,12 @@
 
 
 @section js{
-
     <script src="~/Assets/admin/js/controller/jobController.js"></script>
+    <script>
+        var txtDescription = CKEDITOR.replace('txtDescription', {
+            customConfig: '/Assets/admin/libs/ckeditor/config.js'
+        });
+    </script>
 }
 
 <h2>Danh sách vị trí</h2>
@@ -29,6 +33,7 @@
                                     <th class="sorting_asc" tabindex="0" aria-controls="datatable" rowspan="1" colspan="1" aria-sort="ascending" aria-label="RequestCategory: activate to sort column descending" style="width: 10px;">ID</th>
                                     <th class="sorting_asc" tabindex="0" aria-controls="datatable" rowspan="1" colspan="1" aria-sort="ascending" aria-label="Status: activate to sort column descending" style="width: 100px;">Tên vị trí</th>
                                     <th class="sorting_asc" tabindex="0" aria-controls="datatable" rowspan="1" colspan="1" aria-sort="ascending" aria-label="Status: activate to sort column descending" style="width: 300px;">Mô tả</th>
+                                    <th class="sorting_asc" tabindex="0" aria-controls="datatable" rowspan="1" colspan="1" aria-sort="ascending" aria-label="Status: activate to sort column descending" style="width: 20px;">Trạng thái</th>
                                     <th class="sorting_asc" tabindex="0" aria-controls="datatable" rowspan="1" colspan="1" aria-sort="ascending" aria-label="Status: activate to sort column descending" style="width: 50px;"></th>
                                 </tr>
                             </thead>
@@ -38,7 +43,8 @@
                                     <tr>
                                         <td>@job.ID</td>
                                         <td>@job.Name</td>
-                                        <td>@job.Description</td>
+                                        <td>@Html.Raw(job.Description)</td>
+                                        <td>@Html.Raw(job.Status ? "<span class='btn btn-success btn-sm'>Activated</span>" : "<span class='btn btn-danger btn-sm'>Locked</span>")</td>
                                         <td>
                                             <a href="#" data-id="@job.ID" class="btn btn-info btn-xs btnUpdate"><i class="fa fa-edit"> Edit</i></a>
                                             <a href="#" data-id="@job.ID" class="btn btn-danger btn-xs btnDelete"><i class="fa fa-trash"> Delete</i></a>
@@ -56,7 +62,7 @@
 
 <!-- Modal -->
 <div id="modalAddUpdate" class="modal fade" role="dialog">
-    <div class="modal-dialog">
+    <div class="modal-dialog modal-lg">
         <!-- Modal content-->
         <div class="modal-content">
             <div class="modal-header">
@@ -72,7 +78,16 @@
                     </div>
                     <div class="item form-group">
                         <label class="control-label" for="name">Mô tả</label>
-                        <textarea id="txtDescription"></textarea>
+                        <textarea id="txtDescription" required="required"></textarea>
+                    </div>
+                    <div class="item form-group">
+                        <label class="col-sm-2">Trạng thái</label>
+                        <div >
+                            <label>
+                                <input type="checkbox" id="chkStatus" name="status" value="true"/>
+                                <input name="status" type="hidden" value="false" />
+                            </label>
+                        </div>
                     </div>
                 </form>
             </div>

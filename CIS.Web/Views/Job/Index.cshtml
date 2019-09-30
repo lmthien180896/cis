@@ -1,0 +1,58 @@
+﻿@model IEnumerable<CIS.Web.Models.JobViewModel>
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+@section title {Tuyển dụng}
+
+@section css {
+    <link href="~/Assets/client/css/styles.css" rel="stylesheet" />
+}
+
+@{Html.RenderAction("Slide", "Home");}
+
+<div id='breadcrumbs-row'>
+    <div class='container'>
+        <div class="row-fluid">
+            <div class="span12">
+                <p class='breadcrumbs'>Bạn đang ở trang: <a href='/tuyen-dung'>Tuyển dụng</a></p>
+            </div>
+        </div>
+    </div>
+</div>
+<br />
+<div class="container">
+    <table class="table table-responsive job-table">
+        <thead>
+            <tr>
+                <td>
+                    Job Title (Vị trí)
+                </td>
+                <td>
+                    Description (Mô tả)
+                </td>
+                <td></td>
+
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var job in Model)
+            {
+                <tr>
+                    <td>
+                        <b>@job.Name</b>
+                    </td>
+                    <td>
+                        @Html.Raw(job.Description)
+                    </td>
+                    <td>
+                        <a href="/form-tuyen-dung/@job.ID" class="btn btn-primary">Apply</a>
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+</div>
+
+

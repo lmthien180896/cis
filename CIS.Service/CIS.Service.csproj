@@ -42,8 +42,10 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="ApplicantService.cs" />
     <Compile Include="ContactDetailService.cs" />
     <Compile Include="ErrorService.cs" />
+    <Compile Include="FeedbackService.cs" />
     <Compile Include="FooterService.cs" />
     <Compile Include="JobService.cs" />
     <Compile Include="MenuService.cs" />

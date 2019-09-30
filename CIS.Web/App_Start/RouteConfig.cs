@@ -14,9 +14,16 @@ namespace CIS.Web
             routes.IgnoreRoute("{resource}.axd/{*pathInfo}");
 
             routes.MapRoute(
+               name: "Apply Job",
+               url: "form-tuyen-dung/{id}",
+               defaults: new { controller = "Job", action = "ApplyView", id = UrlParameter.Optional },
+               namespaces: new[] { "CIS.Web.Controllers" }
+            );
+
+            routes.MapRoute(
                name: "Recruit",
                url: "tuyen-dung",
-               defaults: new { controller = "Recruitment", action = "Index", id = UrlParameter.Optional },
+               defaults: new { controller = "Job", action = "Index", id = UrlParameter.Optional },
                namespaces: new[] { "CIS.Web.Controllers" }
             );
 
@@ -29,7 +36,7 @@ namespace CIS.Web
 
             routes.MapRoute(
                name: "Contact",
-               url: "lien-lac",
+               url: "lien-he",
                defaults: new { controller = "Contact", action = "Index", id = UrlParameter.Optional },
                namespaces: new[] { "CIS.Web.Controllers" }
             );

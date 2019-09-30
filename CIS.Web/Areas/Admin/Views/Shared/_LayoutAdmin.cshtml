@@ -23,11 +23,9 @@
     <!-- iCheck -->
     <link href="~/Assets/admin/vendors/iCheck/skins/flat/green.css" rel="stylesheet">
     <!-- Select2 -->
-    <link href="~/Assets/admin/vendors/select2/dist/css/select2.min.css" rel="stylesheet">
-    <!-- validator -->
-    <script src="~/Assets/admin/vendors/validator/validator.js"></script>
+    <link href="~/Assets/admin/vendors/select2/dist/css/select2.min.css" rel="stylesheet">    
     <!-- Switchery -->
-    <script src="~/Assets/admin/vendors/switchery/dist/switchery.min.js"></script>
+    <link href="~/Assets/admin/vendors/switchery/dist/switchery.css" rel="stylesheet" />
     <!-- starrr -->
     <link href="~/Assets/admin/vendors/starrr/dist/starrr.css" rel="stylesheet">
     <!-- toastr -->
@@ -110,16 +108,20 @@
                                     </ul>
                                 </li>
                                 <li>
+                                    <a><i class="fa fa-user-plus"></i> Tuyển dụng <span class="fa fa-chevron-down"></span></a>
+                                    <ul class="nav child_menu">
+                                        <li><a href="/Admin/Job/Index">Job</a></li>
+                                        <li><a href="/Admin/Applicant/Index">Applicant</a></li>
+                                    </ul>
+                                </li>
+                                <li>
+                                    <a href="/Admin/Feedback/Index"><i class="fa fa-comments"></i> Góp ý</a>
+                                </li>
+                                <li>
                                     <a><i class="fa fa-puzzle-piece"></i> Giao diện <span class="fa fa-chevron-down"></span></a>
                                     <ul class="nav child_menu">
                                         <li><a href="/Admin/Footer/ListFooter">Footer</a></li>
                                         <li><a href="/Admin/Slide/ListSlide">Slides</a></li>
-                                    </ul>
-                                </li>
-                                <li>
-                                    <a><i class="fa fa-user-plus"></i> Tuyển dụng <span class="fa fa-chevron-down"></span></a>
-                                    <ul class="nav child_menu">
-                                        <li><a href="/Admin/Job/Index">Danh sách vị trí</a></li>
                                     </ul>
                                 </li>
                             </ul>
@@ -311,6 +313,13 @@
     <script src="~/Assets/admin/vendors/pdfmake/build/vfs_fonts.js"></script>
     <!-- iCheck -->
     <script src="~/Assets/admin/vendors/iCheck/icheck.min.js"></script>
+    <!-- jQuery Tags Input -->
+    <script src="~/Assets/admin/vendors/jquery.tagsinput/src/jquery.tagsinput.js"></script>
+    <!--Switchery-->
+    <script src="~/Assets/admin/vendors/switchery/dist/switchery.js"></script>
+    <!--CKEditor & CKFinder-->
+    <script src="~/Assets/admin/libs/ckeditor/ckeditor.js"></script>
+    <script src="~/Assets/admin/libs/ckfinder/ckfinder.js"></script>
     @RenderSection("js", required: false)
     <!-- Custom Theme Scripts -->
     <script src="~/Assets/admin/build/js/custom.min.js"></script>

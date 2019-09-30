@@ -1,10 +1,6 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace CIS.Model.Models
 {
@@ -22,10 +18,14 @@ namespace CIS.Model.Models
         [StringLength(250)]
         public string Email { set; get; }
 
+        [StringLength(250)]
+        public string Phone { set; get; }
+
         [StringLength(500)]
         public string Message { set; get; }
 
-
+        [Required]        
+        public string Unit { get; set; }
 
         public DateTime CreatedDate { set; get; }
 

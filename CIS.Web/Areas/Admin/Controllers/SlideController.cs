@@ -68,23 +68,23 @@ namespace CIS.Web.Areas.Admin.Controllers
         [HttpPost]
         [HasCredential(RoleID = "CRUD_UI")]
         public JsonResult AddOrUpdate(string model)
-         {
+        {
             JavaScriptSerializer serializer = new JavaScriptSerializer();
             var slideViewModel = serializer.Deserialize<SlideViewModel>(model);
             Slide slide = new Slide();
             slide.UpdateSlide(slideViewModel);
             if (slide.ID == 0)
             {
-                var newSlideService = _slideService.Add(slide);
+                _slideService.Add(slide);
                 _slideService.SaveChanges();
-                SetAlert("success", "Tạo thành công loại yêu cầu.");
+                SetAlert("success", "Tạo thành công slide.");
                 return Json(new
                 {
                     status = true
                 });
             }
             else
-            {               
+            {
                 _slideService.Update(slide);
                 _slideService.SaveChanges();
                 SetAlert("success", "Chỉnh sửa thành công slide.");
