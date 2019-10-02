@@ -1,0 +1,16 @@
+C:\Users\Thien\Desktop\LeMinhThien\Git\cis\CIS.Model\bin\Release\CIS.Model.dll.config
+C:\Users\Thien\Desktop\LeMinhThien\Git\cis\CIS.Model\bin\Release\CIS.Model.dll
+C:\Users\Thien\Desktop\LeMinhThien\Git\cis\CIS.Model\bin\Release\CIS.Model.pdb
+C:\Users\Thien\Desktop\LeMinhThien\Git\cis\CIS.Model\bin\Release\CIS.Common.dll
+C:\Users\Thien\Desktop\LeMinhThien\Git\cis\CIS.Model\bin\Release\EntityFramework.dll
+C:\Users\Thien\Desktop\LeMinhThien\Git\cis\CIS.Model\bin\Release\EntityFramework.SqlServer.dll
+C:\Users\Thien\Desktop\LeMinhThien\Git\cis\CIS.Model\bin\Release\System.Web.Mvc.dll
+C:\Users\Thien\Desktop\LeMinhThien\Git\cis\CIS.Model\bin\Release\CIS.Common.pdb
+C:\Users\Thien\Desktop\LeMinhThien\Git\cis\CIS.Model\bin\Release\EntityFramework.xml
+C:\Users\Thien\Desktop\LeMinhThien\Git\cis\CIS.Model\bin\Release\EntityFramework.SqlServer.xml
+C:\Users\Thien\Desktop\LeMinhThien\Git\cis\CIS.Model\bin\Release\System.Web.Mvc.xml
+C:\Users\Thien\Desktop\LeMinhThien\Git\cis\CIS.Model\obj\Release\CIS.Model.csprojAssemblyReference.cache
+C:\Users\Thien\Desktop\LeMinhThien\Git\cis\CIS.Model\obj\Release\CIS.Model.csproj.CoreCompileInputs.cache
+C:\Users\Thien\Desktop\LeMinhThien\Git\cis\CIS.Model\obj\Release\CIS.Model.csproj.CopyComplete
+C:\Users\Thien\Desktop\LeMinhThien\Git\cis\CIS.Model\obj\Release\CIS.Model.dll
+C:\Users\Thien\Desktop\LeMinhThien\Git\cis\CIS.Model\obj\Release\CIS.Model.pdb

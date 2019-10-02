@@ -68,6 +68,7 @@ namespace CIS.Web.Areas.Admin.Controllers
             {
                 User newUser = new User();
                 newUser.UpdateUser(userViewModel);
+                newUser.Password = Encryptor.MD5Hash(newUser.Password);
                 _userService.Add(newUser);
                 _userService.SaveChanges();
                 SetAlert("success", newUser.Username + " đã được thêm mới.");
@@ -86,6 +87,7 @@ namespace CIS.Web.Areas.Admin.Controllers
             }
             User updatedUser = new User();
             updatedUser.UpdateUser(userViewModel);
+            updatedUser.Password = Encryptor.MD5Hash(updatedUser.Password);
             _userService.Update(updatedUser);
             _userService.SaveChanges();
             SetAlert("success", updatedUser.Username + " đã được chỉnh sửa.");

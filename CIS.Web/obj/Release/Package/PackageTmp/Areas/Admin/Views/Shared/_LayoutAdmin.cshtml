@@ -1,0 +1,330 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <!-- Meta, title, CSS, favicons, etc. -->
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="icon" href="~/Asssets/admin/img/favicon.ico" type="image/ico" />
+
+    <title>Trang quản trị</title>
+
+    <!-- Bootstrap -->
+    <link href="~/Assets/admin/vendors/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Jquery -->
+    <script src="~/Assets/admin/vendors/jquery/dist/jquery.js"></script>
+    <!-- Font Awesome -->
+    <link href="~/Assets/admin/vendors/font-awesome/css/font-awesome.min.css" rel="stylesheet">
+    <!-- bootstrap-daterangepicker -->
+    <link href="~/Assets/admin/vendors/bootstrap-daterangepicker/daterangepicker.css" rel="stylesheet">
+    <!-- NProgress -->
+    <link href="~/Assets/admin/vendors/nprogress/nprogress.css" rel="stylesheet">
+    <!-- iCheck -->
+    <link href="~/Assets/admin/vendors/iCheck/skins/flat/green.css" rel="stylesheet">
+    <!-- Select2 -->
+    <link href="~/Assets/admin/vendors/select2/dist/css/select2.min.css" rel="stylesheet">    
+    <!-- Switchery -->
+    <link href="~/Assets/admin/vendors/switchery/dist/switchery.css" rel="stylesheet" />
+    <!-- starrr -->
+    <link href="~/Assets/admin/vendors/starrr/dist/starrr.css" rel="stylesheet">
+    <!-- toastr -->
+    <link href="~/Assets/admin/libs/toastr/toastr.css" rel="stylesheet" />
+    <!-- DataTable -->
+    <link href="~/Assets/admin/vendors/datatables.net-bs/css/dataTables.bootstrap.min.css" rel="stylesheet">
+    <link href="~/Assets/admin/vendors/datatables.net-buttons-bs/css/buttons.bootstrap.min.css" rel="stylesheet">
+    <link href="~/Assets/admin/vendors/datatables.net-fixedheader-bs/css/fixedHeader.bootstrap.min.css" rel="stylesheet">
+    <link href="~/Assets/admin/vendors/datatables.net-responsive-bs/css/responsive.bootstrap.min.css" rel="stylesheet">
+    <link href="~/Assets/admin/vendors/datatables.net-scroller-bs/css/scroller.bootstrap.min.css" rel="stylesheet">
+    <!-- mustache -->
+    <script src="~/Assets/admin/libs/mustache.min.js"></script>
+    <!-- Custom Theme Style -->
+    <link href="~/Assets/admin/build/css/custom.min.css" rel="stylesheet">
+    @RenderSection("css", required: false)
+</head>
+
+<body class="nav-md">
+    <div class="container body">
+        <div class="main_container">
+            <div class="col-md-3 left_col">
+                <div class="left_col scroll-view">
+                    <div class="navbar nav_title" style="border: 0;">
+                        <a href="index.html" class="site_title"><i class="fa fa-paw"></i> <span>CIS Dashboard</span></a>
+                    </div>
+
+                    <div class="clearfix"></div>
+
+                    <!-- menu profile quick info -->
+                    <div class="profile clearfix">
+                        <div class="profile_pic">
+                            <img src="~/Assets/admin/img/img.jpg" alt="..." class="img-circle profile_img">
+                        </div>
+                        <div class="profile_info">
+                            <span>Welcome,</span>
+                            <h2>@TempData["Username"]</h2>
+                        </div>
+                    </div>
+                    <!-- /menu profile quick info -->
+
+                    <br />
+
+                    <!-- sidebar menu -->
+                    <div id="sidebar-menu" class="main_menu_side hidden-print main_menu">
+                        <div class="menu_section">
+                            <h3>General</h3>
+                            <ul class="nav side-menu">
+                                <li>
+                                    <a><i class="fa fa-home"></i> Trang chủ</a>
+                                </li>
+                                <li>
+                                    <a><i class="fa fa-user"></i> Người dùng, quyền <span class="fa fa-chevron-down"></span></a>
+                                    <ul class="nav child_menu">
+                                        <li><a href="/Admin/User/Index">Danh sách người dùng</a></li>
+                                        <li><a href="/Admin/User/CreateView">Thêm mới người dùng</a></li>
+                                        <li><a href="/Admin/UserGroup/Index">Nhóm người dùng</a></li>
+                                        <li><a href="/Admin/Role/Index">Danh sách quyền</a></li>
+                                    </ul>
+                                </li>
+                                <li>
+                                    <a><i class="fa fa-newspaper-o"></i> Bài đăng <span class="fa fa-chevron-down"></span></a>
+                                    <ul class="nav child_menu">
+                                        <li><a href="/Admin/Post/Index">Danh sách bài đăng</a></li>
+                                        <li><a href="/Admin/Post/CreateView">Thêm mới bài đăng</a></li>
+                                    </ul>
+                                </li>
+                                <li>
+                                    <a><i class="fa fa-exclamation-triangle"></i> Yêu cầu <span class="fa fa-chevron-down"></span></a>
+                                    <ul class="nav child_menu">
+                                        <li><a href="/Admin/RequestCategory/Index">Loại yêu cầu</a></li>
+                                        <li>
+                                            <a>Yêu cầu<span class="fa fa-chevron-down"></span></a>
+                                            <ul class="nav child_menu">
+                                                <li><a href="/Admin/Request/Index">Danh sách yêu cầu</a></li>
+                                                <li><a href="/Admin/Request/WaitingQueue">Đang chờ xử lí</a></li>
+                                                <li><a href="/Admin/Request/SupportingQueue">Đang xử lí</a></li>
+                                                <li><a href="/Admin/Request/CompletedQueue">Hoàn thành</a></li>
+                                            </ul>
+                                        </li>
+                                    </ul>
+                                </li>
+                                <li>
+                                    <a><i class="fa fa-user-plus"></i> Tuyển dụng <span class="fa fa-chevron-down"></span></a>
+                                    <ul class="nav child_menu">
+                                        <li><a href="/Admin/Job/Index">Job</a></li>
+                                        <li><a href="/Admin/Applicant/Index">Applicant</a></li>
+                                    </ul>
+                                </li>
+                                <li>
+                                    <a href="/Admin/Feedback/Index"><i class="fa fa-comments"></i> Góp ý</a>
+                                </li>
+                                <li>
+                                    <a><i class="fa fa-puzzle-piece"></i> Giao diện <span class="fa fa-chevron-down"></span></a>
+                                    <ul class="nav child_menu">
+                                        <li><a href="/Admin/Footer/ListFooter">Footer</a></li>
+                                        <li><a href="/Admin/Slide/ListSlide">Slides</a></li>
+                                    </ul>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                    <!-- /sidebar menu -->
+                    <!-- /menu footer buttons -->
+                    <div class="sidebar-footer hidden-small">
+                        <a data-toggle="tooltip" data-placement="top" title="Settings">
+                            <span class="glyphicon glyphicon-cog" aria-hidden="true"></span>
+                        </a>
+                        <a data-toggle="tooltip" data-placement="top" title="FullScreen">
+                            <span class="glyphicon glyphicon-fullscreen" aria-hidden="true"></span>
+                        </a>
+                        <a data-toggle="tooltip" data-placement="top" title="Lock">
+                            <span class="glyphicon glyphicon-eye-close" aria-hidden="true"></span>
+                        </a>
+                        <a data-toggle="tooltip" data-placement="top" title="Logout" href="/Admin/Login/Logout">
+                            <span class="glyphicon glyphicon-off" aria-hidden="true"></span>
+                        </a>
+                    </div>
+                    <!-- /menu footer buttons -->
+                </div>
+            </div>
+
+            <!-- top navigation -->
+            <div class="top_nav">
+                <div class="nav_menu">
+                    <nav>
+                        <div class="nav toggle">
+                            <a id="menu_toggle"><i class="fa fa-bars"></i></a>
+                        </div>
+
+                        <ul class="nav navbar-nav navbar-right">
+                            <li class="">
+                                <a href="javascript:;" class="user-profile dropdown-toggle" data-toggle="dropdown" aria-expanded="false">
+                                    <img src="~/Assets/admin/img/img.jpg" alt="">@TempData["Username"]
+                                    <span class=" fa fa-angle-down"></span>
+                                </a>
+                                <ul class="dropdown-menu dropdown-usermenu pull-right">
+                                    <li><a href="javascript:;"> Profile</a></li>
+                                    <li>
+                                        <a href="javascript:;">
+                                            <span class="badge bg-red pull-right">50%</span>
+                                            <span>Settings</span>
+                                        </a>
+                                    </li>
+                                    <li><a href="javascript:;">Help</a></li>
+                                    <li><a href="login.html"><i class="fa fa-sign-out pull-right"></i> Log Out</a></li>
+                                </ul>
+                            </li>
+
+                            <li role="presentation" class="dropdown">
+                                <a href="javascript:;" class="dropdown-toggle info-number" data-toggle="dropdown" aria-expanded="false">
+                                    <i class="fa fa-envelope-o"></i>
+                                    <span class="badge bg-green">6</span>
+                                </a>
+                                <ul id="menu1" class="dropdown-menu list-unstyled msg_list" role="menu">
+                                    <li>
+                                        <a>
+                                            <span class="image"><img src="~/Assets/admin/img/img.jpg" alt="Profile Image" /></span>
+                                            <span>
+                                                <span>John Smith</span>
+                                                <span class="time">3 mins ago</span>
+                                            </span>
+                                            <span class="message">
+                                                Film festivals used to be do-or-die moments for movie makers. They were where...
+                                            </span>
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a>
+                                            <span class="image"><img src="~/Assets/admin/img/img.jpg" alt="Profile Image" /></span>
+                                            <span>
+                                                <span>John Smith</span>
+                                                <span class="time">3 mins ago</span>
+                                            </span>
+                                            <span class="message">
+                                                Film festivals used to be do-or-die moments for movie makers. They were where...
+                                            </span>
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a>
+                                            <span class="image"><img src="~/Assets/admin/img/img.jpg" alt="Profile Image" /></span>
+                                            <span>
+                                                <span>John Smith</span>
+                                                <span class="time">3 mins ago</span>
+                                            </span>
+                                            <span class="message">
+                                                Film festivals used to be do-or-die moments for movie makers. They were where...
+                                            </span>
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a>
+                                            <span class="image"><img src="~/Assets/admin/img/img.jpg" alt="Profile Image" /></span>
+                                            <span>
+                                                <span>John Smith</span>
+                                                <span class="time">3 mins ago</span>
+                                            </span>
+                                            <span class="message">
+                                                Film festivals used to be do-or-die moments for movie makers. They were where...
+                                            </span>
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <div class="text-center">
+                                            <a>
+                                                <strong>See All Alerts</strong>
+                                                <i class="fa fa-angle-right"></i>
+                                            </a>
+                                        </div>
+                                    </li>
+                                </ul>
+                            </li>
+                        </ul>
+                    </nav>
+                </div>
+            </div>
+            <!-- /top navigation -->
+            <!-- page content -->
+            <div class="right_col" role="main" style="min-height: 1654px;">
+                <!--Notify-->
+                <div class="ui-pnotify  ui-pnotify-fade-normal ui-pnotify-move ui-pnotify-in ui-pnotify-fade-in" aria-live="assertive" aria-role="alertdialog" style="display: none; width: 300px; right: 36px; top: 159px;">
+                    <div class="alert ui-pnotify-container @TempData["AlertType"] ui-pnotify-shadow" role="alert" style="min-height: 16px;">
+                        <div class="ui-pnotify-closer" aria-role="button" tabindex="0" title="Close" style="cursor: pointer; visibility: hidden;">
+                            <span class="glyphicon glyphicon-remove"></span>
+                        </div>
+                        <div class="ui-pnotify-sticker" aria-role="button" aria-pressed="false" tabindex="0" title="Stick" style="cursor: pointer; visibility: hidden;">
+                            <span class="glyphicon glyphicon-pause" aria-pressed="false"></span>
+                        </div>
+                        <div class="ui-pnotify-icon">
+                            <span class="glyphicon @TempData["AlertIcon"]"></span>
+                        </div>
+                        <h4 class="ui-pnotify-title">@TempData["AlertTitle"]</h4>
+                        <div class="ui-pnotify-text" aria-role="alert">@TempData["AlertMessage"]</div>
+                    </div>
+                </div>
+                <!--/Notification toastr-->
+                @if (TempData["AlertMessage"] != null)
+                {
+                    <div id="toast-container" class="toast-top-right hide">
+                        <div class="toast @TempData["AlertType"]" aria-live="polite" style="display: block;">
+                            <div class="toast-message">@TempData["AlertMessage"]</div>
+                        </div>
+                    </div>
+                }
+                @RenderBody()
+            </div>
+            <!-- /page content -->
+            <!-- footer content -->
+            <footer>
+                <div class="pull-right">
+                    CIS &copy; 2019 - Website by <a href="/gioi-thieu" target="_blank">Center for Information Services</a>
+                </div>
+                <div class="clearfix"></div>
+            </footer>
+            <!-- /footer content -->
+        </div>
+    </div>
+
+    <!-- jQuery -->
+    <script src="~/Assets/admin/vendors/jquery/dist/jquery.min.js"></script>
+    <!-- Bootstrap -->
+    <script src="~/Assets/admin/vendors/bootstrap/dist/js/bootstrap.min.js"></script>
+    <!-- FastClick -->
+    <script src="~/Assets/admin/vendors/fastclick/lib/fastclick.js"></script>
+    <!-- DateJS -->
+    <script src="~/Assets/admin/vendors/DateJS/build/date.js"></script>
+    <!-- bootstrap-daterangepicker -->
+    <script src="~/Assets/admin/vendors/moment/min/moment.min.js"></script>
+    <script src="~/Assets/admin/vendors/bootstrap-daterangepicker/daterangepicker.js"></script>
+    <!-- DatatTable -->
+    <script src="~/Assets/admin/vendors/datatables.net/js/jquery.dataTables.min.js"></script>
+    <script src="~/Assets/admin/vendors/datatables.net-bs/js/dataTables.bootstrap.min.js"></script>
+    <script src="~/Assets/admin/vendors/datatables.net-buttons/js/dataTables.buttons.min.js"></script>
+    <script src="~/Assets/admin/vendors/datatables.net-buttons-bs/js/buttons.bootstrap.min.js"></script>
+    <script src="~/Assets/admin/vendors/datatables.net-buttons/js/buttons.flash.min.js"></script>
+    <script src="~/Assets/admin/vendors/datatables.net-buttons/js/buttons.html5.min.js"></script>
+    <script src="~/Assets/admin/vendors/datatables.net-buttons/js/buttons.print.min.js"></script>
+    <script src="~/Assets/admin/vendors/datatables.net-fixedheader/js/dataTables.fixedHeader.min.js"></script>
+    <script src="~/Assets/admin/vendors/datatables.net-keytable/js/dataTables.keyTable.min.js"></script>
+    <script src="~/Assets/admin/vendors/datatables.net-responsive/js/dataTables.responsive.min.js"></script>
+    <script src="~/Assets/admin/vendors/datatables.net-responsive-bs/js/responsive.bootstrap.js"></script>
+    <script src="~/Assets/admin/vendors/datatables.net-scroller/js/dataTables.scroller.min.js"></script>
+    <script src="~/Assets/admin/vendors/jszip/dist/jszip.min.js"></script>
+    <script src="~/Assets/admin/vendors/pdfmake/build/pdfmake.min.js"></script>
+    <script src="~/Assets/admin/vendors/pdfmake/build/vfs_fonts.js"></script>
+    <!-- iCheck -->
+    <script src="~/Assets/admin/vendors/iCheck/icheck.min.js"></script>
+    <!-- jQuery Tags Input -->
+    <script src="~/Assets/admin/vendors/jquery.tagsinput/src/jquery.tagsinput.js"></script>
+    <!--Switchery-->
+    <script src="~/Assets/admin/vendors/switchery/dist/switchery.js"></script>
+    <!--CKEditor & CKFinder-->
+    <script src="~/Assets/admin/libs/ckeditor/ckeditor.js"></script>
+    <script src="~/Assets/admin/libs/ckfinder/ckfinder.js"></script>
+    @RenderSection("js", required: false)
+    <!-- Custom Theme Scripts -->
+    <script src="~/Assets/admin/build/js/custom.min.js"></script>
+    <!-- Common -->
+    <script src="~/Assets/admin/js/common.js"></script>
+    <script src="~/Assets/admin/libs/bootbox.min.js"></script>
+</body>
+</html>

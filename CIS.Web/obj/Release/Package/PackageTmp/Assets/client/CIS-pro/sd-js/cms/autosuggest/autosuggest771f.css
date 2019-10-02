@@ -1,0 +1,118 @@
+#header label{ color:#FFF; }
+
+#header #result, #find_employer #result{
+	height:20px;
+	font-size:16px;
+	font-family:Arial, Helvetica, sans-serif;
+	color:#333;
+	padding:5px;
+	margin-bottom:10px;
+
+
+}
+
+#header .suggestionsBox, #suggestions1 .suggestionsBox {
+	position: absolute;
+	left: 0px;
+	top:13px;
+	margin: 26px 0px 0px 0px;
+	width: 194px;
+	padding:2px 8px 12px 8px;
+	background:url(suggest_bac.png);
+	color: #fff;
+	z-index:10000;
+
+
+}
+
+#header .suggestionsBox, #find_employer .suggestionsBox {
+	position: absolute;
+	left: 0px;
+	top:13px;
+	margin: 26px 0px 0px 0px;
+	width: 194px;
+	padding:2px 8px 12px 8px;
+	background:url(suggest_bac.png);
+	color: #fff;
+	z-index:10000;
+
+}
+
+*+html #header .suggestionsBox, #find_employer .suggestionsBox {	left: 10px;}
+*+html #header .suggestionsBox, #suggestions1 .suggestionsBox {	left: 10px;}
+#header .suggestionsBox img {display:none; }
+
+#header .suggestionList, #find_employer .suggestionList  {
+	margin: 0px;
+	padding: 0px;
+}
+#header .suggestionList ul li, #find_employer .suggestionList ul li  {
+
+	list-style:none;
+
+}
+#header .suggestionList ul li a, #find_employer .suggestionList ul li a{
+	padding: 6px 12px 6px 12px;
+	margin: 0px;
+	color:#FFF;
+	cursor: pointer;
+	font-size:12px;
+	width:164px;
+	display:block;
+	position:relative;
+
+	z-index:2000 !important;
+
+}
+#header .suggestionList ul li a:hover, #find_employer .suggestionList ul li a:hover  {
+
+	text-decoration:none;
+
+}
+#header ul, #find_employer ul {
+	font-family:Arial, Helvetica, sans-serif;
+	font-size:14px;
+	color:#FFF;
+	padding:0;
+	margin:0;
+
+}
+
+#header ul li, #find_employer ul li  {
+
+
+	border-bottom:1px solid #6a6b66;
+}
+
+
+.suggest_div {width:194px; display:block; float:right;  background:#343434; padding:8px 8px 8px 8px;}
+*+html .suggest_div { display:block; float:right;   }
+.suggest_div input { 
+	-moz-box-sizing: border-box;
+	-webkit-box-sizing: border-box;
+	box-sizing: border-box;
+	border: 1px solid #91AED0;
+	color: #999999;
+	padding: 6px;
+	width: 100%;
+	*width:173px;
+}
+
+#header .load, #find_employer .load{
+background-image:url(loader.gif);
+background-position:right;
+background-repeat:no-repeat;
+}
+
+#header #suggest, #find_employer #suggestEmp {
+	position:relative;
+	z-index:300;
+	display:block; 
+	float:right;
+	width:210px;
+	margin:-3px 0px 0px 10px;
+}
+
+
+*html #header #suggest, #find_employer #suggestEmp {width:220px; 	margin:0px 0px 0px 10px;}
+*+html #header #suggest, #find_employer #suggestEmp {width:220px; 	margin:0px 0px 0px 10px;}

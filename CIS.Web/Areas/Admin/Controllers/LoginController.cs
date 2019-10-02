@@ -30,6 +30,7 @@ namespace CIS.Web.Areas.Admin.Controllers
         }
 
         public ActionResult CheckAuthen(User entity) {
+            entity.Password = Encryptor.MD5Hash(entity.Password);
             var checkUser = _userService.CheckAuthen(entity);
             if (checkUser != null)
             {                

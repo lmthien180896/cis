@@ -1,0 +1,97 @@
+﻿@model CIS.Web.Models.RequestViewModel
+@{
+    ViewBag.Title = "ViewDetail";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+@section title {Xem yêu cầu }
+
+<div class="container">
+    <br /><br />
+    <div class="col-md-12 col-sm-12 col-xs-12">
+        <div class="x_panel">
+            <div class="x_title">
+                <h2><i class="fa fa-info-circle"></i> Thông tin chung của yêu cầu</h2>
+            </div>
+            <div class="x_content">
+                <div style="display: flex">
+                    <dt class="col-sm-6" style="text-align:right;">ID: </dt>
+                    <dd class="col-sm-6" style="text-align:left;">@Model.ID</dd>
+                </div>
+
+                <div style="display: flex">
+                    <dt class="col-sm-6" style="text-align:right;">Loại yêu cầu: </dt>
+                    <dd class="col-sm-6" style="text-align:left;">@Model.CategoryName</dd>
+                </div>
+
+                <div style="display: flex">
+                    <dt class="col-sm-6" style="text-align:right;">Chi tiết: </dt>
+                    <dd class="col-sm-6" style="text-align:left;">@Model.Detail</dd>
+                </div>
+
+                <div style="display: flex">
+                    <dt class="col-sm-6" style="text-align:right;">Nơi gửi: </dt>
+                    <dd class="col-sm-6" style="text-align:left;">@Model.Place</dd>
+                </div>
+
+                <div style="display: flex">
+                    <dt class="col-sm-6" style="text-align:right;">Người gửi: </dt>
+                    <dd class="col-sm-6" style="text-align:left;">@Model.SenderName</dd>
+                </div>
+
+                <div style="display: flex">
+                    <dt class="col-sm-6" style="text-align:right;">Email: </dt>
+                    <dd class="col-sm-6" style="text-align:left;">@Model.Email</dd>
+                </div>
+
+                <div style="display: flex">
+                    <dt class="col-sm-6" style="text-align:right;">SĐT: </dt>
+                    <dd class="col-sm-6" style="text-align:left;">@Model.Phone</dd>
+                </div>
+
+                <div style="display: flex">
+                    <dt class="col-sm-6" style="text-align:right;">Ngày gửi: </dt>
+                    <dd class="col-sm-6" style="text-align:left;">@Model.SentDate</dd>
+                </div>
+
+                <div style="display: flex">
+                    <dt class="col-sm-6" style="text-align:right;">Ngày hoàn thành: </dt>
+                    <dd class="col-sm-6" style="text-align:left;">@((Model.ClosedDate.HasValue) ? Model.ClosedDate.Value.ToString("dd MMMM yyyy") : "")</dd>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <br />
+
+    <div class="col-md-12 col-sm-12 col-xs-12">
+        <div class="x_panel">
+            <div class="x_title">
+                <h2>Ghi chú</h2>
+            </div>
+            <div class="x_content">               
+                <table class="table table-striped table-bordered no-footer">
+                    <thead>
+                        <tr>                           
+                            <th class="sorting_asc" tabindex="0" aria-controls="datatable" rowspan="1" colspan="1" aria-sort="ascending" aria-label="RequestCategory: activate to sort column descending" style="width: 100px;">Người viết</th>
+                            <th class="sorting_asc" tabindex="0" aria-controls="datatable" rowspan="1" colspan="1" aria-sort="ascending" aria-label="RequestCategory: activate to sort column descending" style="width: 200px;">Nội dung</th>
+                            <th class="sorting_asc" tabindex="0" aria-controls="datatable" rowspan="1" colspan="1" aria-sort="ascending" aria-label="RequestCategory: activate to sort column descending" style="width: 100px;">Ngày đăng</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @foreach (var report in Model.RequestReports)
+                        {
+                            <tr>                               
+                                <td>@report.SupporterName</td>
+                                <td>@report.Note</td>
+                                <td>@report.CreatedDate.Value.ToString("dd/MM/yyyy")</td>
+                            </tr>
+                        }
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>
+
+

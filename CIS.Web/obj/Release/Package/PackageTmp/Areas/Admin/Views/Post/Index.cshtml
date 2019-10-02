@@ -1,0 +1,78 @@
+﻿@model IEnumerable<CIS.Web.Models.PostViewModel>
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Areas/Admin/Views/Shared/_LayoutAdmin.cshtml";
+}
+
+@section css{
+
+}
+
+@section js{   
+    <script src="~/Assets/admin/js/controller/postController.js"></script>
+}
+
+<h3>Danh sách tin tức</h3>
+<div class="col-md-12 col-sm-12 col-xs-12">
+    <div class="x_panel">
+        <div class="x_title">
+            <h2>Danh sách tin tức</h2>
+            <a class="btn btn-success pull-right" href="/Admin/Post/CreateView"><i class="fa fa-plus"></i> Đăng mới</a>
+            <a class="btn btn-danger pull-right" id="btnDeleteAll" href="#"><i class="fa fa-trash"></i> Xoá</a>
+            <div class="col-md-2 pull-right">
+                <select class="form-control" id="sltFilter">
+                    <option value="0">Tất cả</option>
+                    @foreach (var category in ViewBag.PostCategories)
+                    {
+                        if (category.ID == ViewBag.SelectedCategoryID)
+                        {
+                            <option value="@category.ID" selected>@category.Name</option>
+                        }
+                        else
+                        {
+                            <option value="@category.ID">@category.Name</option>
+                        }
+                    }
+                </select>
+            </div>
+            <div class="clearfix"></div>
+        </div>
+        <div class="x_content">
+            <div id="datatable_wrapper" class="dataTables_wrapper form-inline dt-bootstrap no-footer">
+                <div class="row">
+                    <div class="col-sm-12">
+                        <table id="datatable" class="table table-striped table-bordered dataTable no-footer" role="grid" aria-describedby="datatable_info">
+                            <thead>
+                                <tr role="row">
+                                    <th class="" style="width: 10px;"><input type="checkbox" id="chkAll" /></th>
+                                    <th class="sorting_asc" tabindex="0" aria-controls="datatable" rowspan="1" colspan="1" aria-sort="ascending" aria-label="Title: activate to sort column descending" style="width: 302px;">Tiêu đề</th>
+                                    <th class="sorting_asc" tabindex="0" aria-controls="datatable" rowspan="1" colspan="1" aria-sort="ascending" aria-label="Publisher: activate to sort column descending" style="width: 150px;">Người đăng</th>
+                                    <th class="sorting" tabindex="0" aria-controls="datatable" rowspan="1" colspan="1" aria-label="PublishedDate: activate to sort column ascending" style="width: 153px;">Ngày đăng</th>
+                                    <th class="sorting" tabindex="0" aria-controls="datatable" rowspan="1" colspan="1" aria-label="Status: activate to sort column ascending" style="width: 100px;">Trạng thái</th>
+                                    <th tabindex="0" aria-controls="datatable" rowspan="1" colspan="1" style="width: 80px;"></th>
+                                </tr>
+                            </thead>
+
+                            <tbody>
+                                @foreach (var post in Model)
+                                {
+                                    <tr role="row" class="odd">
+                                        <td><input type="checkbox" class="chkDelete" data-id="@post.ID" /></td>
+                                        <td class="sorting_1">@post.Name</td>
+                                        <td>@(string.IsNullOrEmpty(post.CreatedBy) ? post.UpdatedBy : post.CreatedBy)</td>
+                                        <td>@((post.CreatedDate.HasValue) ? post.CreatedDate.Value.ToString("dd/MM/yyyy") : post.UpdatedDate.Value.ToString("dd/MM/yyyy"))</td>
+                                        <td>@Html.Raw((post.Status) ? "<a href='#' class='btn btn-success btn-xs btnStatus' data-id=" + post.ID + ">Đăng</a>" : "<a href='#' class='btn btn-danger btn-xs btnStatus' data-id=" + post.ID + ">Khoá</a>")</td>
+                                        <td>
+                                            <a href="/Admin/Post/EditView/@post.ID" class="btn btn-info btn-sm"><i class="fa fa-pencil"></i></a>
+                                            <a href="#" data-id="@post.ID" class="btn btn-danger btn-sm btnDelete"><i class="fa fa-trash"></i></a>
+                                        </td>
+                                    </tr>
+                                }
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

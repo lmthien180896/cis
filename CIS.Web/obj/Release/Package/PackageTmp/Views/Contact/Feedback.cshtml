@@ -1,0 +1,105 @@
+﻿@model CIS.Web.Models.ContactDetailViewModel
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+@section title{ Góp ý}
+
+@RenderPage("~/Views/Shared/Banner.cshtml")
+
+<div id='breadcrumbs-row'>
+    <div class='container'>
+        <div class="row-fluid">
+            <div class="span12">
+                <p class='breadcrumbs'>Bạn đang ở trang: <a href='/lien-he'>Liên hệ</a><span class='divider'> / </span> <span>Góp ý</span></p>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- / breadcrumbs-row -->
+<div id="spread" class="contact">
+    <div class="container">        
+        <div class="row-fluid">
+            <div class="span6 offset3">
+                <div class="h1 getintouch">Hộp Thư Góp Ý</div>
+                <div title="Page 1">
+                    <div>
+                        <div>
+                            <p>Nếu bạn có vấn đề cần trao đổi với chúng tôi hãy gửi mail góp ý cho chúng tôi: </p>
+                        </div>
+                    </div>
+                </div>
+                <form name="contactPageForm" id="contactPageForm" action="/Contact/SubmitFeedback" method="post">                    
+                    <div class="field_wrap">
+                        <div class="field_wrap">                           
+                            <div class="input_wrap">
+                                <input type="text" name="name" id="txtName" placeholder="Name (Tên)*" required>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="field_wrap">
+                        <div class="field_wrap">                           
+                            <div class="input_wrap">
+                                <input type="text" name="phone" id="txtPhone" placeholder="Phone (Số điện thoại)*"required>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="field_wrap">
+                        <div class="field_wrap">                           
+                            <div class="input_wrap">
+                                <input type="text" name="email" id="txtEmail" placeholder="Email*"required>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="field_wrap">
+                        <div class="field_wrap">                           
+                            <div class="input_wrap">
+                                <textarea name="message" id="contactPageForm-message" class=" " data-input="message" placeholder="Message (Tin nhắn)*" rows="2" required></textarea>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="field_wrap">
+                        <div class="field_wrap">                            
+                            <div class="input_wrap">
+                                <select name="unit" id="sltUnit" required>
+                                    <option value="">Unit (Đơn vị)*</option>
+                                    <option value="Phòng tổ chức">Phòng tổ chức</option>
+                                    <option value="Khoa">Khoa</option>
+                                    <option value="Ban giám hiệu">Ban giám hiệu</option>
+                                    <option value="Sinh viên">Sinh viên</option>
+                                </select>
+                            </div>
+                        </div>
+                    </div>                   
+                    <div class="submit_wrap">
+                        <button type="submit" class="">SEND FEEDBACK / GỬI GÓP Ý</button>
+                    </div>
+                </form>
+                <p class="contact-note"> * Chúng tôi sẽ phản hồi yêu cầu của bạn sớm nhất </p>
+            </div>
+        </div>
+    </div>
+    <!-- / container -->
+
+
+    <div class="contact-items-wrap">
+        <div class="container">
+            <div class="h1">Địa chỉ Liên hệ</div>
+            <div class="row-fluid no-gutter">
+                <!-- <div class="span3 contact-item"> -->
+                <div class="span12">
+                    <p>
+                        <a href="#" target="_blank">
+                            <iframe src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d15672.526878588902!2d106.8016196!3d10.8775848!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x550c2b41569376f9!2zVHLGsOG7nW5nIMSQ4bqhaSBo4buNYyBRdeG7kWMgVOG6vyAtIMSQ4bqhaSBo4buNYyBRdeG7kWMgZ2lhIFRQLkhDTQ!5e0!3m2!1svi!2s!4v1562636725153!5m2!1svi!2s" width="600" height="450" frameborder="0" style="border:0" allowfullscreen></iframe>
+                        </a>
+                    </p>
+                    <h5>Trung Tâm Dịch Vụ Công Nghệ Thông Tin </h5>
+                    <p>
+                        Phòng A1.312,<br /> Khu phố 6, P.Linh Trung, Q. Thủ Đức, TP.HCM
+                    </p><a href="https://goo.gl/maps/ngkEUfurrWrTRsb19" target="_blank">Chọn đường đi trực tiếp google map</a>
+                </div>
+            </div>
+        </div><!-- / container -->
+    </div>
+</div><!-- / contact-items-wrap -->

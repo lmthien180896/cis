@@ -1,0 +1,49 @@
+﻿@model CIS.Web.Models.PostViewModel
+@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+@section title {
+    @Model.Name
+}
+
+@{Html.RenderAction("Slide", "Home");}
+
+<div id='breadcrumbs-row'>
+    <div class='container'>
+        <div class="row-fluid">
+            <div class="span12">
+                <p class='breadcrumbs'>Bạn đang ở trang: <a href='/thong-bao' title='Thông báo'>Thông báo</a> <span class='divider'>/</span> <span>@Model.Name</span></p>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div id="spread">
+    <div class="container">
+        <div class="row-fluid">
+            <div class="span3">
+                <div id="sidenav" class="sidebar">
+                    <div id="info-box">
+                        <a>Thông báo</a>
+                    </div>
+                    <hr>
+
+                    @RenderPage("~/Views/Shared/Services.cshtml")
+                </div>
+            </div>
+            <div class="span9">
+                <div id="news-wrap">
+                    <div class="title">
+                        <h1>@Model.Name</h1>
+                    </div>
+                    @Html.Raw(Model.Content)
+                    <!--end content--->
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- / container -->
+
+</div>
+<!-- / spread end -->

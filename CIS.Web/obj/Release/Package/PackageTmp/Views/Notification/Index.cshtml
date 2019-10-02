@@ -1,0 +1,88 @@
+﻿@model CIS.Web.Infrastructure.Core.PaginationSet<CIS.Web.Models.PostViewModel>
+@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+@section title {
+    Thông báo
+}
+
+@{Html.RenderAction("Slide", "Home");}
+
+<div id='breadcrumbs-row'>
+    <div class='container'>
+        <div class="row-fluid">
+            <div class="span10">
+                <p class='breadcrumbs'>Bạn đang ở trang: <a href='/thong-bao'>Thông báo</a></p>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- / breadcrumbs-row -->
+<!--Spread begin-->
+<div id="spread">
+    <div class="container">
+        <div class="row-fluid">
+            <div class="span3">
+                <div id="sidenav" class="sidebar">
+                    <div id="info-box">
+                        <a>Thông báo</a>
+                    </div>
+                    <hr />
+                    @RenderPage("~/Views/Shared/Services.cshtml")
+                </div>
+            </div>
+            <div class="span9">
+                <div id="news-wrap">
+                    <div class="title">
+                        <h1>Thông báo </h1>
+                    </div>
+                    @if (Model.Count > 0)
+                    {
+                        foreach (var post in Model.Items)
+                        {
+                            <div class="span12">
+                                <i class="fa fa-circle-o"></i><a href="/thong-bao/@post.Alias-@post.ID"><h5>@post.Name <span style="color: darkred">(@((post.UpdatedDate != null) ? post.UpdatedDate.Value.ToString("dd/MM/yyyy") : post.CreatedDate.Value.ToString("dd/MM/yyyy")))</span></h5></a>
+                            </div>
+                        }
+                    }
+                    else
+                    {
+                        <div class="text-center">Không có thông báo nào được tìm thấy.</div>
+                    }
+
+                </div>
+                <!--end content--->
+                <br />
+                @if (Model.TotalPages > 1)
+                {
+                    // Create numeric links
+                    var startPageIndex = Math.Max(1, Model.Page - Model.MaxPage / 2);
+                    var endPageIndex = Math.Min(Model.TotalPages, Model.Page + Model.MaxPage / 2);
+                    <div style='clear:both'></div>
+                    <div style='float:right;'>
+                        <div class="paging">
+                            Page @Model.Page of @Model.TotalPages -
+                            @if ((Model.Page - 1) > 0)
+                            {
+                                <a href="?page=@(Model.Page - 1)" aria-label="Previous">
+                                    Previous
+                                </a>
+                            }
+
+                            @if ((Model.Page - 1) < Model.TotalPages - 1)
+                            {
+                                <a href="?page=@(Model.Page + 1)" aria-label="Next">
+                                    Next
+                                </a>
+                            }
+                        </div>
+                    </div>
+                }
+            </div>
+        </div>
+    </div>
+</div>
+
+
+

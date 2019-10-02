@@ -5829,6 +5829,7 @@
     <Content Include="Views\Notification\ViewNotification.cshtml" />
     <Content Include="Views\Shared\Services.cshtml" />
     <Content Include="Views\Job\ApplyView.cshtml" />
+    <None Include="Properties\PublishProfiles\FolderProfile.pubxml" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\CIS.Common\CIS.Common.csproj">

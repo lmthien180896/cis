@@ -1,0 +1,21 @@
+﻿@model IEnumerable<CIS.Web.Models.SlideViewModel>
+
+
+<div class="container">
+    <div class="row">
+        <div class="span12 ">
+            <div id="myCarousel" class="carousel slide">
+                <!-- Set up your HTML -->
+                <div class="owl-carousel">
+                    @foreach (var slide in Model)
+                    {
+                        if (!string.IsNullOrEmpty(slide.Image))
+                        {
+                            <div class="item" style="width:900px"><img src="@slide.Image" alt="@slide.Name"> </div>
+                        }
+                    }
+                </div>
+            </div><!-- /.carousel -->
+        </div>
+    </div>
+</div>

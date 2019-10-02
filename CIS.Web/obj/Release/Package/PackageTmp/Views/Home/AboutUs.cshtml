@@ -1,0 +1,25 @@
+﻿@model CIS.Web.Models.PostViewModel
+@{
+    ViewBag.Title = "AboutUs";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+@section title { Về chúng tôi}
+
+@{Html.RenderAction("Slide", "Home");}
+
+<div id='breadcrumbs-row'>
+    <div class='container'>
+        <div class="row-fluid">
+            <div class="span12">
+                <p class='breadcrumbs'>Bạn đang ở trang: <a href='/gioi-thieu'>Giới thiệu</a></p>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="container">   
+    <div class="h2 getintouch" style="text-align:center;">@Model.Name</div>
+    <p>@Html.Raw(Model.Content)</p>
+</div>
+

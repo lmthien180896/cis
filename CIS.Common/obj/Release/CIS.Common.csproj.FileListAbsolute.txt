@@ -1,0 +1,9 @@
+C:\Users\Thien\Desktop\LeMinhThien\Git\cis\CIS.Common\bin\Release\CIS.Common.dll
+C:\Users\Thien\Desktop\LeMinhThien\Git\cis\CIS.Common\bin\Release\CIS.Common.pdb
+C:\Users\Thien\Desktop\LeMinhThien\Git\cis\CIS.Common\bin\Release\System.Web.Mvc.dll
+C:\Users\Thien\Desktop\LeMinhThien\Git\cis\CIS.Common\bin\Release\System.Web.Mvc.xml
+C:\Users\Thien\Desktop\LeMinhThien\Git\cis\CIS.Common\obj\Release\CIS.Common.csprojAssemblyReference.cache
+C:\Users\Thien\Desktop\LeMinhThien\Git\cis\CIS.Common\obj\Release\CIS.Common.csproj.CoreCompileInputs.cache
+C:\Users\Thien\Desktop\LeMinhThien\Git\cis\CIS.Common\obj\Release\CIS.Common.csproj.CopyComplete
+C:\Users\Thien\Desktop\LeMinhThien\Git\cis\CIS.Common\obj\Release\CIS.Common.dll
+C:\Users\Thien\Desktop\LeMinhThien\Git\cis\CIS.Common\obj\Release\CIS.Common.pdb
