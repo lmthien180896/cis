@@ -112,7 +112,7 @@ namespace CIS.Web.Controllers
                 mes = mes.Replace("{{RequestCategory}}", requestCategory);
                 mes = mes.Replace("{{Detail}}", request.Detail);
                 mes = mes.Replace("{{Code}}", request.Code);
-                mes = mes.Replace("{{EnterCodeLink}}", ConfigHelper.GetByKey("CurrentLink") + "RequestFunctions/EnterCode");
+                mes = mes.Replace("{{EnterCodeLink}}", ConfigHelper.GetByKey("CurrentLink") + "/RequestFunctions/EnterCode");
                 mes = mes.Replace("{{IssueID}}", request.ID.ToString());
 
                 var emails = request.Email.Replace(" ", "").Split(',');

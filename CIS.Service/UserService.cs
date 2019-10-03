@@ -26,7 +26,7 @@ namespace CIS.Service
 
         User GetUserByUsername(string username);
 
-        List<string> GetCredentials(int groupId);
+        List<string> GetCredentials(int groupId);        
 
         void SaveChanges();
     }
@@ -59,7 +59,7 @@ namespace CIS.Service
         public IEnumerable<User> GetAll()
         {
             return _userRepository.GetAll();
-        }        
+        }
 
         public User GetById(int id)
         {
@@ -91,7 +91,7 @@ namespace CIS.Service
         public User GetUserByUsername(string username)
         {
             return _userRepository.GetUserByUsername(username);
-        }
+        }       
     }
 
 }

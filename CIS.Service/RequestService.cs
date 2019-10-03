@@ -135,6 +135,7 @@ namespace CIS.Service
 
             RequestReport closedReport = new RequestReport();
             closedReport.RequestID = id;
+            closedReport.SupporterID = _requestReportRepository.GetSingleByCondition(x => x.RequestID == id && x.SupporterID != 0).SupporterID;
             closedReport.Note = "Xác nhận đóng yêu cầu";          
             closedReport.CreatedDate = DateTime.Now;
             _requestReportRepository.Add(closedReport);
