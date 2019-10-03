@@ -6,7 +6,7 @@ by editing this MSBuild file. In order to learn more about this please visit htt
 <Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <PropertyGroup>
     <TimeStampOfAssociatedLegacyPublishXmlFile />
-    <_PublishTargetUrl>C:\Users\Thien\Desktop\LeMinhThien\Publish\Cis</_PublishTargetUrl>
+    <_PublishTargetUrl>C:\Users\Thien\Desktop\LeMinhThien\Publish\Project-1_CIS</_PublishTargetUrl>
   </PropertyGroup>
   <ItemGroup>
     <File Include="AppSettings.config">
@@ -46,7 +46,7 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>09/27/2019 10:10:03</publishTime>
     </File>
     <File Include="Areas/Admin/Views/Request/SupportingQueue.cshtml">
-      <publishTime>09/27/2019 10:10:03</publishTime>
+      <publishTime>10/03/2019 09:44:50</publishTime>
     </File>
     <File Include="Areas/Admin/Views/Request/ViewDetail.cshtml">
       <publishTime>09/25/2019 14:33:07</publishTime>
@@ -16753,16 +16753,16 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>09/30/2019 08:31:40</publishTime>
     </File>
     <File Include="bin/CIS.Service.dll">
-      <publishTime>09/30/2019 08:31:41</publishTime>
+      <publishTime>10/03/2019 10:17:22</publishTime>
     </File>
     <File Include="bin/CIS.Service.pdb">
-      <publishTime>09/30/2019 08:31:41</publishTime>
+      <publishTime>10/03/2019 10:17:22</publishTime>
     </File>
     <File Include="bin/CIS.Web.dll">
-      <publishTime>09/30/2019 10:16:31</publishTime>
+      <publishTime>10/03/2019 10:17:24</publishTime>
     </File>
     <File Include="bin/CIS.Web.pdb">
-      <publishTime>09/30/2019 10:16:31</publishTime>
+      <publishTime>10/03/2019 10:17:24</publishTime>
     </File>
     <File Include="bin/CKFinder.dll">
       <publishTime>09/19/2019 15:31:36</publishTime>

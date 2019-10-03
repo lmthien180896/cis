@@ -118,7 +118,7 @@
                @foreach (var news in Model.ListNews)
                     {
                         <div class="span4">
-                            <a class="latest-news-item" href="/tin-tuc/@news.Alias">
+                            <a class="latest-news-item" href="/tin-tuc/@news.Alias-@news.ID">
                                 <img alt="@news.Name" src="@news.Image" /><span class="latest-news-date">@news.CreatedDate.Value.ToString("dd MMMM yyyy")</span>
                                 <h5>@news.Name</h5>
                                 <p>@news.Description</p><span class="more-circle"></span>
