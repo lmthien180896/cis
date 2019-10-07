@@ -7,6 +7,12 @@
     Tin tức
 }
 
+@{
+    ViewBag.Title = "Tin tức";
+    ViewBag.MetaDescription = "Tin tức";
+    ViewBag.MetaKeywords = "Tin tức";
+}
+
 @{Html.RenderAction("Slide", "Home");}
 
 <div id='breadcrumbs-row'>
@@ -29,7 +35,7 @@
                         <a>Tin Tức</a>
                     </div>
                     <hr />
-                    @RenderPage("~/Views/Shared/Services.cshtml")                    
+                    @RenderPage("~/Views/Shared/Services.cshtml")
                 </div>
             </div>
             <div class="span9">

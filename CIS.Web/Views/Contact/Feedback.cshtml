@@ -6,6 +6,12 @@
 }
 @section title{ Góp ý}
 
+@{
+    ViewBag.Title = "Góp ý";
+    ViewBag.MetaDescription = "Góp ý";
+    ViewBag.MetaKeywords = "feedback, góp ý";
+}
+
 @RenderPage("~/Views/Shared/Banner.cshtml")
 
 <div id='breadcrumbs-row'>
@@ -19,7 +25,7 @@
 </div>
 <!-- / breadcrumbs-row -->
 <div id="spread" class="contact">
-    <div class="container">        
+    <div class="container">
         <div class="row-fluid">
             <div class="span6 offset3">
                 <div class="h1 getintouch">Hộp Thư Góp Ý</div>
@@ -30,37 +36,37 @@
                         </div>
                     </div>
                 </div>
-                <form name="contactPageForm" id="contactPageForm" action="/Contact/SubmitFeedback" method="post">                    
+                <form name="contactPageForm" id="contactPageForm" action="/Contact/SubmitFeedback" method="post">
                     <div class="field_wrap">
-                        <div class="field_wrap">                           
+                        <div class="field_wrap">
                             <div class="input_wrap">
                                 <input type="text" name="name" id="txtName" placeholder="Name (Tên)*" required>
                             </div>
                         </div>
                     </div>
                     <div class="field_wrap">
-                        <div class="field_wrap">                           
+                        <div class="field_wrap">
                             <div class="input_wrap">
-                                <input type="text" name="phone" id="txtPhone" placeholder="Phone (Số điện thoại)*"required>
+                                <input type="text" name="phone" id="txtPhone" placeholder="Phone (Số điện thoại)*" required>
                             </div>
                         </div>
                     </div>
                     <div class="field_wrap">
-                        <div class="field_wrap">                           
+                        <div class="field_wrap">
                             <div class="input_wrap">
-                                <input type="text" name="email" id="txtEmail" placeholder="Email*"required>
+                                <input type="text" name="email" id="txtEmail" placeholder="Email*" required>
                             </div>
                         </div>
                     </div>
                     <div class="field_wrap">
-                        <div class="field_wrap">                           
+                        <div class="field_wrap">
                             <div class="input_wrap">
                                 <textarea name="message" id="contactPageForm-message" class=" " data-input="message" placeholder="Message (Tin nhắn)*" rows="2" required></textarea>
                             </div>
                         </div>
                     </div>
                     <div class="field_wrap">
-                        <div class="field_wrap">                            
+                        <div class="field_wrap">
                             <div class="input_wrap">
                                 <select name="unit" id="sltUnit" required>
                                     <option value="">Unit (Đơn vị)*</option>
@@ -71,7 +77,7 @@
                                 </select>
                             </div>
                         </div>
-                    </div>                   
+                    </div>
                     <div class="submit_wrap">
                         <button type="submit" class="">SEND FEEDBACK / GỬI GÓP Ý</button>
                     </div>

@@ -6,11 +6,11 @@
     <meta name="format-detection" content="telephone=no">
     <meta http-equiv="content-type" content="text/html;charset=UTF-8" />
     <title>@RenderSection("title", required: true)</title>
-    <meta property="og:title" content="Dịch vụ thiết kế website và thay đổi linh kiện trường đại học quốc tế">
-    <meta property="og:description" content="Hổ trợ dịch vụ đứng đầu cho Sinh viên và Giảng Viên">
+    <meta property="og:title" content="@ViewBag.Title">
+    <meta property="og:description" content="Hỗ trợ dịch vụ CNTT cho sinh viên và Giảng viên">
     <meta property="og:image" content="slide/sl1.png" />
-    <meta name="description" content="Dịch vụ thiết kế website và thay đổi linh kiện trường đại học quốc tế" />
-    <meta name="keywords" content="IT support, Website, Design logo banner" />
+    <meta name="description" content="@ViewBag.MetaDescription" />
+    <meta name="keywords" content="@ViewBag.MetaKeywords" />
     <link rel="shortcut icon" href="~/Assets/client/CIS-pro/cis-img/favicon.jpg">
     <link rel="icon" sizes="16x16 32x32 64x64" href="~/Assets/client/CIS-pro/cis-img/favicon.jpg">
     <!-- 	=================  CSS	================== -->

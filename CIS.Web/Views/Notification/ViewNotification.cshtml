@@ -7,6 +7,12 @@
     @Model.Name
 }
 
+@{
+    ViewBag.Title = Model.Name;
+    ViewBag.MetaDescription = Model.Name;
+    ViewBag.MetaKeywords = Model.Name;
+}
+
 @{Html.RenderAction("Slide", "Home");}
 
 <div id='breadcrumbs-row'>

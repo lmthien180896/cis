@@ -45,7 +45,7 @@ namespace CIS.Data.Repositories
 
         public IEnumerable<Post> GetThreeNews()
         {
-            return this.DbContext.Posts.Where(x => x.HomeFlag && x.Status && string.IsNullOrEmpty(x.ReferenceUrl) && x.CategoryID == CommonConstant.NewsPostCategoryID).OrderByDescending(x => x.CreatedDate).ToList().Take(3);
+            return this.DbContext.Posts.Where(x => x.HomeFlag && x.Status && x.CategoryID == CommonConstant.NewsPostCategoryID).OrderByDescending(x => x.CreatedDate).ToList().Take(3);
         }
     }
 }
