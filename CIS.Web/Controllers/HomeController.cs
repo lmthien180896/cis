@@ -33,9 +33,9 @@ namespace CIS.Web.Controllers
             var listNews = _postService.GetThreeNews();
             homeViewModel.HotNews = hotNews;
             homeViewModel.ListNews = listNews;
-            ViewBag.AboutUs = Mapper.Map<Post,PostViewModel>(_postService.GetById(CommonConstant.AboutUsPostID));
-            ViewBag.Web = Mapper.Map<Post, PostViewModel>(_postService.GetById(CommonConstant.WebInfoPostId));
-            ViewBag.System = Mapper.Map<Post, PostViewModel>(_postService.GetById(CommonConstant.SystemInfoPostId));
+            ViewBag.AboutUs = Mapper.Map<Post, PostViewModel>(_postService.GetById(CommonConstant.AboutUsPostID));
+            //ViewBag.Web = Mapper.Map<Post, PostViewModel>(_postService.GetById(CommonConstant.WebInfoPostId));
+            //ViewBag.System = Mapper.Map<Post, PostViewModel>(_postService.GetById(CommonConstant.SystemInfoPostId));
             return View(homeViewModel);
         }
 

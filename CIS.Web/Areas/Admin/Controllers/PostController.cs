@@ -67,6 +67,10 @@ namespace CIS.Web.Areas.Admin.Controllers
             }
             else
             {
+                if (postViewModel.CategoryID == CommonConstant.ChildPageCategoryID)
+                {
+                    postViewModel.Status = true;
+                }
                 Post newPost = new Post();
                 newPost.UpdatePost(postViewModel);
                 newPost.CreatedDate = DateTime.Now;
@@ -130,19 +134,30 @@ namespace CIS.Web.Areas.Admin.Controllers
         public JsonResult ChangeStatus(int id)
         {
             var post = _postService.GetById(id);
-            post.Status = !post.Status;
-            post.UpdatedDate = DateTime.Now;
-            post.UpdatedBy = currentUserName;
-            _postService.Update(post);
-            _postService.SaveChanges();
-            if (post.Status)
-                SetAlert("success", "Kích hoạt đăng tin " + post.Name);
-            else
-                SetAlert("success", "Khoá tin " + post.Name);
-            return Json(new
+            if (post.CategoryID == CommonConstant.ChildPageCategoryID)
             {
-                status = true
-            });
+                SetAlert("error", "Bài đăng này không được khoá");
+                return Json(new
+                {
+                    status = true
+                });
+            }
+            else
+            {
+                post.Status = !post.Status;
+                post.UpdatedDate = DateTime.Now;
+                post.UpdatedBy = currentUserName;
+                _postService.Update(post);
+                _postService.SaveChanges();
+                if (post.Status)
+                    SetAlert("success", "Kích hoạt đăng tin " + post.Name);
+                else
+                    SetAlert("success", "Khoá tin " + post.Name);
+                return Json(new
+                {
+                    status = true
+                });
+            }
         }
 
         [HasCredential(RoleID = "CUD_POST")]
@@ -167,7 +182,7 @@ namespace CIS.Web.Areas.Admin.Controllers
             }
             else
             {
-                Post updatedPost = new Post();
+                Post updatedPost = _postService.GetById(postViewModel.ID);
                 updatedPost.UpdatePost(postViewModel);
                 updatedPost.UpdatedDate = DateTime.Now;
                 updatedPost.UpdatedBy = currentUserName;

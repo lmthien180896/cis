@@ -21,6 +21,7 @@ namespace CIS.Service
 
         Feedback GetById(int id);
 
+        int CountTotal();
 
         void SaveChanges();
     }
@@ -34,6 +35,11 @@ namespace CIS.Service
         {
             _feedbackRepository = feedbackRepository;
             _unitOfWork = unitOfWork;
+        }
+
+        public int CountTotal()
+        {
+            return _feedbackRepository.GetAll().Count();
         }
 
         public Feedback Add(Feedback feedback)

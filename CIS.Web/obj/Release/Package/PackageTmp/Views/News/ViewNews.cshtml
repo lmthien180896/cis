@@ -7,6 +7,12 @@
     @Model.Name
 }
 
+@{
+    ViewBag.Title = Model.Name;
+    ViewBag.MetaDescription = Model.Name;
+    ViewBag.MetaKeywords = Model.Name;
+}
+
 @{Html.RenderAction("Slide", "Home");}
 
 <div id='breadcrumbs-row'>
@@ -14,9 +20,9 @@
         <div class="row-fluid">
             <div class="span12">
                 <p class='breadcrumbs'>Bạn đang ở trang: <a href='/tin-tuc' title='Tin tức'>Tin Tức</a> <span class='divider'>/</span> <span>@Model.Name</span></p>
-            </div>            
-        </div>        
-    </div>    
+            </div>
+        </div>
+    </div>
 </div>
 
 <div id="spread">

@@ -1,0 +1,54 @@
+﻿
+<div id="sidebar-menu" class="main_menu_side hidden-print main_menu">
+    <div class="menu_section">
+        <h3>General</h3>
+        <ul class="nav side-menu">
+            <li>
+                <a><i class="fa fa-home"></i> Trang chủ</a>
+            </li>
+            <li>
+                <a><i class="fa fa-user"></i> Người dùng, quyền <span class="fa fa-chevron-down"></span></a>
+                <ul class="nav child_menu">
+                    <li><a href="/Admin/User/Index">Danh sách người dùng</a></li>
+                    <li><a href="/Admin/User/CreateView">Thêm mới người dùng</a></li>
+                    <li><a href="/Admin/UserGroup/Index">Nhóm người dùng</a></li>
+                    <li><a href="/Admin/Role/Index">Danh sách quyền</a></li>
+                </ul>
+            </li>
+            <li>
+                <a><i class="fa fa-newspaper-o"></i> Bài đăng <span class="fa fa-chevron-down"></span></a>
+                <ul class="nav child_menu">
+                    <li><a href="/Admin/Post/Index">Danh sách bài đăng</a></li>
+                    <li><a href="/Admin/Post/CreateView">Thêm mới bài đăng</a></li>
+                </ul>
+            </li>
+            <li>
+                <a><i class="fa fa-exclamation-triangle"></i> Yêu cầu <span class="fa fa-chevron-down"></span></a>
+                <ul class="nav child_menu">
+                    <li><a href="/Admin/RequestCategory/Index">Loại yêu cầu</a></li>
+                    <li><a href="/Admin/Request/Index">Danh sách yêu cầu</a></li>
+                    <li><a href="/Admin/Request/WaitingQueue">Đang chờ xử lí <span class="label label-warning pull-right">@ViewBag.NoWaitingQueue</span></a></li>
+                    <li><a href="/Admin/Request/SupportingQueue">Đang xử lí <span class="label label-info pull-right">@ViewBag.NoSupportingQueue</span></a></li>
+                    <li><a href="/Admin/Request/CompletedQueue">Hoàn thành <span class="label label-success pull-right">@ViewBag.NoCompletedQueue</span></a></li>
+                </ul>
+            </li>
+            <li>
+                <a><i class="fa fa-user-plus"></i> Tuyển dụng <span class="fa fa-chevron-down"></span></a>
+                <ul class="nav child_menu">
+                    <li><a href="/Admin/Job/Index">Job</a></li>
+                    <li><a href="/Admin/Applicant/Index">Applicant <span class="label label-danger pull-right">@ViewBag.NoApplicant</span></a></li>
+                </ul>
+            </li>
+            <li>
+                <a href="/Admin/Feedback/Index"><i class="fa fa-comments"></i> Góp ý <span class="label label-danger pull-right">@ViewBag.NoFeedBack</span></a>
+            </li>
+            <li>
+                <a><i class="fa fa-puzzle-piece"></i> Giao diện <span class="fa fa-chevron-down"></span></a>
+                <ul class="nav child_menu">
+                    <li><a href="/Admin/Footer/ListFooter">Footer</a></li>
+                    <li><a href="/Admin/Slide/ListSlide">Slides</a></li>
+                </ul>
+            </li>
+        </ul>
+    </div>
+</div>

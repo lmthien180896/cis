@@ -21,6 +21,8 @@ namespace CIS.Service
 
         Applicant GetById(int id);
 
+        int CountTotal();
+
         void SaveChanges();
     }
 
@@ -33,6 +35,11 @@ namespace CIS.Service
         {
             _applicantRepository = applicantRepository;
             _unitOfWork = unitOfWork;
+        }
+
+        public int CountTotal()
+        {
+            return _applicantRepository.GetAll().Count();
         }
 
         public Applicant Add(Applicant applicant)

@@ -51,5 +51,27 @@ namespace CIS.Web.Controllers
             var postViewModel = Mapper.Map<Post, PostViewModel>(post);
             return View(postViewModel);
         }
+       
+        public ActionResult GetNewsByKeyword(string keyword, int page = 1)
+        {
+            ViewBag.Keyword = keyword;
+            int categoryId = CommonConstant.NewsPostCategoryID;
+            int pageSize = int.Parse(ConfigHelper.GetByKey("PageSize"));
+            int totalRow = 0;            
+            var postModel = _postService.GetAll(keyword, categoryId, page, pageSize, out totalRow);
+            var postViewModel = Mapper.Map<IEnumerable<Post>, IEnumerable<PostViewModel>>(postModel);
+            int totalPage = (int)Math.Ceiling((double)totalRow / pageSize);
+
+            var paginationSet = new PaginationSet<PostViewModel>()
+            {
+                Items = postViewModel,
+                MaxPage = int.Parse(ConfigHelper.GetByKey("MaxPage")),
+                Page = page,
+                TotalCount = totalRow,
+                TotalPages = totalPage
+            };
+
+            return View(paginationSet);        
+        }
     }
 }

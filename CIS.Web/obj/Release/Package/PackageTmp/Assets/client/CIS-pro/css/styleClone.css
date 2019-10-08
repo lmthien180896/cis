@@ -459,9 +459,9 @@ Page Header
 ========================================================================== */
 
 #banner-wrap {background:#fff; max-height:225px;}
-#banner {}
-#banner img {width:40%; max-width:375px;}
-#banner span {display:block; width:55%; max-width:540px; float:right; margin:10% 0 0 10px; font-size:182%; font-family: 'Montserrat', sans-serif;}
+#banner { margin-left: 150px}
+#banner img {width:20%; margin-left: 10px}
+#banner span {display:block; width:63%; max-width:540px; float:right; margin:34px 94px 0 18px; font-size:182%; font-family: 'Montserrat', sans-serif;}
 
 
 /* ==========================================================================
@@ -751,7 +751,7 @@ a#twitter-link:hover {background-position:left bottom !important; text-decoratio
 
 @media (max-width: 800px) {
 
-    header {height:200px;}
+    /* header {height:200px;} */
     #logo {position:absolute; left:0; top:110px; z-index:100;}
 
     #header-info {position:relative; width:100%;}

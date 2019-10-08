@@ -4,7 +4,13 @@
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-@section title { Về chúng tôi}
+@section title { @Model.Name}
+
+@{
+    ViewBag.Title = Model.Name;
+    ViewBag.MetaDescription = Model.Name;
+    ViewBag.MetaKeywords = Model.Name;
+}
 
 @{Html.RenderAction("Slide", "Home");}
 
@@ -18,7 +24,7 @@
     </div>
 </div>
 
-<div class="container">   
+<div class="container">
     <div class="h2 getintouch" style="text-align:center;">@Model.Name</div>
     <p>@Html.Raw(Model.Content)</p>
 </div>

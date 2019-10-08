@@ -5,6 +5,7 @@
     registerEvents: function () {
         $("#btnSubmit").off('click').on('click', function (e) {
             e.preventDefault();
+            $("#btnSubmit").prop("disabled", true);
             var validated = false;
             var categoryId = $('#sltCategoryId').val();
             var senderName = $('#txtSenderName').val();
@@ -19,12 +20,14 @@
             }
 
             if (categoryId == "") {
+                $('#sltCategoryId').focus();
                 $("#warning-category").html("Vui lòng chọn loại yêu cầu");
                 validated = false;
             }
             else {
                 $("#warning-category").hide();
                 if (senderName == "") {
+                    $('#txtSenderName').focus()
                     $("#warning-senderName").html("Vui lòng điền họ tên");
                     validated = false;
                 }
@@ -41,22 +44,26 @@
                             email_validated = true;
                     });
                     if (email_validated === false) {
+                        $('#txtEmail').focus();
                         $("#warning-email").html("Email cần có đuôi 'hcmiu.edu.vn'");
                         validated = false;
                     }
                     else {
                         $("#warning-email").hide();
                         if (place == "") {
+                            $('#txtPlace').focus();
                             $("#warning-place").html("Vui lòng điền nơi gửi yêu cầu");
                         }
                         else {
                             $("#warning-place").hide();
                             if (detail == "") {
+                                $('#txtDetail').focus();
                                 $("#warning-detail").html("Vui lòng điền chi tiết yêu cầu");
                             }
                             else {
                                 $("#warning-detail").hide();
                                 if ($('#txtCaptcha').val() !== "4") {
+                                    $('#txtCaptcha').focus();
                                     $("#warning-captcha").html("Vui lòng trả lời đúng câu hỏi bảo mật");
                                 }
                                 else {
@@ -72,6 +79,9 @@
 
             if (validated) {
                 $('#contactPageForm').submit();
+            }
+            else {
+                $("#btnSubmit").prop("disabled", false);
             }
         });
 

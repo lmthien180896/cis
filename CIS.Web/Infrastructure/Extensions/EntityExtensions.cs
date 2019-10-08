@@ -34,9 +34,7 @@ namespace CIS.Web.Infrastructure.Extensions
             postCategory.DisplayOrder = postCategoryVm.DisplayOrder;
             postCategory.Image = postCategoryVm.Image;
             postCategory.HomeFlag = postCategoryVm.HomeFlag;
-
-            postCategory.CreatedDate = postCategoryVm.CreatedDate;
-            postCategory.CreatedBy = postCategoryVm.CreatedBy;
+            
             postCategory.UpdatedDate = postCategoryVm.UpdatedDate;
             postCategory.UpdatedBy = postCategoryVm.UpdatedBy;
             postCategory.MetaKeyword = postCategoryVm.MetaKeyword;
@@ -59,9 +57,7 @@ namespace CIS.Web.Infrastructure.Extensions
             post.HotFlag = postVm.HotFlag;
             post.ViewCount = postVm.ViewCount;
             post.Tags = postVm.Tags;
-
-            post.CreatedDate = postVm.CreatedDate;
-            post.CreatedBy = postVm.CreatedBy;
+            
             post.UpdatedDate = postVm.UpdatedDate;
             post.UpdatedBy = postVm.UpdatedBy;
             post.MetaKeyword = postVm.MetaKeyword;
@@ -75,9 +71,7 @@ namespace CIS.Web.Infrastructure.Extensions
             requestCategory.ID = requestCategoryVm.ID;
             requestCategory.Name = requestCategoryVm.Name;
             requestCategory.Requests = requestCategoryVm.Requests;
-
-            requestCategory.CreatedDate = requestCategoryVm.CreatedDate;
-            requestCategory.CreatedBy = requestCategoryVm.CreatedBy;
+         
             requestCategory.UpdatedDate = requestCategoryVm.UpdatedDate;
             requestCategory.UpdatedBy = requestCategoryVm.UpdatedBy;
             requestCategory.MetaKeyword = requestCategoryVm.MetaKeyword;
@@ -116,8 +110,6 @@ namespace CIS.Web.Infrastructure.Extensions
             requestReport.SupporterID = requestReportVm.SupporterID;
             requestReport.Note = requestReportVm.Note;
 
-            requestReport.CreatedDate = requestReportVm.CreatedDate;
-            requestReport.CreatedBy = requestReportVm.CreatedBy;
             requestReport.UpdatedDate = requestReportVm.UpdatedDate;
             requestReport.UpdatedBy = requestReportVm.UpdatedBy;
             requestReport.MetaKeyword = requestReportVm.MetaKeyword;
@@ -147,8 +139,7 @@ namespace CIS.Web.Infrastructure.Extensions
         {
             job.ID = jobVm.ID;
             job.Name = jobVm.Name;
-            job.Description = jobVm.Description;
-            job.CreatedDate = jobVm.CreatedDate;
+            job.Description = jobVm.Description;           
             job.Status = jobVm.Status;
         }
 
@@ -160,8 +151,7 @@ namespace CIS.Web.Infrastructure.Extensions
             feedback.Email = feedbackVm.Email;
             feedback.Phone = feedbackVm.Phone;
             feedback.Unit = feedbackVm.Unit;
-            feedback.Message = feedbackVm.Message;
-            feedback.CreatedDate = feedbackVm.CreatedDate;
+            feedback.Message = feedbackVm.Message;          
             feedback.Status = feedbackVm.Status;
         }
 

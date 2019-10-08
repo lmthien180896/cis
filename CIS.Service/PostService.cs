@@ -17,7 +17,9 @@ namespace CIS.Service
 
         void Delete(int id);
 
-        IEnumerable<Post> GetAll();       
+        IEnumerable<Post> GetAll();
+        
+        IEnumerable<Post> GetAll(string keyword, int categoryId, int page, int pageSize, out int totalRow);       
 
         IEnumerable<Post> GetAll(int postCategoryId);
 
@@ -88,6 +90,20 @@ namespace CIS.Service
         public IEnumerable<Post> GetAll()
         {
             return _postRepository.GetAll(new string[] { "PostCategory" });
+        }
+
+        public IEnumerable<Post> GetAll(string keyword, int categoryId, int page, int pageSize, out int totalRow)
+        {
+            if (!string.IsNullOrEmpty(keyword))
+            {
+                var query = _postRepository.GetMulti(x => x.Status && x.CategoryID == categoryId && (x.Name.Contains(keyword) || x.Content.Contains(keyword))).OrderBy(x => x.CreatedDate);
+                totalRow = query.Count();
+                return query.Skip((page - 1) * pageSize).Take(pageSize);
+            }
+            else
+            {
+                return _postRepository.GetMultiPaging(x => x.Status && x.CategoryID == categoryId, out totalRow, page, pageSize, new string[] { "PostCategory" });
+            }
         }
 
         public IEnumerable<Post> GetAll(int categoryId)

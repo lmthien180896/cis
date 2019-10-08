@@ -13,7 +13,7 @@ namespace CIS.Web
             bundles.Add(new ScriptBundle("~/js/plugins").Include(
                 "~/Assets/client/CIS-pro/owlcarousel/owl.carousel.min.js",
                 "~/Assets/admin/libs/toastr/toastr.min.js",
-                "~/Assets/client/js/common.js"
+                "~/Assets/client/js/common.js"                
             ));
 
             bundles.Add(new StyleBundle("~/css/base")

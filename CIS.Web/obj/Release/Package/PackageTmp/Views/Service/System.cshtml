@@ -5,8 +5,12 @@
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-@section title{Thiết kế web}
-
+@section title{Hệ thống}
+@{
+    ViewBag.Title = "Hệ thống";
+    ViewBag.MetaDescription = "Hệ thống";
+    ViewBag.MetaKeywords = "Hệ thống";
+}
 @section js {
     <script>
         $("#infoDisplay").off('click').on('click', function (e) {

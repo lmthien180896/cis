@@ -17,6 +17,8 @@ namespace CIS.Service
 
         Request Delete(int id);
 
+        int CountByProgress(string progress);
+
         IEnumerable<Request> GetAll();
 
         IEnumerable<Request> GetAllRequests();
@@ -78,6 +80,11 @@ namespace CIS.Service
         public IEnumerable<Request> GetMany(Expression<Func<Request, bool>> where, string includes)
         {
             return _requestRepository.GetMulti(where, null);
+        }
+
+        public int CountByProgress(string progress)
+        {
+            return _requestRepository.Count(x => x.Progress == progress);
         }
 
         public void SaveChanges()

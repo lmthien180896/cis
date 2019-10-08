@@ -6,6 +6,12 @@
 
 @section title {Xem yêu cầu }
 
+@{
+    ViewBag.Title = "Xem yêu cầu";
+    ViewBag.MetaDescription = "Xem yêu cầu";
+    ViewBag.MetaKeywords = "Xem yêu cầu";
+}
+
 <div class="container">
     <br /><br />
     <div class="col-md-12 col-sm-12 col-xs-12">
@@ -69,10 +75,10 @@
             <div class="x_title">
                 <h2>Ghi chú</h2>
             </div>
-            <div class="x_content">               
+            <div class="x_content">
                 <table class="table table-striped table-bordered no-footer">
                     <thead>
-                        <tr>                           
+                        <tr>
                             <th class="sorting_asc" tabindex="0" aria-controls="datatable" rowspan="1" colspan="1" aria-sort="ascending" aria-label="RequestCategory: activate to sort column descending" style="width: 100px;">Người viết</th>
                             <th class="sorting_asc" tabindex="0" aria-controls="datatable" rowspan="1" colspan="1" aria-sort="ascending" aria-label="RequestCategory: activate to sort column descending" style="width: 200px;">Nội dung</th>
                             <th class="sorting_asc" tabindex="0" aria-controls="datatable" rowspan="1" colspan="1" aria-sort="ascending" aria-label="RequestCategory: activate to sort column descending" style="width: 100px;">Ngày đăng</th>
@@ -81,7 +87,7 @@
                     <tbody>
                         @foreach (var report in Model.RequestReports)
                         {
-                            <tr>                               
+                            <tr>
                                 <td>@report.SupporterName</td>
                                 <td>@report.Note</td>
                                 <td>@report.CreatedDate.Value.ToString("dd/MM/yyyy")</td>
