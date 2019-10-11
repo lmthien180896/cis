@@ -12,6 +12,8 @@ namespace CIS.Service
 
     public interface IUserService
     {
+        int CountTotal();
+
         User Add(User user);
 
         void Update(User user);
@@ -44,6 +46,11 @@ namespace CIS.Service
             _userRepository = userRepository;
             _credentialRepository = credentialRepository;
             _unitOfWork = unitOfWork;
+        }
+
+        public int CountTotal()
+        {
+            return _userRepository.GetAll().Count();
         }
 
         public User Add(User user)

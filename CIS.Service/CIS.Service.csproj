@@ -47,6 +47,7 @@
     <Compile Include="ErrorService.cs" />
     <Compile Include="FeedbackService.cs" />
     <Compile Include="FooterService.cs" />
+    <Compile Include="InternalDetailService.cs" />
     <Compile Include="JobService.cs" />
     <Compile Include="MenuService.cs" />
     <Compile Include="PostCategoryService.cs" />

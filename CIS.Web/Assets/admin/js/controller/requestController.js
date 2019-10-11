@@ -93,6 +93,9 @@
                         $('#modalAddUpdate').modal('hide');
                         window.location.reload();
                     }
+                    else {
+                        window.location.reload();
+                    }
                 }
             });
         });

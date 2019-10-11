@@ -59,16 +59,18 @@ namespace CIS.Web.Areas.Admin.Controllers
         [HasCredential(RoleID = "CUD_USER")]
         public ActionResult Create(UserViewModel userViewModel)
         {
+
+            User newUser = new User();
+            newUser.UpdateUser(userViewModel);
+            newUser.Password = Encryptor.MD5Hash(newUser.Password);
+            TryValidateModel(newUser);
             if (!ModelState.IsValid)
             {
-                SetAlert("error", "Thêm mới không thành công.");
+                SetAlert("error", "ModelState is not valid");
                 return RedirectToAction("Index");
             }
             else
             {
-                User newUser = new User();
-                newUser.UpdateUser(userViewModel);
-                newUser.Password = Encryptor.MD5Hash(newUser.Password);
                 _userService.Add(newUser);
                 _userService.SaveChanges();
                 SetAlert("success", newUser.Username + " đã được thêm mới.");
@@ -80,32 +82,28 @@ namespace CIS.Web.Areas.Admin.Controllers
         [HasCredential(RoleID = "CUD_USER")]
         public ActionResult Update(UserViewModel userViewModel)
         {
-            if (!ModelState.IsValid)
-            {
-                SetAlert("error", "Chỉnh sửa không thành công.");
-                return RedirectToAction("Index");
-            }
-            User updatedUser = new User();
+            User updatedUser = _userService.GetById(userViewModel.ID);
             updatedUser.UpdateUser(userViewModel);
             updatedUser.Password = Encryptor.MD5Hash(updatedUser.Password);
-            _userService.Update(updatedUser);
-            _userService.SaveChanges();
-            SetAlert("success", updatedUser.Username + " đã được chỉnh sửa.");
-            return RedirectToAction("Index");
+            TryValidateModel(updatedUser);
+            if (ModelState.IsValid)
+            {
+                _userService.Update(updatedUser);
+                _userService.SaveChanges();
+                SetAlert("success", updatedUser.Username + " đã được chỉnh sửa.");
+                return RedirectToAction("Index");
+            }
+            else
+            {
+                SetAlert("error", "ModelState is not valid");
+                return RedirectToAction("EditView", new { id = updatedUser.ID });
+            }
         }
 
         [HttpPost]
         [HasCredential(RoleID = "CUD_USER")]
         public JsonResult Delete(int id)
         {
-            if (!ModelState.IsValid)
-            {
-                SetAlert("error", "xoá không thành công.");
-                return Json(new
-                {
-                    status = false
-                });
-            }
             var user = _userService.Delete(id);
             _userService.SaveChanges();
             SetAlert("success", user.Username + " đã xoá thành công.");
@@ -119,14 +117,6 @@ namespace CIS.Web.Areas.Admin.Controllers
         [HasCredential(RoleID = "CUD_USER")]
         public JsonResult DeleteAll(string listId)
         {
-            if (!ModelState.IsValid)
-            {
-                SetAlert("error", "xoá không thành công.");
-                return Json(new
-                {
-                    status = false
-                });
-            }
             JavaScriptSerializer serializer = new JavaScriptSerializer();
             var Ids = serializer.Deserialize<string>(listId);
             int countDelete = 0;

@@ -36,3 +36,4 @@ C:\Users\Thien\Desktop\LeMinhThien\Git\cis\CIS.Data\obj\Release\CIS.Data.csproj.
 C:\Users\Thien\Desktop\LeMinhThien\Git\cis\CIS.Data\obj\Release\CIS.Data.csproj.CopyComplete
 C:\Users\Thien\Desktop\LeMinhThien\Git\cis\CIS.Data\obj\Release\CIS.Data.dll
 C:\Users\Thien\Desktop\LeMinhThien\Git\cis\CIS.Data\obj\Release\CIS.Data.pdb
+C:\Users\Thien\Desktop\LeMinhThien\Git\cis\CIS.Data\obj\Release\CIS.Data.Migrations.addInternalDetails.resources

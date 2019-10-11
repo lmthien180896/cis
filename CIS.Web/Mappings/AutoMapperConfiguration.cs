@@ -24,6 +24,7 @@ namespace CIS.Web.Mappings
             Mapper.CreateMap<Job, JobViewModel>();            
             Mapper.CreateMap<Feedback, FeedbackViewModel>();                          
             Mapper.CreateMap<Applicant, ApplicantViewModel>();                          
+            Mapper.CreateMap<InternalDetail, InternalDetailViewModel>();                          
         }
     }
 }

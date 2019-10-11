@@ -7,7 +7,7 @@ using CIS.Model.Models;
 namespace CIS.Service
 {
     public interface IRequestCategoryService
-    {
+    {        
         RequestCategory Add(RequestCategory requestCategory);
 
         void Update(RequestCategory requestCategory);
@@ -50,7 +50,8 @@ namespace CIS.Service
         public IEnumerable<RequestCategory> GetAll()
         {
             return _requestCategoryRepository.GetAll();
-        }      
+        }
+       
 
         public RequestCategory GetById(int id)
         {

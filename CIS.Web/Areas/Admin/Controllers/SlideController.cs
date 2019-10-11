@@ -70,28 +70,54 @@ namespace CIS.Web.Areas.Admin.Controllers
         public JsonResult AddOrUpdate(string model)
         {
             JavaScriptSerializer serializer = new JavaScriptSerializer();
-            var slideViewModel = serializer.Deserialize<SlideViewModel>(model);
-            Slide slide = new Slide();
-            slide.UpdateSlide(slideViewModel);
-            if (slide.ID == 0)
+            var slideViewModel = serializer.Deserialize<SlideViewModel>(model);           
+            if (slideViewModel.ID == 0)
             {
-                _slideService.Add(slide);
-                _slideService.SaveChanges();
-                SetAlert("success", "Tạo thành công slide.");
-                return Json(new
+                Slide slide = new Slide();
+                slide.UpdateSlide(slideViewModel);
+                TryValidateModel(slide);
+                if (ModelState.IsValid)
                 {
-                    status = true
-                });
+                    _slideService.Add(slide);
+                    _slideService.SaveChanges();
+                    SetAlert("success", "Tạo thành công slide.");
+                    return Json(new
+                    {
+                        status = true
+                    });
+                }
+                else
+                {
+                    SetAlert("error", "ModelState is not valid");
+                    return Json(new
+                    {
+                        status = false
+                    });
+                }
             }
             else
             {
-                _slideService.Update(slide);
-                _slideService.SaveChanges();
-                SetAlert("success", "Chỉnh sửa thành công slide.");
-                return Json(new
+                var updatedSlide = _slideService.GetById(slideViewModel.ID);
+                updatedSlide.UpdateSlide(slideViewModel);
+                TryValidateModel(updatedSlide);
+                if (ModelState.IsValid)
                 {
-                    status = true
-                });
+                    _slideService.Update(updatedSlide);
+                    _slideService.SaveChanges();
+                    SetAlert("success", "Chỉnh sửa thành công slide.");
+                    return Json(new
+                    {
+                        status = true
+                    });
+                }
+                else
+                {
+                    SetAlert("error", "ModelState is not valid");
+                    return Json(new
+                    {
+                        status = false
+                    });
+                }
             }
         }
     }

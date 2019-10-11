@@ -51,14 +51,14 @@
                                         <td>
                                             @if (request.Progress == "waiting")
                                             {
-                                                <a href="#" data-id=@request.ID class="btn btn-info btn-xs btnUpdate"><i class="fa fa-pencil"> Edit</i></a>
+                                                <a href="#" data-id=@request.ID class="btn btn-info btn-xs btnUpdate"><i class="fa fa-pencil"> Sửa</i></a>
                                                 <a href="#" data-id=@request.ID class="btn btn-default btn-xs btnSupport"><i class="fa fa-wrench"> Support</i></a>
                                             }
                                             @if (request.Progress != "waiting")
                                             {
-                                                <a href="/Admin/Request/ViewDetail/@request.ID" data-id=@request.ID class="btn btn-primary btn-xs btnView"><i class="fa fa-eye"> View</i></a>
+                                                <a href="/Admin/Request/ViewDetail/@request.ID" data-id=@request.ID class="btn btn-primary btn-xs btnView"><i class="fa fa-eye"> Xem</i></a>
                                             }
-                                            <a href="#" data-id=@request.ID class="btn btn-danger btn-xs btnDelete"><i class="fa fa-trash"> Delete</i></a>
+                                            <a href="#" data-id=@request.ID class="btn btn-danger btn-xs btnDelete"><i class="fa fa-trash"> Xoá</i></a>
                                         </td>
 
                                     </tr>
@@ -81,7 +81,7 @@
         <div class="modal-content">
             <div class="modal-header">
                 <button type="button" class="close" data-dismiss="modal">&times;</button>
-                <h4 class="modal-title">Xem nhanh yêu cầu</h4>
+                <h4 class="modal-title">Tạo/Xem nhanh yêu cầu</h4>
             </div>
             <div class="modal-body">
                 <form class="form-horizontal form-label-left" novalidate>

@@ -34,6 +34,7 @@ namespace CIS.Data
         public DbSet<VisitorStatistic> VisitorStatistics { get; set; }
         public DbSet<Feedback> Feedbacks { get; set; }
         public DbSet<Applicant> Applicants { get; set; }        
+        public DbSet<InternalDetail> InternalDetails { get; set; }        
 
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {

@@ -19,7 +19,7 @@ namespace CIS.Web.Areas.Admin.Controllers
         public PostController(IPostService postService, IPostCategoryService postCategoryService)
         {
             this._postService = postService;
-            this._postCategoryService = postCategoryService;            
+            this._postCategoryService = postCategoryService;
         }
 
         [HasCredential(RoleID = "R_POST")]
@@ -60,21 +60,23 @@ namespace CIS.Web.Areas.Admin.Controllers
         [HasCredential(RoleID = "CUD_POST")]
         public ActionResult Create(PostViewModel postViewModel)
         {
+
+            if (postViewModel.CategoryID == CommonConstant.ChildPageCategoryID)
+            {
+                postViewModel.Status = true;
+            }
+            Post newPost = new Post();
+            newPost.UpdatePost(postViewModel);
+            newPost.CreatedDate = DateTime.Now;
+            newPost.CreatedBy = currentUserName;
+            TryValidateModel(newPost);
             if (!ModelState.IsValid)
             {
-                SetAlert("error", "Đăng bài không thành công.");
+                SetAlert("error", "ModelState is not valid.");
                 return RedirectToAction("CreateView");
             }
             else
             {
-                if (postViewModel.CategoryID == CommonConstant.ChildPageCategoryID)
-                {
-                    postViewModel.Status = true;
-                }
-                Post newPost = new Post();
-                newPost.UpdatePost(postViewModel);
-                newPost.CreatedDate = DateTime.Now;
-                newPost.CreatedBy = currentUserName;
                 _postService.Add(newPost);
                 _postService.SaveChanges();
                 SetAlert("success", "Đăng bài thành công.");
@@ -86,24 +88,13 @@ namespace CIS.Web.Areas.Admin.Controllers
         [HasCredential(RoleID = "CUD_POST")]
         public JsonResult Delete(int id)
         {
-            if (!ModelState.IsValid)
+            _postService.Delete(id);
+            _postService.SaveChanges();
+            SetAlert("success", "Đã xoá thành công.");
+            return Json(new
             {
-                SetAlert("error", "Xoá bài không thành công.");
-                return Json(new
-                {
-                    status = false
-                });
-            }
-            else
-            {
-                _postService.Delete(id);
-                _postService.SaveChanges();
-                SetAlert("success", "Đã xoá thành công.");
-                return Json(new
-                {
-                    status = true
-                });
-            }
+                status = true
+            });
         }
 
         [HttpPost]
@@ -175,6 +166,11 @@ namespace CIS.Web.Areas.Admin.Controllers
         [HasCredential(RoleID = "CUD_POST")]
         public ActionResult Update(PostViewModel postViewModel)
         {
+            Post updatedPost = _postService.GetById(postViewModel.ID);
+            updatedPost.UpdatePost(postViewModel);
+            updatedPost.UpdatedDate = DateTime.Now;
+            updatedPost.UpdatedBy = currentUserName;
+            TryValidateModel(updatedPost);
             if (!ModelState.IsValid)
             {
                 SetAlert("error", "Chỉnh sửa không thành công.");
@@ -182,10 +178,6 @@ namespace CIS.Web.Areas.Admin.Controllers
             }
             else
             {
-                Post updatedPost = _postService.GetById(postViewModel.ID);
-                updatedPost.UpdatePost(postViewModel);
-                updatedPost.UpdatedDate = DateTime.Now;
-                updatedPost.UpdatedBy = currentUserName;
                 _postService.Update(updatedPost);
                 _postService.SaveChanges();
                 SetAlert("success", updatedPost.Name + " đã được chỉnh sửa.");

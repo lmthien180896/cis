@@ -34,42 +34,68 @@ namespace CIS.Web.Areas.Admin.Controllers
         {
             JavaScriptSerializer serializer = new JavaScriptSerializer();
             var requestCategoryViewModel = serializer.Deserialize<RequestCategoryViewModel>(model);
-            RequestCategory requestCategory = new RequestCategory();
-            requestCategory.UpdateRequestCategory(requestCategoryViewModel);
-            if (requestCategory.ID == 0)
+            if (requestCategoryViewModel.ID == 0)
             {
+                RequestCategory requestCategory = new RequestCategory();
+                requestCategory.UpdateRequestCategory(requestCategoryViewModel);
                 requestCategory.CreatedDate = DateTime.Now;
-                requestCategory.CreatedBy = currentUserName; 
-                var newRequestCategoryService = _requestCategoryService.Add(requestCategory);
-                if (newRequestCategoryService == null)
+                requestCategory.CreatedBy = currentUserName;
+                TryValidateModel(requestCategory);
+                if (ModelState.IsValid)
                 {
-                    SetAlert("error", "Loại yêu cầu đã tồn tại.");
+                    var newRequestCategoryService = _requestCategoryService.Add(requestCategory);
+                    if (newRequestCategoryService == null)
+                    {
+                        SetAlert("error", "Loại yêu cầu đã tồn tại.");
+                        return Json(new
+                        {
+                            status = false
+                        });
+                    }
+                    else
+                    {
+                        _requestCategoryService.SaveChanges();
+                        SetAlert("success", "Tạo thành công loại yêu cầu.");
+                        return Json(new
+                        {
+                            status = true
+                        });
+                    }
+                }
+                else
+                {
+                    SetAlert("error", "ModelState is not valid.");
                     return Json(new
                     {
                         status = false
                     });
                 }
-                else
+            }
+            else
+            {
+                var updatedRequestCategory = _requestCategoryService.GetById(requestCategoryViewModel.ID);
+                updatedRequestCategory.UpdateRequestCategory(requestCategoryViewModel);
+                updatedRequestCategory.UpdatedDate = DateTime.Now;
+                updatedRequestCategory.UpdatedBy = currentUserName;
+                TryValidateModel(updatedRequestCategory);
+                if (ModelState.IsValid)
                 {
+                    _requestCategoryService.Update(updatedRequestCategory);
                     _requestCategoryService.SaveChanges();
-                    SetAlert("success", "Tạo thành công loại yêu cầu.");
+                    SetAlert("success", "Chỉnh sửa thành công loại yêu cầu.");
                     return Json(new
                     {
                         status = true
                     });
                 }
-            }
-            else
-            {
-                requestCategory.UpdatedDate = DateTime.Now;
-                requestCategory.UpdatedBy = currentUserName;
-                _requestCategoryService.Update(requestCategory);
-                _requestCategoryService.SaveChanges();
-                SetAlert("success", "Chỉnh sửa thành công loại yêu cầu.");
-                return Json(new
+                else
                 {
-                    status = true
-                });
+                    SetAlert("error", "ModelState is not valid.");
+                    return Json(new
+                    {
+                        status = false
+                    });
+                }
             }
         }
 
@@ -89,24 +115,13 @@ namespace CIS.Web.Areas.Admin.Controllers
         [HasCredential(RoleID = "CUD_REQUEST")]
         public JsonResult Delete(int id)
         {
-            if (!ModelState.IsValid)
+            _requestCategoryService.Delete(id);
+            _requestCategoryService.SaveChanges();
+            SetAlert("success", "Đã xoá thành công.");
+            return Json(new
             {
-                SetAlert("error", "Xoá loại yêu cầu không thành công.");
-                return Json(new
-                {
-                    status = false
-                });
-            }
-            else
-            {
-                _requestCategoryService.Delete(id);
-                _requestCategoryService.SaveChanges();
-                SetAlert("success", "Đã xoá thành công.");
-                return Json(new
-                {
-                    status = true
-                });
-            }
+                status = true
+            });
         }
 
         [HttpPost]

@@ -103,55 +103,63 @@ namespace CIS.Web.Controllers
             {
                 Request request = new Request();
                 request.UpdateRequest(requestViewModel);
-                _requestService.Add(request);
-                _requestService.SaveChanges();
-
-                var filepath = ConfigHelper.GetByKey("ConfirmSendingRequest");
-                var mes = System.IO.File.ReadAllText(Server.MapPath(filepath));
-                mes = mes.Replace("{{SenderName}}", request.SenderName);
-                mes = mes.Replace("{{RequestCategory}}", requestCategory);
-                mes = mes.Replace("{{Detail}}", request.Detail);
-                mes = mes.Replace("{{Code}}", request.Code);
-                mes = mes.Replace("{{EnterCodeLink}}", ConfigHelper.GetByKey("CurrentLink") + "/RequestFunctions/EnterCode");
-                mes = mes.Replace("{{IssueID}}", request.ID.ToString());
-
-                var emails = request.Email.Replace(" ", "").Split(',');
-                foreach (var toEmail in emails)
+                TryValidateModel(request);
+                if (ModelState.IsValid)
                 {
-                    MailHepler.SendMail(toEmail, requestCategory, mes);
-                }
+                    _requestService.Add(request);
+                    _requestService.SaveChanges();
 
-                var webTeamEmail = ConfigHelper.GetByKey("WebTeamEmail");
-                var networkTeamEmail = ConfigHelper.GetByKey("NetworkTeamEmail");
-                var centerEmail = ConfigHelper.GetByKey("CenterEmail");
-                filepath = ConfigHelper.GetByKey("SendingRequestToTeam");
-                mes = System.IO.File.ReadAllText(Server.MapPath(filepath));
-                mes = mes.Replace("{{Sender}}", request.SenderName);
-                mes = mes.Replace("{{Topic}}", requestCategory);
-                mes = mes.Replace("{{IssueDetails}}", request.Detail);
-                mes = mes.Replace("{{IssueID}}", request.ID.ToString());
-                mes = mes.Replace("{{Place}}", request.Place);
-                mes = mes.Replace("{{Email}}", request.Email);
-                mes = mes.Replace("{{Phone}}", request.Phone);
-                mes = mes.Replace("{{IssueID}}", request.ID.ToString());
-                mes = mes.Replace("{{SendRequestToTeamLink}}", ConfigHelper.GetByKey("CurrentLink") + "/Admin/Request/ViewDetail");
-                if (requestCategory == "Đăng tin lên IU Web")
-                {
-                    mes = mes.Replace("{{Team}}", "Web Team");
-                    MailHepler.SendMail(webTeamEmail, requestCategory, mes);
-                }
-                else if (requestCategory == "Vấn đề khác")
-                {
-                    mes = mes.Replace("{{Team}}", "CIS Team");
-                    MailHepler.SendMail(centerEmail, requestCategory, mes);
+                    var filepath = ConfigHelper.GetByKey("ConfirmSendingRequest");
+                    var mes = System.IO.File.ReadAllText(Server.MapPath(filepath));
+                    mes = mes.Replace("{{SenderName}}", request.SenderName);
+                    mes = mes.Replace("{{RequestCategory}}", requestCategory);
+                    mes = mes.Replace("{{Detail}}", request.Detail);
+                    mes = mes.Replace("{{Code}}", request.Code);
+                    mes = mes.Replace("{{EnterCodeLink}}", ConfigHelper.GetByKey("CurrentLink") + "/RequestFunctions/EnterCode");
+                    mes = mes.Replace("{{IssueID}}", request.ID.ToString());
+
+                    var emails = request.Email.Replace(" ", "").Split(',');
+                    foreach (var toEmail in emails)
+                    {
+                        MailHepler.SendMail(toEmail, requestCategory, mes);
+                    }
+
+                    var webTeamEmail = ConfigHelper.GetByKey("WebTeamEmail");
+                    var networkTeamEmail = ConfigHelper.GetByKey("NetworkTeamEmail");
+                    var centerEmail = ConfigHelper.GetByKey("CenterEmail");
+                    filepath = ConfigHelper.GetByKey("SendingRequestToTeam");
+                    mes = System.IO.File.ReadAllText(Server.MapPath(filepath));
+                    mes = mes.Replace("{{Sender}}", request.SenderName);
+                    mes = mes.Replace("{{Topic}}", requestCategory);
+                    mes = mes.Replace("{{IssueDetails}}", request.Detail);
+                    mes = mes.Replace("{{IssueID}}", request.ID.ToString());
+                    mes = mes.Replace("{{Place}}", request.Place);
+                    mes = mes.Replace("{{Email}}", request.Email);
+                    mes = mes.Replace("{{Phone}}", request.Phone);
+                    mes = mes.Replace("{{IssueID}}", request.ID.ToString());
+                    mes = mes.Replace("{{SendRequestToTeamLink}}", ConfigHelper.GetByKey("CurrentLink") + "/Admin/Request/ViewDetail");
+                    if (requestCategory == "Đăng tin lên IU Web")
+                    {
+                        mes = mes.Replace("{{Team}}", "Web Team");
+                        MailHepler.SendMail(webTeamEmail, requestCategory, mes);
+                    }
+                    else if (requestCategory == "Vấn đề khác")
+                    {
+                        mes = mes.Replace("{{Team}}", "CIS Team");
+                        MailHepler.SendMail(centerEmail, requestCategory, mes);
+                    }
+                    else
+                    {
+                        mes = mes.Replace("{{Team}}", "Network Team");
+                        MailHepler.SendMail(networkTeamEmail, requestCategory, mes);
+                    }
+
+                    SetAlert("success", "Gửi yêu cầu thành công.");
                 }
                 else
                 {
-                    mes = mes.Replace("{{Team}}", "Network Team");
-                    MailHepler.SendMail(networkTeamEmail, requestCategory, mes);
+                    SetAlert("error", "Kiểm tra lại thông tin yêu cầu.");
                 }
-
-                SetAlert("success", "Gửi yêu cầu thành công.");
             }
             catch {
                 SetAlert("error", "Đã xảy ra vấn đề khi gửi yêu cầu.");

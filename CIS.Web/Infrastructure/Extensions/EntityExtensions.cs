@@ -57,9 +57,7 @@ namespace CIS.Web.Infrastructure.Extensions
             post.HotFlag = postVm.HotFlag;
             post.ViewCount = postVm.ViewCount;
             post.Tags = postVm.Tags;
-            
-            post.UpdatedDate = postVm.UpdatedDate;
-            post.UpdatedBy = postVm.UpdatedBy;
+                       
             post.MetaKeyword = postVm.MetaKeyword;
             post.MetaDescription = postVm.MetaDescription;
             post.Status = postVm.Status;
@@ -71,9 +69,7 @@ namespace CIS.Web.Infrastructure.Extensions
             requestCategory.ID = requestCategoryVm.ID;
             requestCategory.Name = requestCategoryVm.Name;
             requestCategory.Requests = requestCategoryVm.Requests;
-         
-            requestCategory.UpdatedDate = requestCategoryVm.UpdatedDate;
-            requestCategory.UpdatedBy = requestCategoryVm.UpdatedBy;
+                    
             requestCategory.MetaKeyword = requestCategoryVm.MetaKeyword;
             requestCategory.MetaDescription = requestCategoryVm.MetaDescription;
             requestCategory.Status = requestCategoryVm.Status;
@@ -89,15 +85,10 @@ namespace CIS.Web.Infrastructure.Extensions
             request.Phone = requestVm.Phone;
             request.Detail = requestVm.Detail;
             request.Place = requestVm.Place;
-            request.Files = requestVm.Files;
-            request.Code = requestVm.Code;
-            request.ClosedDate = requestVm.ClosedDate;
+            request.Files = requestVm.Files;           
             request.Progress = requestVm.Progress;
 
-            request.CreatedDate = requestVm.CreatedDate;
-            request.CreatedBy = requestVm.CreatedBy;
-            request.UpdatedDate = requestVm.UpdatedDate;
-            request.UpdatedBy = requestVm.UpdatedBy;
+            request.CreatedDate = requestVm.CreatedDate;                        
             request.MetaKeyword = requestVm.MetaKeyword;
             request.MetaDescription = requestVm.MetaDescription;
             request.Status = requestVm.Status;
@@ -109,7 +100,7 @@ namespace CIS.Web.Infrastructure.Extensions
             requestReport.RequestID = requestReportVm.RequestID;
             requestReport.SupporterID = requestReportVm.SupporterID;
             requestReport.Note = requestReportVm.Note;
-
+            requestReport.CreatedDate = requestReportVm.CreatedDate;
             requestReport.UpdatedDate = requestReportVm.UpdatedDate;
             requestReport.UpdatedBy = requestReportVm.UpdatedBy;
             requestReport.MetaKeyword = requestReportVm.MetaKeyword;
@@ -164,6 +155,14 @@ namespace CIS.Web.Infrastructure.Extensions
             applicant.Phone = applicantVm.Phone;
             applicant.CreatedDate = applicantVm.CreatedDate;
             applicant.JobID = applicantVm.JobID;            
+        }
+
+        //InternalDetail
+        public static void UpdateInternalDetail(this InternalDetail internalDetail, InternalDetailViewModel internalDetailVm)
+        {
+            internalDetail.ID = internalDetailVm.ID;
+            internalDetail.Name = internalDetailVm.Name;
+            internalDetail.FileUrl = internalDetailVm.FileUrl;                            
         }
     }
 }

@@ -18,26 +18,6 @@
 
 @{Html.RenderAction("Slide", "Home");}
 
-<div id="index-twitter">
-    <div class="container">
-        <div class="row-fluid">
-            <div class="logoiu">
-                <a href='https://hcmiu.edu.vn' class="logoiu">
-                    <img src="/Assets/client/CIS-pro/cis-img/iu-logo.png">
-                </a>
-            </div>
-            <div class="text-iu">
-                <div class="tweet">
-                    <a href="/Assets/client/CIS-pro/https://hcmiu.edu.vn" target="_blank" class="iulogo">
-                        <h2 class="clWhite">Đại học Quốc Gia TP.HCM - Trường Đại học Quốc Tế </h2>
-                        <span>website</span>
-                    </a>
-                </div>
-            </div>
-        </div>
-    </div>
-</div>
-
 <div id="services-row">
     <div class="container">
         <div class="row">
@@ -70,17 +50,35 @@
     </div>
 </div>
 
-
-
-@*<div id="index-main" class="new">
-        <div class="container">
-            <div class="row-fluid">
-                <div class="span4">
-                    <div class="block-title">Về chúng tôi</div>
-                    <p style="text-align:justify;">@aboutUs.Description</p>
-                    <p><a class="more" href="/gioi-thieu">Xem thêm</a></p>
+<div id="index-twitter">
+    <div class="container">
+        <div class="row-fluid">
+            <div class="logoiu">
+                <a href='https://hcmiu.edu.vn' class="logoiu">
+                    <img src="/Assets/client/CIS-pro/cis-img/iu-logo.png">
+                </a>
+            </div>
+            <div class="text-iu">
+                <div class="tweet">
+                    <a href="/Assets/client/CIS-pro/https://hcmiu.edu.vn" target="_blank" class="iulogo">
+                        <h2 class="clWhite">Đại học Quốc Gia TP.HCM - Trường Đại học Quốc Tế </h2>
+                        <span>website</span>
+                    </a>
                 </div>
-                <div class="span4 case-studies-wrap">
+            </div>
+        </div>
+    </div>
+</div>
+
+<div id="index-main" class="new">
+    <div class="container">
+        <div class="row-fluid">
+            <div class="span12">
+                <div class="block-title">Về chúng tôi</div>
+                <p style="text-align:justify;">@aboutUs.Description</p>
+                <p><a class="more" href="/gioi-thieu">Xem thêm</a></p>
+            </div>
+            @*<div class="span4 case-studies-wrap">
                     <div class="block-title">Dịch vụ Web</div>
                     <p>@webPost.Description</p>
                     <a class="more" href="/dich-vu-web">Xem chi tiết</a>
@@ -89,11 +87,11 @@
                     <div class="block-title">Dịch vụ Hệ thống</div>
                     <p>@systemPost.Description</p>
                     <a class="more" href="/dich-vu-he-thong">Xem chi tiết</a>
-                </div>
-            </div>
+                </div>*@
         </div>
-        <!-- / container -->
-    </div>*@
+    </div>
+    <!-- / container -->
+</div>
 
 
 
@@ -111,7 +109,8 @@
                             {
                                 newsUrl = news.ReferenceUrl;
                             }
-                            else {
+                            else
+                            {
                                 newsUrl = "/tin-tuc/" + news.Alias + "-" + news.ID;
                             }
                         }

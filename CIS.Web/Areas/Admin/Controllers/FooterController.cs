@@ -13,11 +13,11 @@ namespace CIS.Web.Areas.Admin.Controllers
 {
     public class FooterController : BaseController
     {
-        private IFooterService _footerService;    
+        private IFooterService _footerService;
 
         public FooterController(IFooterService footerService)
         {
-            this._footerService = footerService;           
+            this._footerService = footerService;
         }
 
         public ActionResult ListFooter()
@@ -34,15 +34,30 @@ namespace CIS.Web.Areas.Admin.Controllers
         {
             JavaScriptSerializer serializer = new JavaScriptSerializer();
             var footerViewModel = serializer.Deserialize<FooterViewModel>(model);
-            Footer footer = _footerService.GetById(footerViewModel.ID);
+            Footer footer = new Footer();
             footer.UpdateFooter(footerViewModel);
-            _footerService.Update(footer);
-            _footerService.SaveChanges();
-            SetAlert("success", "Chỉnh sửa footer thành công");
-            return Json(new
+            footer.UpdatedDate = DateTime.Now;
+            footer.UpdatedBy = currentUserName;
+            TryValidateModel(footer);
+            if (ModelState.IsValid)
             {
-                status = true
-            });
+                _footerService.Update(footer);
+                _footerService.SaveChanges();
+                SetAlert("success", "Chỉnh sửa footer thành công");
+                return Json(new
+                {
+                    status = true
+                });
+            }
+            else {
+                SetAlert("error", "ModelState is not valid");
+                return Json(new
+                {
+                    status = false                 
+                });
+            }
+          
+
         }
     }
 }

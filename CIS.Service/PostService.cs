@@ -11,6 +11,8 @@ namespace CIS.Service
 {
     public interface IPostService
     {
+        int CountTotal();
+
         void Add(Post post);
 
         void Update(Post post);
@@ -53,6 +55,11 @@ namespace CIS.Service
             this._postTagRepository = postTagRepository;
             this._tagRepository = tagRepository;
             this._unitOfWork = unitOfWork;
+        }
+
+        public int CountTotal()
+        {
+            return _postRepository.GetAll().Count();
         }
 
         public void Add(Post post)

@@ -1,6 +1,187 @@
-﻿@{
-    ViewBag.Title = "Index";
+﻿@model CIS.Web.Areas.Admin.Models.HomeAdminViewModel
+@{
     Layout = "~/Areas/Admin/Views/Shared/_LayoutAdmin.cshtml";
 }
 
-<h1>Admin page</h1>
+@{
+    var InternalDetailVms = Model.InternalDetailViewModels;
+    var requestsPerMonth = Model.RequestsPerMonth;
+    var countByRequestCategory = Model.CountByRequestCategoryValue;
+    var requestCategories = Model.RequestCategories;
+}
+
+@section js{
+    <script>
+        var month = [];
+        var value = [];
+        $.each(@requestsPerMonth, function (i, item) {
+            month.push("Tháng " + (i + 1));
+            value.push(item);
+        });
+        var requestChart = document.getElementById('requestChart').getContext('2d');
+        var barchart = new Chart(requestChart, {
+            // The type of chart we want to create
+            type: 'bar',
+            // The data for our dataset
+            data: {
+                labels: month,
+                datasets: [{
+                    label: 'Số yêu cầu',
+                    backgroundColor: 'rgb(38, 73, 122)',
+                    borderColor: 'rgb(38, 73, 122)',
+                    data: value
+                }]
+            },
+            // Configuration options go here
+            options: {
+                scales: {
+                    xAxes: [{
+                        barPercentage: 0.5,
+                        barThickness: 6,
+                        maxBarThickness: 8,
+                        minBarLength: 2,
+                        gridLines: {
+                            offsetGridLines: true
+                        }
+                    }]
+                }
+            }
+        });
+    </script>
+}
+
+<div class="row tile_count">
+    <div class="col-md-2 col-sm-4 col-xs-6 tile_stats_count">
+        <span class="count_top"><i class="fa fa-user"></i> Số thành viên</span>
+        <div class="count">@Model.TotalUsers</div>
+    </div>
+    <div class="col-md-2 col-sm-4 col-xs-6 tile_stats_count">
+        <span class="count_top"><i class="fa fa-book"></i> Số bài đăng</span>
+        <div class="count green">@Model.TotalPosts</div>
+    </div>
+    <div class="col-md-2 col-sm-4 col-xs-6 tile_stats_count">
+        <span class="count_top"><i class="fa fa-exclamation-triangler"></i> Số yêu cầu</span>
+        <div class="count red">@Model.TotalRequests</div>
+    </div>
+    <div class="col-md-2 col-sm-4 col-xs-6 tile_stats_count">
+        <span class="count_top"><i class="fa fa-comments"></i> Số góp ý</span>
+        <div class="count blue">@Model.TotalFeedbacks</div>
+    </div>
+    <div class="col-md-2 col-sm-4 col-xs-6 tile_stats_count">
+        <span class="count_top"><i class="fa fa-user"></i> Số applicant</span>
+        <div class="count">@Model.TotalApplicants</div>
+    </div>
+</div>
+
+
+<div class="col-md-4 col-sm-4 col-xs-12">
+    <div class="x_panel">
+        <div class="x_title">
+            <h2>Thông tin nội bộ</h2>
+            <ul class="nav navbar-right panel_toolbox">
+                <li>
+                    <a class="collapse-link"><i class="fa fa-chevron-up"></i></a>
+                </li>
+                <li class="dropdown">
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false"><i class="fa fa-wrench"></i></a>
+                    <ul class="dropdown-menu" role="menu">
+                        <li>
+                            <a href="#">Settings 1</a>
+                        </li>
+                        <li>
+                            <a href="#">Settings 2</a>
+                        </li>
+                    </ul>
+                </li>
+                <li>
+                    <a class="close-link"><i class="fa fa-close"></i></a>
+                </li>
+            </ul>
+            <div class="clearfix"></div>
+        </div>
+        <div class="x_content">
+            <div class="dashboard-widget-content">
+                <ul class="list-unstyled timeline widget">
+                    @foreach (var info in InternalDetailVms)
+                    {
+                        <li>
+                            <div class="block">
+                                <div class="block_content">
+                                    <h2 class="title">
+                                        <a href="@info.FileUrl" target="_blank">@info.Name</a>
+                                    </h2>
+                                    <div class="byline">
+                                        <span>@(info.UpdatedDate == null ? info.CreatedDate?.ToString("dd MMMM yyyy") : info.UpdatedDate?.ToString("dd MMMM yyyy"))</span>
+                                    </div>
+                                    <p class="excerpt">
+                                    </p>
+                                </div>
+                            </div>
+                        </li>
+                    }
+                </ul>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+<div class="col-md-12 col-sm-12 col-xs-12">
+    <div class="x_panel">
+        <div class="x_title">
+            <h2>Thống kê yêu cầu</h2>
+            <ul class="nav navbar-right panel_toolbox">
+                <li>
+                    <a class="collapse-link"><i class="fa fa-chevron-up"></i></a>
+                </li>
+                <li class="dropdown">
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false"><i class="fa fa-wrench"></i></a>
+                    <ul class="dropdown-menu" role="menu">
+                        <li>
+                            <a href="#">Settings 1</a>
+                        </li>
+                        <li>
+                            <a href="#">Settings 2</a>
+                        </li>
+                    </ul>
+                </li>
+                <li>
+                    <a class="close-link"><i class="fa fa-close"></i></a>
+                </li>
+            </ul>
+            <div class="clearfix"></div>
+        </div>
+        <div class="x_content">
+            <div class="col-md-9 col-sm-9 col-xs-12">
+                <canvas id="requestChart"></canvas>
+            </div>
+            <div class="col-md-3 col-sm-3 col-xs-12 bg-white">
+                <div class="x_title">
+                    <h2>Loại yêu cầu</h2>
+                    <div class="clearfix"></div>
+                </div>
+
+                <div class="col-md-12 col-sm-12 col-xs-6">
+                    @{var i = 0;}
+                    @foreach (var category in requestCategories)
+                    {
+                    <div>
+                        <p>@category.Name</p>
+                        <span class="pull-right">@countByRequestCategory[i]%</span>
+                        <div class="">
+                            <div class="progress progress_sm" style="width: 76%;">
+                                <div class="progress-bar bg-green" role="progressbar" style="width: @countByRequestCategory[i]%;"></div>
+                            </div>
+
+                        </div>
+                    </div>
+                        i++;
+                    }
+
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+

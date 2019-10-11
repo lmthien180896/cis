@@ -6,11 +6,11 @@ by editing this MSBuild file. In order to learn more about this please visit htt
 <Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <PropertyGroup>
     <TimeStampOfAssociatedLegacyPublishXmlFile />
-    <_PublishTargetUrl>C:\Users\Thien\Desktop\LeMinhThien\Publish\Project-1_CIS</_PublishTargetUrl>
+    <_PublishTargetUrl>C:\Users\Thien\Desktop\LeMinhThien\Publish\cis-final</_PublishTargetUrl>
   </PropertyGroup>
   <ItemGroup>
     <File Include="AppSettings.config">
-      <publishTime>09/27/2019 14:13:37</publishTime>
+      <publishTime>10/08/2019 13:40:27</publishTime>
     </File>
     <File Include="Areas/Admin/Views/Applicant/Index.cshtml">
       <publishTime>09/30/2019 07:59:52</publishTime>
@@ -21,8 +21,14 @@ by editing this MSBuild file. In order to learn more about this please visit htt
     <File Include="Areas/Admin/Views/Footer/ListFooter.cshtml">
       <publishTime>09/27/2019 08:17:52</publishTime>
     </File>
+    <File Include="Areas/Admin/Views/Home/AdminMenu.cshtml">
+      <publishTime>10/10/2019 08:04:53</publishTime>
+    </File>
     <File Include="Areas/Admin/Views/Home/Index.cshtml">
-      <publishTime>09/20/2019 11:54:07</publishTime>
+      <publishTime>10/10/2019 11:08:11</publishTime>
+    </File>
+    <File Include="Areas/Admin/Views/InternalDetail/Index.cshtml">
+      <publishTime>10/10/2019 10:53:18</publishTime>
     </File>
     <File Include="Areas/Admin/Views/Job/Index.cshtml">
       <publishTime>09/27/2019 11:03:37</publishTime>
@@ -43,16 +49,16 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>09/27/2019 10:10:03</publishTime>
     </File>
     <File Include="Areas/Admin/Views/Request/Index.cshtml">
-      <publishTime>09/27/2019 10:10:03</publishTime>
+      <publishTime>10/10/2019 11:13:05</publishTime>
     </File>
     <File Include="Areas/Admin/Views/Request/SupportingQueue.cshtml">
-      <publishTime>10/03/2019 11:25:00</publishTime>
+      <publishTime>10/10/2019 11:13:37</publishTime>
     </File>
     <File Include="Areas/Admin/Views/Request/ViewDetail.cshtml">
       <publishTime>09/25/2019 14:33:07</publishTime>
     </File>
     <File Include="Areas/Admin/Views/Request/WaitingQueue.cshtml">
-      <publishTime>09/27/2019 10:08:49</publishTime>
+      <publishTime>10/10/2019 11:13:57</publishTime>
     </File>
     <File Include="Areas/Admin/Views/RequestCategory/Index.cshtml">
       <publishTime>09/27/2019 10:07:57</publishTime>
@@ -64,10 +70,10 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>09/24/2019 09:16:11</publishTime>
     </File>
     <File Include="Areas/Admin/Views/Shared/_LayoutAdmin.cshtml">
-      <publishTime>10/07/2019 15:18:03</publishTime>
+      <publishTime>10/10/2019 11:09:26</publishTime>
     </File>
     <File Include="Areas/Admin/Views/Slide/ListSlide.cshtml">
-      <publishTime>09/27/2019 08:31:08</publishTime>
+      <publishTime>10/10/2019 08:30:42</publishTime>
     </File>
     <File Include="Areas/Admin/Views/User/CreateView.cshtml">
       <publishTime>09/27/2019 10:19:47</publishTime>
@@ -133,25 +139,28 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>09/30/2019 08:14:17</publishTime>
     </File>
     <File Include="Assets/admin/js/controller/footerController.js">
-      <publishTime>09/27/2019 08:19:12</publishTime>
+      <publishTime>10/10/2019 10:39:08</publishTime>
     </File>
     <File Include="Assets/admin/js/controller/interfaceComponentController.js">
       <publishTime>09/27/2019 08:17:13</publishTime>
     </File>
+    <File Include="Assets/admin/js/controller/internalDetailController.js">
+      <publishTime>10/10/2019 10:53:55</publishTime>
+    </File>
     <File Include="Assets/admin/js/controller/jobController.js">
-      <publishTime>09/27/2019 10:52:22</publishTime>
+      <publishTime>10/10/2019 10:39:33</publishTime>
     </File>
     <File Include="Assets/admin/js/controller/loginController.js">
       <publishTime>09/23/2019 14:09:29</publishTime>
     </File>
     <File Include="Assets/admin/js/controller/postController.js">
-      <publishTime>09/20/2019 11:54:14</publishTime>
+      <publishTime>10/08/2019 14:34:51</publishTime>
     </File>
     <File Include="Assets/admin/js/controller/requestCategoryController.js">
       <publishTime>09/23/2019 12:25:26</publishTime>
     </File>
     <File Include="Assets/admin/js/controller/requestController.js">
-      <publishTime>09/27/2019 10:11:31</publishTime>
+      <publishTime>10/10/2019 10:40:22</publishTime>
     </File>
     <File Include="Assets/admin/js/controller/slideController.js">
       <publishTime>09/27/2019 08:53:44</publishTime>
@@ -16333,7 +16342,7 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>09/24/2019 10:44:05</publishTime>
     </File>
     <File Include="Assets/client/CIS-pro/css/cisstyle.css">
-      <publishTime>10/07/2019 15:01:40</publishTime>
+      <publishTime>10/08/2019 11:36:34</publishTime>
     </File>
     <File Include="Assets/client/CIS-pro/css/fonts/icomoon/icomoon--9awmuo.eot">
       <publishTime>09/24/2019 10:44:05</publishTime>
@@ -16384,7 +16393,7 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>09/24/2019 10:44:05</publishTime>
     </File>
     <File Include="Assets/client/CIS-pro/css/styleClone.css">
-      <publishTime>10/07/2019 10:06:58</publishTime>
+      <publishTime>10/08/2019 11:37:04</publishTime>
     </File>
     <File Include="Assets/client/CIS-pro/images/blockquote-after.png">
       <publishTime>09/24/2019 10:44:05</publishTime>
@@ -16686,11 +16695,14 @@ by editing this MSBuild file. In order to learn more about this please visit htt
     <File Include="Assets/client/js/common.js">
       <publishTime>09/27/2019 14:04:26</publishTime>
     </File>
+    <File Include="Assets/client/js/controller/commonController.js">
+      <publishTime>10/08/2019 13:10:37</publishTime>
+    </File>
     <File Include="Assets/client/js/controller/issueController.js">
       <publishTime>09/24/2019 10:44:06</publishTime>
     </File>
     <File Include="Assets/client/js/controller/requestController.js">
-      <publishTime>09/25/2019 11:21:43</publishTime>
+      <publishTime>10/07/2019 15:31:34</publishTime>
     </File>
     <File Include="Assets/client/mail-template/confirm_applicant.html">
       <publishTime>09/27/2019 14:23:11</publishTime>
@@ -16729,40 +16741,40 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>09/19/2019 15:31:36</publishTime>
     </File>
     <File Include="bin/CIS.Common.dll">
-      <publishTime>09/30/2019 08:31:40</publishTime>
+      <publishTime>10/08/2019 14:43:08</publishTime>
     </File>
     <File Include="bin/CIS.Common.pdb">
-      <publishTime>09/30/2019 08:31:40</publishTime>
+      <publishTime>10/08/2019 14:43:08</publishTime>
     </File>
     <File Include="bin/CIS.Data.dll">
-      <publishTime>10/07/2019 15:20:55</publishTime>
+      <publishTime>10/10/2019 11:30:59</publishTime>
     </File>
     <File Include="bin/CIS.Data.dll.config">
       <publishTime>09/20/2019 11:53:22</publishTime>
     </File>
     <File Include="bin/CIS.Data.pdb">
-      <publishTime>10/07/2019 15:20:55</publishTime>
+      <publishTime>10/10/2019 11:30:59</publishTime>
     </File>
     <File Include="bin/CIS.Model.dll">
-      <publishTime>09/30/2019 08:31:40</publishTime>
+      <publishTime>10/10/2019 11:30:59</publishTime>
     </File>
     <File Include="bin/CIS.Model.dll.config">
       <publishTime>09/20/2019 11:52:50</publishTime>
     </File>
     <File Include="bin/CIS.Model.pdb">
-      <publishTime>09/30/2019 08:31:40</publishTime>
+      <publishTime>10/10/2019 11:30:59</publishTime>
     </File>
     <File Include="bin/CIS.Service.dll">
-      <publishTime>10/07/2019 15:20:56</publishTime>
+      <publishTime>10/10/2019 11:30:59</publishTime>
     </File>
     <File Include="bin/CIS.Service.pdb">
-      <publishTime>10/07/2019 15:20:56</publishTime>
+      <publishTime>10/10/2019 11:30:59</publishTime>
     </File>
     <File Include="bin/CIS.Web.dll">
-      <publishTime>10/07/2019 15:20:57</publishTime>
+      <publishTime>10/10/2019 11:31:01</publishTime>
     </File>
     <File Include="bin/CIS.Web.pdb">
-      <publishTime>10/07/2019 15:20:57</publishTime>
+      <publishTime>10/10/2019 11:31:01</publishTime>
     </File>
     <File Include="bin/CKFinder.dll">
       <publishTime>09/19/2019 15:31:36</publishTime>
@@ -16939,7 +16951,7 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>10/07/2019 13:53:28</publishTime>
     </File>
     <File Include="Views/Home/Index.cshtml">
-      <publishTime>10/07/2019 15:03:58</publishTime>
+      <publishTime>10/07/2019 15:49:06</publishTime>
     </File>
     <File Include="Views/Home/LicenseFooter.cshtml">
       <publishTime>09/24/2019 11:56:57</publishTime>
@@ -16958,6 +16970,9 @@ by editing this MSBuild file. In order to learn more about this please visit htt
     </File>
     <File Include="Views/Job/Index.cshtml">
       <publishTime>10/07/2019 13:55:30</publishTime>
+    </File>
+    <File Include="Views/News/GetNewsByKeyword.cshtml">
+      <publishTime>10/08/2019 13:35:27</publishTime>
     </File>
     <File Include="Views/News/Index.cshtml">
       <publishTime>10/07/2019 13:55:38</publishTime>
@@ -16996,10 +17011,10 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>09/24/2019 10:46:10</publishTime>
     </File>
     <File Include="Views/Shared/Services.cshtml">
-      <publishTime>09/26/2019 14:08:29</publishTime>
+      <publishTime>10/08/2019 13:42:30</publishTime>
     </File>
     <File Include="Views/Shared/_Layout.cshtml">
-      <publishTime>10/07/2019 13:54:34</publishTime>
+      <publishTime>10/08/2019 13:13:08</publishTime>
     </File>
     <File Include="Views/Web.config">
       <publishTime>09/17/2019 12:17:05</publishTime>

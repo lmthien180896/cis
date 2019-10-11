@@ -43,11 +43,12 @@ namespace CIS.Web.Controllers
 
         public ActionResult ViewNews(int id)
         {
-            var post = _postService.GetById(id);
+            var post = _postService.GetById(id);            
             if (post.CategoryID != CommonConstant.NewsPostCategoryID)
             {
                 return RedirectToAction("NotFound", "Error");
             }
+
             var postViewModel = Mapper.Map<Post, PostViewModel>(post);
             return View(postViewModel);
         }

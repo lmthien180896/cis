@@ -60,16 +60,24 @@ namespace CIS.Web.Controllers
                     }
                 }
 
-                var filepath = ConfigHelper.GetByKey("ConfirmApplicant");
-                var mes = System.IO.File.ReadAllText(Server.MapPath(filepath));
-                mes = mes.Replace("{{Applicant}}", applicant.Fullname);
-                mes = mes.Replace("{{Position}}", _jobService.GetById(applicant.JobID).Name);
-                MailHepler.SendMail(applicant.Email, "CIS tuyển dụng", mes);
+                TryValidateModel(applicant);
+                if (ModelState.IsValid)
+                {
+                    _applicantService.Add(applicant);
+                    _applicantService.SaveChanges();
 
-                _applicantService.Add(applicant);
-                _applicantService.SaveChanges();
+                    var filepath = ConfigHelper.GetByKey("ConfirmApplicant");
+                    var mes = System.IO.File.ReadAllText(Server.MapPath(filepath));
+                    mes = mes.Replace("{{Applicant}}", applicant.Fullname);
+                    mes = mes.Replace("{{Position}}", _jobService.GetById(applicant.JobID).Name);
+                    MailHepler.SendMail(applicant.Email, "CIS tuyển dụng", mes);
 
-                SetAlert("success", "Nộp đơn thành công");
+                    SetAlert("success", "Nộp đơn thành công");
+                }
+                else
+                {
+                    SetAlert("error", "Đã có lỗi khi nộp đơn. Vui lòng kiểm tra lại thông tin");
+                }
             }
             catch
             {

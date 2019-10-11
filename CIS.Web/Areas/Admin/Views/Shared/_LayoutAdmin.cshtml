@@ -19,7 +19,7 @@
     <!-- bootstrap-daterangepicker -->
     <link href="~/Assets/admin/vendors/bootstrap-daterangepicker/daterangepicker.css" rel="stylesheet">
     <!-- NProgress -->
-    <link href="~/Assets/admin/vendors/nprogress/nprogress.css" rel="stylesheet">
+    <link href="~/Assets/admin/vendors/nprogress/nprogress.css" rel="stylesheet">    
     <!-- iCheck -->
     <link href="~/Assets/admin/vendors/iCheck/skins/flat/green.css" rel="stylesheet">
     <!-- Select2 -->
@@ -35,9 +35,7 @@
     <link href="~/Assets/admin/vendors/datatables.net-buttons-bs/css/buttons.bootstrap.min.css" rel="stylesheet">
     <link href="~/Assets/admin/vendors/datatables.net-fixedheader-bs/css/fixedHeader.bootstrap.min.css" rel="stylesheet">
     <link href="~/Assets/admin/vendors/datatables.net-responsive-bs/css/responsive.bootstrap.min.css" rel="stylesheet">
-    <link href="~/Assets/admin/vendors/datatables.net-scroller-bs/css/scroller.bootstrap.min.css" rel="stylesheet">
-    <!-- mustache -->
-    <script src="~/Assets/admin/libs/mustache.min.js"></script>
+    <link href="~/Assets/admin/vendors/datatables.net-scroller-bs/css/scroller.bootstrap.min.css" rel="stylesheet">   
     <!-- Custom Theme Style -->
     <link href="~/Assets/admin/build/css/custom.min.css" rel="stylesheet">
     @RenderSection("css", required: false)
@@ -106,16 +104,16 @@
                                 </a>
                                 <ul class="dropdown-menu dropdown-usermenu pull-right">
                                     @*<li><a href="javascript:;"> Profile</a></li>
-                                    <li>
-                                        <a href="javascript:;">
-                                            <span class="badge bg-red pull-right">50%</span>
-                                            <span>Settings</span>
-                                        </a>
-                                    </li>
-                                    <li><a href="javascript:;">Help</a></li>*@
+                                        <li>
+                                            <a href="javascript:;">
+                                                <span class="badge bg-red pull-right">50%</span>
+                                                <span>Settings</span>
+                                            </a>
+                                        </li>
+                                        <li><a href="javascript:;">Help</a></li>*@
                                     <li><a href="/Admin/Login/Logout"><i class="fa fa-sign-out pull-right"></i> Log Out</a></li>
                                 </ul>
-                            </li>                            
+                            </li>
                         </ul>
                     </nav>
                 </div>
@@ -123,22 +121,6 @@
             <!-- /top navigation -->
             <!-- page content -->
             <div class="right_col" role="main" style="min-height: 1654px;">
-                <!--Notify-->
-                <div class="ui-pnotify  ui-pnotify-fade-normal ui-pnotify-move ui-pnotify-in ui-pnotify-fade-in" aria-live="assertive" aria-role="alertdialog" style="display: none; width: 300px; right: 36px; top: 159px;">
-                    <div class="alert ui-pnotify-container @TempData["AlertType"] ui-pnotify-shadow" role="alert" style="min-height: 16px;">
-                        <div class="ui-pnotify-closer" aria-role="button" tabindex="0" title="Close" style="cursor: pointer; visibility: hidden;">
-                            <span class="glyphicon glyphicon-remove"></span>
-                        </div>
-                        <div class="ui-pnotify-sticker" aria-role="button" aria-pressed="false" tabindex="0" title="Stick" style="cursor: pointer; visibility: hidden;">
-                            <span class="glyphicon glyphicon-pause" aria-pressed="false"></span>
-                        </div>
-                        <div class="ui-pnotify-icon">
-                            <span class="glyphicon @TempData["AlertIcon"]"></span>
-                        </div>
-                        <h4 class="ui-pnotify-title">@TempData["AlertTitle"]</h4>
-                        <div class="ui-pnotify-text" aria-role="alert">@TempData["AlertMessage"]</div>
-                    </div>
-                </div>
                 <!--/Notification toastr-->
                 @if (TempData["AlertMessage"] != null)
                 {
@@ -170,9 +152,13 @@
     <script src="~/Assets/admin/vendors/fastclick/lib/fastclick.js"></script>
     <!-- DateJS -->
     <script src="~/Assets/admin/vendors/DateJS/build/date.js"></script>
+    <!-- bootstrap-progressbar -->
+    <script src="~/Assets/admin/vendors/bootstrap-progressbar/bootstrap-progressbar.js"></script>
     <!-- bootstrap-daterangepicker -->
-    <script src="~/Assets/admin/vendors/moment/min/moment.min.js"></script>
+    <script src="~/Assets/admin/vendors/moment/moment.js"></script>
     <script src="~/Assets/admin/vendors/bootstrap-daterangepicker/daterangepicker.js"></script>
+    <!-- bootstrap-datetimepicker -->
+    <script src="~/Assets/admin/vendors/bootstrap-datetimepicker/src/js/bootstrap-datetimepicker.js"></script>
     <!-- Validator -->
     <script src="~/Assets/admin/vendors/validator/validator.js"></script>
     <!-- DatatTable -->
@@ -193,6 +179,8 @@
     <script src="~/Assets/admin/vendors/pdfmake/build/vfs_fonts.js"></script>
     <!-- iCheck -->
     <script src="~/Assets/admin/vendors/iCheck/icheck.min.js"></script>
+    <!-- Chart.js -->
+    <script src="~/Assets/admin/vendors/Chart.js/dist/Chart.min.js"></script>
     <!-- jQuery Tags Input -->
     <script src="~/Assets/admin/vendors/jquery.tagsinput/src/jquery.tagsinput.js"></script>
     <!--Switchery-->
@@ -200,6 +188,8 @@
     <!--CKEditor & CKFinder-->
     <script src="~/Assets/admin/libs/ckeditor/ckeditor.js"></script>
     <script src="~/Assets/admin/libs/ckfinder/ckfinder.js"></script>
+    <!-- mustache -->
+    <script src="~/Assets/admin/libs/mustache.min.js"></script>
     @RenderSection("js", required: false)
     <!-- Custom Theme Scripts -->
     <script src="~/Assets/admin/build/js/custom.min.js"></script>

@@ -48,6 +48,7 @@ namespace CIS.Web.Controllers
             {
                 return RedirectToAction("NotFound", "Error");
             }
+
             var postViewModel = Mapper.Map<Post, PostViewModel>(post);
             return View(postViewModel);
         }

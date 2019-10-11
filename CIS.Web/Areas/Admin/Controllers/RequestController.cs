@@ -27,12 +27,15 @@ namespace CIS.Web.Areas.Admin.Controllers
         }
 
         [HasCredential(RoleID = "R_REQUEST")]
-        public ActionResult Index()
+        public ActionResult Index(DateTime? fromDate = null, DateTime? toDate = null)
         {
+            ViewBag.FromDate = fromDate;
+            ViewBag.ToDate = toDate;
+
             var listRequestCategory = _requestCategoryService.GetAll();
             var listRequestCategoryViewModel = Mapper.Map<IEnumerable<RequestCategory>, IEnumerable<RequestCategoryViewModel>>(listRequestCategory);
             ViewBag.ListRequestCategory = listRequestCategoryViewModel;
-            var listRequest = _requestService.GetAllRequests();
+            var listRequest = _requestService.GetAllRequests(fromDate, toDate);
             var listRequestViewModel = Mapper.Map<IEnumerable<Request>, IEnumerable<RequestViewModel>>(listRequest);
             foreach (var request in listRequestViewModel)
             {
@@ -82,7 +85,7 @@ namespace CIS.Web.Areas.Admin.Controllers
                 request.SentDate = request.CreatedDate.Value.ToString("dd/MM/yyyy");
             }
             return View(listSupportingRequestViewModel);
-        }               
+        }
 
         [HttpPost]
         [HasCredential(RoleID = "CUD_REQUEST")]
@@ -152,24 +155,15 @@ namespace CIS.Web.Areas.Admin.Controllers
             JavaScriptSerializer serializer = new JavaScriptSerializer();
             var requestViewModel = serializer.Deserialize<RequestViewModel>(model);
             requestViewModel.Progress = CommonConstant.WaitingProgress;
-            Request request = new Request();
-            request.UpdateRequest(requestViewModel);
-            if (request.ID == 0)
+            if (requestViewModel.ID == 0)
             {
-                if (!request.CreatedDate.HasValue)
-                    request.CreatedDate = DateTime.Now;
+                Request request = new Request();
+                request.UpdateRequest(requestViewModel);
                 request.CreatedBy = currentUserName;
-                var newRequestCategoryService = _requestService.Add(request);
-                if (newRequestCategoryService == null)
+                TryValidateModel(request);
+                if (ModelState.IsValid)
                 {
-                    SetAlert("error", "Tạo yêu cầu không thành công");
-                    return Json(new
-                    {
-                        status = false
-                    });
-                }
-                else
-                {
+                    _requestService.Add(request);
                     _requestService.SaveChanges();
                     SetAlert("success", "Tạo yêu cầu thành công.");
                     return Json(new
@@ -177,20 +171,40 @@ namespace CIS.Web.Areas.Admin.Controllers
                         status = true
                     });
                 }
+                else
+                {
+                    SetAlert("error", "ModelState is not valid");
+                    return Json(new
+                    {
+                        status = false
+                    });
+                }
             }
             else
             {
-                var updatedRequest = _requestService.GetById(request.ID);
+                var updatedRequest = _requestService.GetById(requestViewModel.ID);
                 updatedRequest.UpdateRequest(requestViewModel);
                 updatedRequest.UpdatedDate = DateTime.Now;
                 updatedRequest.UpdatedBy = currentUserName;
-                _requestService.Update(updatedRequest);
-                _requestService.SaveChanges();
-                SetAlert("success", "Chỉnh sửa thành công yêu cầu.");
-                return Json(new
+                TryValidateModel(updatedRequest);
+                if (ModelState.IsValid)
                 {
-                    status = true
-                });
+                    _requestService.Update(updatedRequest);
+                    _requestService.SaveChanges();
+                    SetAlert("success", "Chỉnh sửa thành công yêu cầu.");
+                    return Json(new
+                    {
+                        status = true
+                    });
+                }
+                else
+                {
+                    SetAlert("error", "ModelState is not valid");
+                    return Json(new
+                    {
+                        status = false
+                    });
+                }
             }
         }
 
@@ -263,17 +277,31 @@ namespace CIS.Web.Areas.Admin.Controllers
             JavaScriptSerializer serializer = new JavaScriptSerializer();
             var reportViewModel = serializer.Deserialize<RequestReportViewModel>(model);
             reportViewModel.CreatedDate = DateTime.Now;
+            reportViewModel.CreatedBy = currentUserName;
             reportViewModel.SupporterID = _userService.GetUserByUsername(currentUserName).ID;
 
             RequestReport requestReport = new RequestReport();
             requestReport.UpdateRequestReport(reportViewModel);
-            _requestReportService.Add(requestReport);
-            _requestReportService.SaveChanges();
-            SetAlert("success", "Đã thêm ghi chú thành công");
-            return Json(new
+
+            TryValidateModel(requestReport);
+            if (ModelState.IsValid)
             {
-                status = true
-            });
+                _requestReportService.Add(requestReport);
+                _requestReportService.SaveChanges();
+                SetAlert("success", "Đã thêm ghi chú thành công");
+                return Json(new
+                {
+                    status = true
+                });
+            }
+            else
+            {
+                SetAlert("error", "ModelState is not valid");
+                return Json(new
+                {
+                    status = false
+                });
+            }
         }
     }
 }

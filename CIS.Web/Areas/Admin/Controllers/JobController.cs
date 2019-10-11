@@ -17,7 +17,7 @@ namespace CIS.Web.Areas.Admin.Controllers
     {
         private IJobService _jobService;
         private IApplicantService _applicantService;
-        
+
 
         public JobController(IJobService jobService, IApplicantService applicantService)
         {
@@ -49,24 +49,15 @@ namespace CIS.Web.Areas.Admin.Controllers
         [HasCredential(RoleID = "CRUD_JOB")]
         public JsonResult Delete(int id)
         {
-            if (!ModelState.IsValid)
+
+            _jobService.Delete(id);
+            _jobService.SaveChanges();
+            SetAlert("success", "Đã xoá thành công.");
+            return Json(new
             {
-                SetAlert("error", "Xoá job không thành công.");
-                return Json(new
-                {
-                    status = false
-                });
-            }
-            else
-            {
-                _jobService.Delete(id);
-                _jobService.SaveChanges();
-                SetAlert("success", "Đã xoá thành công.");
-                return Json(new
-                {
-                    status = true
-                });
-            }
+                status = true
+            });
+
         }
 
         [HttpPost]
@@ -76,28 +67,54 @@ namespace CIS.Web.Areas.Admin.Controllers
         {
             JavaScriptSerializer serializer = new JavaScriptSerializer();
             var jobViewModel = serializer.Deserialize<JobViewModel>(model);
-            jobViewModel.CreatedDate = DateTime.Now;
-            Job job = new Job();
-            job.UpdateJob(jobViewModel);
-            if (job.ID == 0)
+            if (jobViewModel.ID == 0)
             {
-                _jobService.Add(job);
-                _jobService.SaveChanges();
-                SetAlert("success", "Tạo thành công job.");
-                return Json(new
+                Job job = new Job();
+                job.UpdateJob(jobViewModel);
+                job.CreatedDate = DateTime.Now;
+                TryValidateModel(job);
+                if (ModelState.IsValid)
                 {
-                    status = true
-                });
+                    _jobService.Add(job);
+                    _jobService.SaveChanges();
+                    SetAlert("success", "Tạo thành công job.");
+                    return Json(new
+                    {
+                        status = true
+                    });
+                }
+                else
+                {
+                    SetAlert("error", "ModelState is not valid");
+                    return Json(new
+                    {
+                        status = false
+                    });
+                }
             }
             else
             {
-                _jobService.Update(job);
-                _jobService.SaveChanges();
-                SetAlert("success", "Chỉnh sửa thành công job.");
-                return Json(new
+                var updatedJob = _jobService.GetById(jobViewModel.ID);
+                updatedJob.UpdateJob(jobViewModel);
+                TryValidateModel(updatedJob);
+                if (ModelState.IsValid)
                 {
-                    status = true
-                });
+                    _jobService.Update(updatedJob);
+                    _jobService.SaveChanges();
+                    SetAlert("success", "Chỉnh sửa thành công job.");
+                    return Json(new
+                    {
+                        status = true
+                    });
+                }
+                else
+                {
+                    SetAlert("error", "ModelState is not valid");
+                    return Json(new
+                    {
+                        status = false
+                    });
+                }
             }
         }
 

@@ -24,8 +24,8 @@
                     if (response.status == true) {
                         window.location.reload();
                     }
-                    else {
-                        console.log(response.message);
+                    else {                        
+                        window.location.reload();
                     }
                 }
             });

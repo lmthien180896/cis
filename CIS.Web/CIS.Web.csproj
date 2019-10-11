@@ -157,12 +157,14 @@
     <Compile Include="Areas\Admin\Controllers\FeedbackController.cs" />
     <Compile Include="Areas\Admin\Controllers\FooterController.cs" />
     <Compile Include="Areas\Admin\Controllers\HomeController.cs" />
+    <Compile Include="Areas\Admin\Controllers\InternalDetailController.cs" />
     <Compile Include="Areas\Admin\Controllers\LoginController.cs" />
     <Compile Include="Areas\Admin\Controllers\PostController.cs" />
     <Compile Include="Areas\Admin\Controllers\JobController.cs" />
     <Compile Include="Areas\Admin\Controllers\RequestCategoryController.cs" />
     <Compile Include="Areas\Admin\Controllers\RequestController.cs" />
     <Compile Include="Areas\Admin\Controllers\SlideController.cs" />
+    <Compile Include="Areas\Admin\Models\HomeViewModel.cs" />
     <Compile Include="Controllers\ErrorController.cs" />
     <Compile Include="Controllers\NewsController.cs" />
     <Compile Include="Controllers\NotificationController.cs" />
@@ -188,6 +190,7 @@
     <Compile Include="Models\FeedbackViewModel.cs" />
     <Compile Include="Models\FooterViewModel.cs" />
     <Compile Include="Models\HomeViewModel.cs" />
+    <Compile Include="Models\InternalDetailViewModel.cs" />
     <Compile Include="Models\JobViewModel.cs" />
     <Compile Include="Models\MailViewModel.cs" />
     <Compile Include="Models\MenuViewModel.cs" />
@@ -222,6 +225,7 @@
     <Content Include="Assets\admin\js\controller\applicantController.js" />
     <Content Include="Assets\admin\js\controller\feedbackController.js" />
     <Content Include="Assets\admin\js\controller\footerController.js" />
+    <Content Include="Assets\admin\js\controller\internalDetailController.js" />
     <Content Include="Assets\admin\js\controller\jobController.js" />
     <Content Include="Assets\admin\js\controller\loginController.js" />
     <Content Include="Assets\admin\js\controller\slideController.js" />
@@ -4859,7 +4863,6 @@
     <Content Include="Views\_ViewStart.cshtml" />
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="Areas\Admin\Models\" />
     <Folder Include="Areas\Admin\Views\Base\" />
     <Folder Include="Assets\admin\css\" />
     <Folder Include="UploadedFiles\network_files\" />
@@ -5803,6 +5806,7 @@
     <Content Include="Areas\Admin\Views\Applicant\Index.cshtml" />
     <Content Include="Areas\Admin\Views\Feedback\Index.cshtml" />
     <Content Include="Areas\Admin\Views\Home\AdminMenu.cshtml" />
+    <Content Include="Areas\Admin\Views\InternalDetail\Index.cshtml" />
     <None Include="packages.config" />
     <Content Include="Resources\gentelella-master.zip" />
     <Content Include="Views\Shared\Error.cshtml" />
