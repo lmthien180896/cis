@@ -4,8 +4,13 @@
     Layout = "~/Areas/Admin/Views/Shared/_LayoutAdmin.cshtml";
 }
 
+@{
+    var fromDate = ViewBag.FromDate == null ? "" : ViewBag.FromDate.ToString("yyyy-MM-dd");
+    var toDate = ViewBag.ToDate == null ? "" : ViewBag.ToDate.ToString("yyyy-MM-dd");
+}
 
-@section js{   
+
+@section js{
     <!--Controller-->
     <script src="~/Assets/admin/js/controller/requestController.js"></script>
 }
@@ -14,11 +19,33 @@
 <div class="col-md-12 col-sm-12 col-xs-12">
     <div class="x_panel">
         <div class="x_title">
-            <h2>Danh sách yêu cầu</h2>
+            <div class="col-md-12 col-sm-12 col-xs-12">
+                <h2>Danh sách yêu cầu</h2>
+            </div>
             <a class="btn btn-success pull-right" href="#" id="btnAdd" data-toggle="modal" data-target="#modalAddUpdate"><i class="fa fa-plus"></i> Tạo mới</a>
-            <a class="btn btn-danger pull-right" id="btnDeleteAll" href="#"><i class="fa fa-trash"></i> Xoá</a>
+            <a class="btn btn-danger pull-right" id="btnDeleteAll" href="#"><i class="fa fa-trash"></i> Xoá</a>            
+            <div class="col-md-7 pull-right form-inline">
+                <form action="/Admin/Request/Index" method="get">
+                    <div class="col-md-5">
+                        <div class="form-group">
+                            <label>Từ</label>
+                            <input type="date" class="form-control" name="fromDate" value=@fromDate />
+                        </div>
+                    </div>
+                    <div class="col-md-5">
+                        <div class="form-group">
+                            <label>Đến</label>
+                            <input type="date" class="form-control" name="toDate" value=@toDate />
+                        </div>
+                    </div>
+                    <div class="col-md-2">
+                        <button class="btn btn-primary pull-right" id="btnFilterDate" type="submit"><i class="fa fa-search"></i> Tìm theo ngày</button>
+                    </div>                    
+                </form>
+            </div>            
             <div class="clearfix"></div>
         </div>
+
         <div class="x_content">
             <div id="datatable_wrapper" class="dataTables_wrapper form-inline dt-bootstrap no-footer">
                 <div class="row">
@@ -47,24 +74,24 @@
                                         <td class="sorting_1">@request.SenderName</td>
                                         <td>@request.Place</td>
                                         <td>@request.CreatedDate.Value.ToString("dd/MM/yyyy")</td>
-                                        <td>@Html.Raw((request.Progress==ViewBag.WaitingProgress) ? "<span class='btn btn-warning btn-sm'>Chờ xử lí</span>" : (request.Progress == ViewBag.SupportingProgress) ? "<span class='btn btn-info btn-sm'>Đang xử lí</span>" : "<span class='btn btn-success btn-sm label-progress'>Hoàn tất</span>")</td>
+                                        <td>@Html.Raw((request.Progress == ViewBag.WaitingProgress) ? "<span class='btn btn-warning btn-xs'>Chờ xử lí</span>" : (request.Progress == ViewBag.SupportingProgress) ? "<span class='btn btn-info btn-xs'>Đang xử lí</span>" : "<span class='btn btn-success btn-xs label-progress'>Hoàn tất</span>")</td>
                                         <td>
                                             @if (request.Progress == "waiting")
                                             {
-                                                <a href="#" data-id=@request.ID class="btn btn-info btn-xs btnUpdate"><i class="fa fa-pencil"> Sửa</i></a>
-                                                <a href="#" data-id=@request.ID class="btn btn-default btn-xs btnSupport"><i class="fa fa-wrench"> Support</i></a>
+                                                <a href="#" data-id=@request.ID class="btn btn-info btn-sm btnUpdate" title="Chỉnh sửa"><i class="fa fa-pencil"></i></a>
+                                                <a href="#" data-id=@request.ID class="btn btn-default btn-sm btnSupport" title="Support"><i class="fa fa-wrench"></i></a>
                                             }
                                             @if (request.Progress != "waiting")
                                             {
-                                                <a href="/Admin/Request/ViewDetail/@request.ID" data-id=@request.ID class="btn btn-primary btn-xs btnView"><i class="fa fa-eye"> Xem</i></a>
+                                                <a href="/Admin/Request/ViewDetail/@request.ID" data-id=@request.ID class="btn btn-primary btn-sm btnView" title="Xem"><i class="fa fa-eye"></i></a>
                                             }
-                                            <a href="#" data-id=@request.ID class="btn btn-danger btn-xs btnDelete"><i class="fa fa-trash"> Xoá</i></a>
+                                            <a href="#" data-id=@request.ID class="btn btn-danger btn-sm btnDelete" title="Xoá"><i class="fa fa-trash"></i></a>
                                         </td>
 
                                     </tr>
                                 }
 
-                            </tbody>                           
+                            </tbody>
                         </table>
                     </div>
                 </div>

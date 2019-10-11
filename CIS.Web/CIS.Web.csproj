@@ -5807,6 +5807,7 @@
     <Content Include="Areas\Admin\Views\Feedback\Index.cshtml" />
     <Content Include="Areas\Admin\Views\Home\AdminMenu.cshtml" />
     <Content Include="Areas\Admin\Views\InternalDetail\Index.cshtml" />
+    <Content Include="Documents\Cấu trúc dự án CIS.docx" />
     <None Include="packages.config" />
     <Content Include="Resources\gentelella-master.zip" />
     <Content Include="Views\Shared\Error.cshtml" />
