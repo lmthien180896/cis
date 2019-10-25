@@ -83,12 +83,12 @@
             data: { id: id },
             success: function (response) {
                 if (response.status == true) {
-                    window.location.reload();
+                    toasrt.success(response.message);
                 }
                 else {
-                    console.log(response.message);
+                    toasrt.error(response.message);
                 }
-            }
+            }            
         });
     },
 

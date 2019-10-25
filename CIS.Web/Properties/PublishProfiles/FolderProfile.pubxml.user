@@ -10,7 +10,7 @@ by editing this MSBuild file. In order to learn more about this please visit htt
   </PropertyGroup>
   <ItemGroup>
     <File Include="AppSettings.config">
-      <publishTime>10/08/2019 13:40:27</publishTime>
+      <publishTime>10/11/2019 14:44:26</publishTime>
     </File>
     <File Include="Areas/Admin/Views/Applicant/Index.cshtml">
       <publishTime>09/30/2019 07:59:52</publishTime>
@@ -70,7 +70,7 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>09/24/2019 09:16:11</publishTime>
     </File>
     <File Include="Areas/Admin/Views/Shared/_LayoutAdmin.cshtml">
-      <publishTime>10/11/2019 08:24:03</publishTime>
+      <publishTime>10/25/2019 10:27:34</publishTime>
     </File>
     <File Include="Areas/Admin/Views/Slide/ListSlide.cshtml">
       <publishTime>10/10/2019 08:30:42</publishTime>
@@ -133,7 +133,7 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>09/20/2019 11:54:13</publishTime>
     </File>
     <File Include="Assets/admin/js/controller/applicantController.js">
-      <publishTime>09/30/2019 07:58:58</publishTime>
+      <publishTime>10/25/2019 10:28:18</publishTime>
     </File>
     <File Include="Assets/admin/js/controller/feedbackController.js">
       <publishTime>09/30/2019 08:14:17</publishTime>
@@ -16741,40 +16741,40 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>09/19/2019 15:31:36</publishTime>
     </File>
     <File Include="bin/CIS.Common.dll">
-      <publishTime>10/08/2019 14:43:08</publishTime>
+      <publishTime>10/25/2019 10:34:19</publishTime>
     </File>
     <File Include="bin/CIS.Common.pdb">
-      <publishTime>10/08/2019 14:43:08</publishTime>
+      <publishTime>10/25/2019 10:34:19</publishTime>
     </File>
     <File Include="bin/CIS.Data.dll">
-      <publishTime>10/11/2019 10:02:58</publishTime>
+      <publishTime>10/25/2019 10:34:19</publishTime>
     </File>
     <File Include="bin/CIS.Data.dll.config">
       <publishTime>09/20/2019 11:53:22</publishTime>
     </File>
     <File Include="bin/CIS.Data.pdb">
-      <publishTime>10/11/2019 10:02:58</publishTime>
+      <publishTime>10/25/2019 10:34:19</publishTime>
     </File>
     <File Include="bin/CIS.Model.dll">
-      <publishTime>10/10/2019 11:30:59</publishTime>
+      <publishTime>10/25/2019 10:34:19</publishTime>
     </File>
     <File Include="bin/CIS.Model.dll.config">
       <publishTime>09/20/2019 11:52:50</publishTime>
     </File>
     <File Include="bin/CIS.Model.pdb">
-      <publishTime>10/10/2019 11:30:59</publishTime>
+      <publishTime>10/25/2019 10:34:19</publishTime>
     </File>
     <File Include="bin/CIS.Service.dll">
-      <publishTime>10/11/2019 10:02:58</publishTime>
+      <publishTime>10/25/2019 10:34:19</publishTime>
     </File>
     <File Include="bin/CIS.Service.pdb">
-      <publishTime>10/11/2019 10:02:58</publishTime>
+      <publishTime>10/25/2019 10:34:19</publishTime>
     </File>
     <File Include="bin/CIS.Web.dll">
-      <publishTime>10/11/2019 10:03:00</publishTime>
+      <publishTime>10/25/2019 10:34:21</publishTime>
     </File>
     <File Include="bin/CIS.Web.pdb">
-      <publishTime>10/11/2019 10:03:00</publishTime>
+      <publishTime>10/25/2019 10:34:21</publishTime>
     </File>
     <File Include="bin/CKFinder.dll">
       <publishTime>09/19/2019 15:31:36</publishTime>
@@ -16911,6 +16911,9 @@ by editing this MSBuild file. In order to learn more about this please visit htt
     <File Include="Documents/Bang gia dich vu web-CIS.pdf">
       <publishTime>09/24/2019 14:57:00</publishTime>
     </File>
+    <File Include="Documents/Cấu trúc dự án CIS.docx">
+      <publishTime>10/11/2019 14:26:07</publishTime>
+    </File>
     <File Include="favicon.ico">
       <publishTime>09/19/2019 15:31:36</publishTime>
     </File>
@@ -16942,7 +16945,7 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>10/07/2019 13:54:52</publishTime>
     </File>
     <File Include="Views/Contact/Index.cshtml">
-      <publishTime>10/07/2019 13:53:47</publishTime>
+      <publishTime>10/11/2019 14:28:39</publishTime>
     </File>
     <File Include="Views/Error/NotFound.cshtml">
       <publishTime>09/26/2019 13:44:02</publishTime>

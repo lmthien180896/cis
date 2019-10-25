@@ -23,7 +23,7 @@
 
         public const int NewsPostCategoryID = 1;
         public const int NotificationPostCategoryID = 2;          
-        public const int ChildPageCategoryID = 2;          
+        public const int ChildPageCategoryID = 3;          
 
         public const string PostTag = "post";
 
