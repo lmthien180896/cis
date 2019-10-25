@@ -118,6 +118,25 @@ namespace CIS.Web.Areas.Admin.Controllers
             }
         }
 
+        [HttpPost]
+        [HasCredential(RoleID = "CUD_JOB")]
+        public JsonResult ChangeStatus(int id)
+        {
+            var job = _jobService.GetById(id);
+            job.Status = !job.Status;            
+            _jobService.Update(job);
+            _jobService.SaveChanges();
+            if (job.Status)
+                SetAlert("success", "Kích hoạt " + job.Name);
+            else
+                SetAlert("warning", "Khoá " + job.Name);
+            return Json(new
+            {
+                status = true
+            });
+        }
+
+
         [HasCredential(RoleID = "CRUD_JOB")]
         public ActionResult Applicants()
         {

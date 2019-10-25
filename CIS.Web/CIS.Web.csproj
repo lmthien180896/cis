@@ -219,6 +219,7 @@
     <Content Include="Assets\admin\build\images\loading.gif" />
     <Content Include="Assets\admin\build\js\custom.js" />
     <Content Include="Assets\admin\build\js\custom.min.js" />
+    <Content Include="Assets\admin\img\default-user.png" />
     <Content Include="Assets\admin\img\favicon.ico" />
     <Content Include="Assets\admin\img\img.jpg" />
     <Content Include="Assets\admin\js\common.js" />

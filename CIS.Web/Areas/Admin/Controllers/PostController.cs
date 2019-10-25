@@ -143,7 +143,7 @@ namespace CIS.Web.Areas.Admin.Controllers
                 if (post.Status)
                     SetAlert("success", "Kích hoạt đăng tin " + post.Name);
                 else
-                    SetAlert("success", "Khoá tin " + post.Name);
+                    SetAlert("warning", "Khoá tin " + post.Name);
                 return Json(new
                 {
                     status = true

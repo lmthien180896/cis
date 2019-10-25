@@ -147,7 +147,7 @@ namespace CIS.Web.Areas.Admin.Controllers
             if (user.Status)
                 SetAlert("success", "Kích hoạt tài khoản " + user.Username);
             else
-                SetAlert("success", "Khoá tài khoản " + user.Username);
+                SetAlert("warning", "Khoá tài khoản " + user.Username);
             return Json(new
             {
                 status = true

@@ -63,6 +63,25 @@
             });
         });
 
+        $('.btnStatus').off('click').on('click', function (e) {
+            e.preventDefault();
+            var id = $(this).data("id");
+            $.ajax({
+                url: "/Admin/Job/ChangeStatus",
+                data: { id: id },
+                dataType: "json",
+                type: "POST",
+                success: function (response) {
+                    if (response.status === true) {
+                        window.location.reload();
+                    }
+                    else {
+                        console(response.message);
+                    }
+                }
+            });
+        });
+
         $('#btnAdd').off('click').on('click', function (e) {
             e.preventDefault();
             jobController.resetForm();
