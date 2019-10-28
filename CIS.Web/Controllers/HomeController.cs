@@ -26,6 +26,7 @@ namespace CIS.Web.Controllers
             this._postService = postService;
         }
 
+        [OutputCache(Duration = 60, Location = System.Web.UI.OutputCacheLocation.Server)]
         public ActionResult Index()
         {            
             HomeViewModel homeViewModel = new HomeViewModel();
@@ -39,6 +40,7 @@ namespace CIS.Web.Controllers
             return View(homeViewModel);
         }
 
+        [OutputCache(Duration = 60, Location = System.Web.UI.OutputCacheLocation.Server)]
         public ActionResult AboutUs()
         {
             var aboutUsPost = _postService.GetById(CommonConstant.AboutUsPostID);
@@ -47,6 +49,7 @@ namespace CIS.Web.Controllers
         }
 
         [ChildActionOnly]
+        [OutputCache(Duration = 3600)]
         public ActionResult MainMenu()
         {
             IEnumerable<Menu> listMenu = _menuService.GetAll(CommonConstant.MainMenuId);
@@ -55,6 +58,7 @@ namespace CIS.Web.Controllers
         }
 
         [ChildActionOnly]
+        [OutputCache(Duration = 3600)]
         public ActionResult Slide()
         {
             IEnumerable<Slide> listSlide = _slideService.GetAll();
@@ -63,6 +67,7 @@ namespace CIS.Web.Controllers
         }
 
         [ChildActionOnly]
+        [OutputCache(Duration = 3600)]
         public ActionResult QuickAccessFooter()
         {
             var footer = _footerService.GetByName(CommonConstant.QAFooter);
@@ -71,6 +76,7 @@ namespace CIS.Web.Controllers
         }
 
         [ChildActionOnly]
+        [OutputCache(Duration = 3600)]
         public ActionResult LicenseFooter()
         {
             var footer = _footerService.GetByName(CommonConstant.LFooter);

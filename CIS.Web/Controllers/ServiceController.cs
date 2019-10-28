@@ -18,11 +18,10 @@ namespace CIS.Web.Controllers
         {
             this._postService = postService;
         }
-
-        //WEB
+       
         public ActionResult Web()
         {
-            var postInfo = _postService.GetById(CommonConstant.WebInfoPostId);            
+            var postInfo = _postService.GetById(CommonConstant.WebInfoPostId);
             var postContact = _postService.GetById(CommonConstant.WebContactPostId);
             ServiceViewModel serviceViewModel = new ServiceViewModel();
             serviceViewModel.Info = postInfo;
@@ -30,10 +29,7 @@ namespace CIS.Web.Controllers
             serviceViewModel.PriceURL = domain + "/Documents/Bang gia dich vu web-CIS.pdf";
             return View(serviceViewModel);
         }
-
-        
-
-        //DESIGN
+     
         public ActionResult Design()
         {
             var postInfo = _postService.GetById(CommonConstant.DesignInfoPostId);
@@ -43,10 +39,9 @@ namespace CIS.Web.Controllers
             serviceViewModel.Info = postInfo;
             serviceViewModel.Contact = postContact;
             serviceViewModel.Price = postPrice;
-            return View(serviceViewModel);            
+            return View(serviceViewModel);
         }
-        
-        //SYSTEM
+      
         public ActionResult System()
         {
             var postInfo = _postService.GetById(CommonConstant.SystemInfoPostId);
@@ -56,7 +51,7 @@ namespace CIS.Web.Controllers
             serviceViewModel.Info = postInfo;
             serviceViewModel.Contact = postContact;
             serviceViewModel.Price = postPrice;
-            return View(serviceViewModel);            
-        }       
+            return View(serviceViewModel);
+        }
     }
 }

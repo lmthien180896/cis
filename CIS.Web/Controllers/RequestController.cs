@@ -37,6 +37,7 @@ namespace CIS.Web.Controllers
             return code;
         }
 
+        [OutputCache(Duration = 60)]
         public ActionResult Index()
         {
             var listCategory = _requestCategoryService.GetAll();

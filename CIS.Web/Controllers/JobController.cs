@@ -22,13 +22,15 @@ namespace CIS.Web.Controllers
             this._jobService = jobService;
             this._applicantService = applicantService;
         }
+
+        [OutputCache(Duration = 3600, Location = System.Web.UI.OutputCacheLocation.Server)]
         public ActionResult Index()
         {
             var listJob = _jobService.GetAllAvailable();
             var listJobViewModel = Mapper.Map<IEnumerable<Job>, IEnumerable<JobViewModel>>(listJob);
             return View(listJobViewModel);
         }
-
+      
         public ActionResult ApplyView(int id)
         {
             var job = _jobService.GetById(id);
