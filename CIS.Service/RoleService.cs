@@ -15,7 +15,7 @@ namespace CIS.Service
 
         IEnumerable<Role> GetAll();
 
-        Role GetById(int id);        
+        Role GetById(string id);        
 
         void SaveChanges();
     }
@@ -46,9 +46,9 @@ namespace CIS.Service
             return _roleRepository.GetAll();
         }
 
-        public Role GetById(int id)
+        public Role GetById(string id)
         {
-            return _roleRepository.GetSingleById(id);
+            return _roleRepository.GetSingleByCondition(x => x.ID == id);
         }
 
         public void SaveChanges()

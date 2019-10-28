@@ -59,23 +59,31 @@ namespace CIS.Web.Areas.Admin.Controllers
         [HasCredential(RoleID = "CUD_USER")]
         public ActionResult Create(UserViewModel userViewModel)
         {
-
-            User newUser = new User();
-            newUser.UpdateUser(userViewModel);
-            newUser.Password = Encryptor.MD5Hash(newUser.Password);
-            TryValidateModel(newUser);
-            if (!ModelState.IsValid)
+            var existedUser = _userService.GetUserByUsername(userViewModel.Username);
+            if (existedUser == null)
             {
-                SetAlert("error", "ModelState is not valid");
-                return RedirectToAction("Index");
+                User newUser = new User();
+                newUser.UpdateUser(userViewModel);
+                newUser.Password = Encryptor.MD5Hash(newUser.Password);
+                TryValidateModel(newUser);
+                if (!ModelState.IsValid)
+                {
+                    SetAlert("error", "ModelState is not valid");
+                    return RedirectToAction("CreateView");
+                }
+                else
+                {
+                    _userService.Add(newUser);
+                    _userService.SaveChanges();
+                    SetAlert("success", newUser.Username + " đã được thêm mới.");
+                    return RedirectToAction("Index");
+                }
             }
             else
             {
-                _userService.Add(newUser);
-                _userService.SaveChanges();
-                SetAlert("success", newUser.Username + " đã được thêm mới.");
-                return RedirectToAction("Index");
-            }
+                SetAlert("error", "Username đã được sử dụng");
+                return RedirectToAction("CreateView");
+            }            
         }
 
         [HttpPost]
@@ -103,10 +111,17 @@ namespace CIS.Web.Areas.Admin.Controllers
         [HttpPost]
         [HasCredential(RoleID = "CUD_USER")]
         public JsonResult Delete(int id)
-        {
+        {            
             var user = _userService.Delete(id);
-            _userService.SaveChanges();
-            SetAlert("success", user.Username + " đã xoá thành công.");
+            if (user.Username == currentUserName)
+            {
+                SetAlert("error", "Không thể xoá chính tài khoản của bạn");
+            }
+            else
+            {
+                _userService.SaveChanges();
+                SetAlert("success", user.Username + " đã xoá thành công.");
+            }
             return Json(new
             {
                 status = true
@@ -117,6 +132,7 @@ namespace CIS.Web.Areas.Admin.Controllers
         [HasCredential(RoleID = "CUD_USER")]
         public JsonResult DeleteAll(string listId)
         {
+            string warningMessage = "";
             JavaScriptSerializer serializer = new JavaScriptSerializer();
             var Ids = serializer.Deserialize<string>(listId);
             int countDelete = 0;
@@ -124,12 +140,24 @@ namespace CIS.Web.Areas.Admin.Controllers
             {
                 if (!string.IsNullOrEmpty(id))
                 {
-                    _userService.Delete(int.Parse(id));
-                    countDelete++;
+                    if (_userService.GetById(int.Parse(id)).Username != currentUserName)
+                    {
+                        _userService.Delete(int.Parse(id));
+                        countDelete++;
+                    }
+                    else
+                    {
+                        warningMessage = ". Bạn không thể xoá tài khoản chính mình";
+                    }
                 }
             }
             _userService.SaveChanges();
-            SetAlert("success", "Tổng cộng " + countDelete + " bản ghi đã được xoá.");
+            if (warningMessage != "")
+                SetAlert("warning", "Tổng cộng " + countDelete + " tài khoản đã được xoá" + warningMessage);
+            else
+            {
+                SetAlert("success", "Tổng cộng " + countDelete + " tài khoản đã được xoá");
+            }
             return Json(new
             {
                 status = true
@@ -141,13 +169,20 @@ namespace CIS.Web.Areas.Admin.Controllers
         public JsonResult ChangeStatus(int id)
         {
             var user = _userService.GetById(id);
-            user.Status = !user.Status;
-            _userService.Update(user);
-            _userService.SaveChanges();
-            if (user.Status)
-                SetAlert("success", "Kích hoạt tài khoản " + user.Username);
+            if (user.Username == currentUserName)
+            {
+                SetAlert("warning", "Không thể tự khoá tài khoản chính mình");
+            }
             else
-                SetAlert("warning", "Khoá tài khoản " + user.Username);
+            {
+                user.Status = !user.Status;
+                _userService.Update(user);
+                _userService.SaveChanges();
+                if (user.Status)
+                    SetAlert("success", "Kích hoạt tài khoản " + user.Username);
+                else
+                    SetAlert("warning", "Khoá tài khoản " + user.Username);
+            }
             return Json(new
             {
                 status = true

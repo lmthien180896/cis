@@ -8,7 +8,7 @@ namespace CIS.Web.Areas.Admin.Controllers
     {
         protected int groupId;
 
-        public string currentUserName;
+        public string currentUserName;        
 
         protected override void OnActionExecuting(ActionExecutingContext filterContext)
         {
