@@ -76,7 +76,7 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>10/10/2019 08:30:42</publishTime>
     </File>
     <File Include="Areas/Admin/Views/User/CreateView.cshtml">
-      <publishTime>09/27/2019 10:19:47</publishTime>
+      <publishTime>10/28/2019 11:39:57</publishTime>
     </File>
     <File Include="Areas/Admin/Views/User/EditView.cshtml">
       <publishTime>09/27/2019 10:19:51</publishTime>
@@ -85,7 +85,10 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>09/27/2019 10:06:08</publishTime>
     </File>
     <File Include="Areas/Admin/Views/UserGroup/Index.cshtml">
-      <publishTime>09/27/2019 10:06:27</publishTime>
+      <publishTime>10/28/2019 10:56:03</publishTime>
+    </File>
+    <File Include="Areas/Admin/Views/UserGroup/ViewRoleDetail.cshtml">
+      <publishTime>10/28/2019 10:58:08</publishTime>
     </File>
     <File Include="Areas/Admin/Views/web.config">
       <publishTime>09/20/2019 11:54:11</publishTime>
@@ -170,6 +173,9 @@ by editing this MSBuild file. In order to learn more about this please visit htt
     </File>
     <File Include="Assets/admin/js/controller/userController.js">
       <publishTime>09/20/2019 11:54:14</publishTime>
+    </File>
+    <File Include="Assets/admin/js/controller/userGroupController.js">
+      <publishTime>10/28/2019 10:24:36</publishTime>
     </File>
     <File Include="Assets/admin/libs/bootbox.min.js">
       <publishTime>09/19/2019 15:31:36</publishTime>
@@ -16768,16 +16774,16 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>10/25/2019 11:21:16</publishTime>
     </File>
     <File Include="bin/CIS.Service.dll">
-      <publishTime>10/25/2019 11:21:17</publishTime>
+      <publishTime>10/28/2019 11:47:04</publishTime>
     </File>
     <File Include="bin/CIS.Service.pdb">
-      <publishTime>10/25/2019 11:21:17</publishTime>
+      <publishTime>10/28/2019 11:47:04</publishTime>
     </File>
     <File Include="bin/CIS.Web.dll">
-      <publishTime>10/25/2019 15:38:15</publishTime>
+      <publishTime>10/28/2019 11:47:06</publishTime>
     </File>
     <File Include="bin/CIS.Web.pdb">
-      <publishTime>10/25/2019 15:38:15</publishTime>
+      <publishTime>10/28/2019 11:47:06</publishTime>
     </File>
     <File Include="bin/CKFinder.dll">
       <publishTime>09/19/2019 15:31:36</publishTime>

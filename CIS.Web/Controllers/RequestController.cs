@@ -67,12 +67,13 @@ namespace CIS.Web.Controllers
                 {
                     if (countFiles > 0)
                         requestViewModel.Files += ",";  // split , và lọc /Data/files để tách files
-                    string extension = System.IO.Path.GetExtension(file.FileName);                   
+                    string extension = System.IO.Path.GetExtension(file.FileName);            
                     if (extension == ".jpg" || extension == ".jpeg" || extension == ".png" || extension == ".docx")
                     {
                         if (requestCategory == "Đăng tin lên IU Web")
                         {
                             string filename = System.IO.Path.GetFileName(file.FileName);
+                            filename = filename.Replace(" ", "-");
                             string physicalPath = Server.MapPath("~/UploadedFiles/web_files/" + filename);
                             file.SaveAs(physicalPath);
                             fileUrls.Add(physicalPath);
@@ -81,6 +82,7 @@ namespace CIS.Web.Controllers
                         else if (requestCategory == "Vấn đề khác")
                         {
                             string filename = System.IO.Path.GetFileName(file.FileName);
+                            filename = filename.Replace(" ", "-");
                             string physicalPath = Server.MapPath("~/UploadedFiles/files/" + filename);
                             file.SaveAs(physicalPath);
                             fileUrls.Add(physicalPath);
@@ -89,6 +91,7 @@ namespace CIS.Web.Controllers
                         else
                         {
                             string filename = System.IO.Path.GetFileName(file.FileName);
+                            filename = filename.Replace(" ", "-");
                             string physicalPath = Server.MapPath("~/UploadedFiles/network_files/" + filename);
                             file.SaveAs(physicalPath);
                             fileUrls.Add(physicalPath);

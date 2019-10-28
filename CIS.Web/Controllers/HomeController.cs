@@ -27,7 +27,7 @@ namespace CIS.Web.Controllers
         }
 
         public ActionResult Index()
-        {
+        {            
             HomeViewModel homeViewModel = new HomeViewModel();
             var hotNews = _postService.GetTwoHotNews();
             var listNews = _postService.GetThreeNews();
