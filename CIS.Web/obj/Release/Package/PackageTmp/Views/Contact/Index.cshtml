@@ -1,6 +1,4 @@
-﻿@model CIS.Web.Models.ContactDetailViewModel
-
-@{
+﻿@{
     ViewBag.Title = "Index";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
@@ -23,12 +21,12 @@
         <h1>Liên Hệ</h1>
         <div class="row-fluid no-gutter">
             <div class="span6 contact-info">
-                * <img alt="Phone 028 37244270" src="~/assets/client/CIS-pro/cis-img/icon-phone2.png"> @Model.Phone
+                * <img alt="Phone 028 37244270" src="~/assets/client/CIS-pro/cis-img/icon-phone2.png"> @ViewBag.Phone
             </div>
             <div class="span6 contact-info">
                 <img alt="Email" src="~/assets/client/CIS-pro/cis-img/icon-email2.png">
-                <a href="mailto:@Model.Email">
-                    @Model.Email
+                <a href="mailto:@ViewBag.Email">
+                    @ViewBag.Email
                 </a>
             </div>
         </div>

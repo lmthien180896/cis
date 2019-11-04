@@ -16,7 +16,7 @@ namespace CIS.Service
 
         IEnumerable<RequestReport> GetAll();
 
-        IEnumerable<RequestReport> GetAll(int id);
+        IEnumerable<RequestReport> GetAllByRequestID(int id);
 
         RequestReport GetById(int id);
 
@@ -49,7 +49,7 @@ namespace CIS.Service
             return _requestReportRepository.GetAll();
         }
 
-        public IEnumerable<RequestReport> GetAll(int id)
+        public IEnumerable<RequestReport> GetAllByRequestID(int id)
         {
             return _requestReportRepository.GetMulti(x => x.RequestID == id);
         }

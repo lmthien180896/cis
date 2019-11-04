@@ -213,7 +213,7 @@ namespace CIS.Web.Areas.Admin.Controllers
         {
             List<string> listFiles = new List<string>();
             var request = _requestService.GetById(id);
-            var listReport = _requestReportService.GetAll(id);
+            var listReport = _requestReportService.GetAllByRequestID(id);
             RequestViewModel requestViewModel = Mapper.Map<Request, RequestViewModel>(request);
             requestViewModel.SentDate = requestViewModel.CreatedDate.Value.ToString("dd MMMM yyyy");
             if (request.Files != null)

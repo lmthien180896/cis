@@ -9,7 +9,7 @@ namespace CIS.Data.Repositories
 {
     public interface IRequestRepository : IRepository<Request>
     {
-        IEnumerable<Request> GetAllRequests();
+        IEnumerable<Request> GetAllRequestsOrderByCreatedDate();
 
         IEnumerable<Request> GetAllWaitingRequests();
 
@@ -30,7 +30,7 @@ namespace CIS.Data.Repositories
         public RequestRepository(IDbFactory dbFactory) : base(dbFactory)
         {
         }       
-        public IEnumerable<Request> GetAllRequests()
+        public IEnumerable<Request> GetAllRequestsOrderByCreatedDate()
         {
             return this.DbContext.Requests.ToList().OrderByDescending(x => x.CreatedDate);
         }

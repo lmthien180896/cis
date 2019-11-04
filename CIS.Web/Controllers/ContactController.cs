@@ -26,9 +26,9 @@ namespace CIS.Web.Controllers
         [OutputCache(Duration = 3600, Location = System.Web.UI.OutputCacheLocation.Server)]
         public ActionResult Index()
         {
-            var contactDetail = _contactDetailService.GetById(CommonConstant.CISInfoId);
-            ContactDetailViewModel contactDetailViewModel = Mapper.Map<ContactDetail, ContactDetailViewModel>(contactDetail);
-            return View(contactDetailViewModel);
+            ViewBag.Phone = ConfigHelper.GetByKey("CISPhone");
+            ViewBag.Email = ConfigHelper.GetByKey("CenterEmail");            
+            return View();
         }
 
 

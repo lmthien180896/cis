@@ -10,7 +10,7 @@ by editing this MSBuild file. In order to learn more about this please visit htt
   </PropertyGroup>
   <ItemGroup>
     <File Include="AppSettings.config">
-      <publishTime>10/11/2019 14:44:26</publishTime>
+      <publishTime>10/28/2019 15:46:34</publishTime>
     </File>
     <File Include="Areas/Admin/Views/Applicant/Index.cshtml">
       <publishTime>09/30/2019 07:59:52</publishTime>
@@ -16780,10 +16780,10 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>10/28/2019 11:47:04</publishTime>
     </File>
     <File Include="bin/CIS.Web.dll">
-      <publishTime>10/28/2019 14:35:11</publishTime>
+      <publishTime>10/28/2019 15:51:06</publishTime>
     </File>
     <File Include="bin/CIS.Web.pdb">
-      <publishTime>10/28/2019 14:35:11</publishTime>
+      <publishTime>10/28/2019 15:51:06</publishTime>
     </File>
     <File Include="bin/CKFinder.dll">
       <publishTime>09/19/2019 15:31:36</publishTime>
@@ -16954,7 +16954,7 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>10/07/2019 13:54:52</publishTime>
     </File>
     <File Include="Views/Contact/Index.cshtml">
-      <publishTime>10/11/2019 14:28:39</publishTime>
+      <publishTime>10/28/2019 15:47:36</publishTime>
     </File>
     <File Include="Views/Error/NotFound.cshtml">
       <publishTime>09/26/2019 13:44:02</publishTime>

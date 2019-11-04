@@ -5841,6 +5841,7 @@
     <Content Include="Views\Job\ApplyView.cshtml" />
     <None Include="Properties\PublishProfiles\FolderProfile.pubxml" />
     <Content Include="Views\News\GetNewsByKeyword.cshtml" />
+    <Content Include="Views\Request\RequestPolicy.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\CIS.Common\CIS.Common.csproj">

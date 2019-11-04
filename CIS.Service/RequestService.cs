@@ -28,7 +28,7 @@ namespace CIS.Service
 
         IEnumerable<Request> GetAll();
 
-        IEnumerable<Request> GetAllRequests();
+        IEnumerable<Request> GetAllRequestsOrderByCreatedDate();
 
         IEnumerable<Request> GetAllWaitingRequests();
 
@@ -137,9 +137,9 @@ namespace CIS.Service
             _unitOfWork.Commit();
         }
 
-        public IEnumerable<Request> GetAllRequests()
+        public IEnumerable<Request> GetAllRequestsOrderByCreatedDate()
         {
-            return _requestRepository.GetAllRequests();
+            return _requestRepository.GetAllRequestsOrderByCreatedDate();
         }
 
         public IEnumerable<Request> GetAllWaitingRequests()
@@ -190,7 +190,7 @@ namespace CIS.Service
         public IEnumerable<Request> GetAllRequests(DateTime? fromDate, DateTime? toDate)
         {
             if (fromDate == null && toDate == null)
-                return _requestRepository.GetAllRequests();
+                return _requestRepository.GetAllRequestsOrderByCreatedDate();
             if (fromDate != null && toDate == null)
                 return _requestRepository.GetAllFromDate(fromDate);
             if (fromDate == null && toDate != null)

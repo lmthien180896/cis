@@ -14,6 +14,13 @@ namespace CIS.Web
             routes.IgnoreRoute("{resource}.axd/{*pathInfo}");
 
             routes.MapRoute(
+              name: "Request Policy",
+              url: "huong-dan-gui-yeu-cau",
+              defaults: new { controller = "Request", action = "RequestPolicy", id = UrlParameter.Optional },
+              namespaces: new[] { "CIS.Web.Controllers" }
+           );
+
+            routes.MapRoute(
                name: "Apply Job",
                url: "form-tuyen-dung/{id}",
                defaults: new { controller = "Job", action = "ApplyView", id = UrlParameter.Optional },

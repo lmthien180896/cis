@@ -35,9 +35,7 @@ namespace CIS.Service
 
     public class UserService : IUserService
     {
-        private IUserRepository _userRepository;
-        private IUserGroupRepository _userGroupRepository;
-        private IRoleRepository _roleRepository;
+        private IUserRepository _userRepository;     
         private ICredentialRepository _credentialRepository;
         private IUnitOfWork _unitOfWork;
 

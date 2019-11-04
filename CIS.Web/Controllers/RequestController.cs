@@ -1,4 +1,5 @@
-﻿using CIS.Common;
+﻿using AutoMapper;
+using CIS.Common;
 using CIS.Model.Models;
 using CIS.Service;
 using CIS.Web.Infrastructure.Extensions;
@@ -17,8 +18,11 @@ namespace CIS.Web.Controllers
         IRequestCategoryService _requestCategoryService;
         IRequestService _requestService;
         IRequestReportService _requestReportService;
-        public RequestController(IRequestCategoryService requestCategoryService, IRequestService requestService, IRequestReportService requestReportService)
+        IPostService _postService;
+
+        public RequestController(IPostService postService, IRequestCategoryService requestCategoryService, IRequestService requestService, IRequestReportService requestReportService)
         {
+            this._postService = postService;
             this._requestCategoryService = requestCategoryService;
             this._requestService = requestService;
             this._requestReportService = requestReportService;
@@ -36,6 +40,15 @@ namespace CIS.Web.Controllers
             var code = new String(stringChars);
             return code;
         }
+
+        [OutputCache(Duration = 3600)]
+        public ActionResult RequestPolicy()
+        {
+            var requestPolicyPost = _postService.GetById(CommonConstant.RequestPolicyPostID);
+            PostViewModel postViewModel = Mapper.Map<Post, PostViewModel>(requestPolicyPost);
+            return View(postViewModel);
+        }
+
 
         [OutputCache(Duration = 60)]
         public ActionResult Index()
