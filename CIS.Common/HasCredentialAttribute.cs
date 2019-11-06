@@ -7,17 +7,16 @@ namespace CIS.Common
     public class HasCredentialAttribute : AuthorizeAttribute
     {
         public string RoleID { get; set; }
-
-        // KIỂM TRA QUYỀN BẰNG SESSION
+       
         protected override bool AuthorizeCore(HttpContextBase httpContext)
         {
-            var session = (UserLogin)HttpContext.Current.Session[CommonConstant.USER_SESSION];  // Kiểm tra session user
-            if (session == null) // chưa đăng nhập
-                return true;   // ==> ở đây sẽ đi tiếp vào BaseController và dẫn về trang login
-            if (session.GroupID == CommonConstant.AdminId) return true; // Nếu là admin thì không cần kiểm tra quyền
+            var session = (UserLogin)HttpContext.Current.Session[CommonConstant.USER_SESSION]; 
+            if (session == null) 
+                return true;  
+            if (session.GroupID == CommonConstant.AdminId) return true; 
 
-            List<string> privilegeLevels = this.GetCredentialByLoggedInUser(session.UserName); // Lấy tất cả quyền của user
-            if (privilegeLevels.Contains(this.RoleID)) // Nếu trang truy cập có quyền nằm trong list tất cả quyền thì cho đăng nhập
+            List<string> privilegeLevels = this.GetCredentialByLoggedInUser(session.UserName); 
+            if (privilegeLevels.Contains(this.RoleID)) 
             {
                 return true;
             }

@@ -23,7 +23,7 @@ namespace CIS.Web.Controllers
             this._feedbackService = feedbackService;
         }
 
-        [OutputCache(Duration = 3600, Location = System.Web.UI.OutputCacheLocation.Server)]
+        [OutputCache(Duration = 60, Location = System.Web.UI.OutputCacheLocation.Server)]
         public ActionResult Index()
         {
             ViewBag.Phone = ConfigHelper.GetByKey("CISPhone");

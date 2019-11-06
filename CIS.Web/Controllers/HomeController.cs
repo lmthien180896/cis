@@ -49,7 +49,7 @@ namespace CIS.Web.Controllers
         }
 
         [ChildActionOnly]
-        [OutputCache(Duration = 3600)]
+        [OutputCache(Duration = 60)]
         public ActionResult MainMenu()
         {
             IEnumerable<Menu> listMenu = _menuService.GetAll(CommonConstant.MainMenuId);
@@ -58,7 +58,7 @@ namespace CIS.Web.Controllers
         }
 
         [ChildActionOnly]
-        [OutputCache(Duration = 3600)]
+        [OutputCache(Duration = 60)]
         public ActionResult Slide()
         {
             IEnumerable<Slide> listSlide = _slideService.GetAll();

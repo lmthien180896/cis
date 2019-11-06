@@ -4838,9 +4838,9 @@
     <Content Include="Assets\client\CIS-pro\images\slider\sl2.jpeg" />
     <Content Include="Assets\client\CIS-pro\images\slider\sl3.jpeg" />
     <Content Include="Assets\client\css\styles.css" />
+    <Content Include="Assets\client\css\w3-css.css" />
     <Content Include="Assets\client\js\common.js" />
     <Content Include="Assets\client\js\controller\commonController.js" />
-    <Content Include="Assets\client\js\controller\issueController.js" />
     <Content Include="Assets\client\js\controller\requestController.js" />
     <Content Include="Assets\client\mail-template\confirm_applicant.html" />
     <Content Include="Assets\client\mail-template\confirm_closing_request.html" />

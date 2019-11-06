@@ -87,6 +87,7 @@ namespace CIS.Web.Infrastructure.Extensions
             request.Place = requestVm.Place;
             request.Files = requestVm.Files;           
             request.Progress = requestVm.Progress;
+            request.Code = requestVm.Code;
 
             request.CreatedDate = requestVm.CreatedDate;                        
             request.MetaKeyword = requestVm.MetaKeyword;

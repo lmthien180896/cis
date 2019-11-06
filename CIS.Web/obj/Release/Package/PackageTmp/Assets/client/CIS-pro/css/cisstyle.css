@@ -130,3 +130,7 @@ a.more.text-left {
 img {
     height: auto !important;
 }
+
+#myCarousel{
+    margin-bottom: 0 !important;
+}

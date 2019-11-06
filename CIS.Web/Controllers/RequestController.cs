@@ -41,7 +41,7 @@ namespace CIS.Web.Controllers
             return code;
         }
 
-        [OutputCache(Duration = 3600)]
+        [OutputCache(Duration = 60)]
         public ActionResult RequestPolicy()
         {
             var requestPolicyPost = _postService.GetById(CommonConstant.RequestPolicyPostID);
@@ -51,17 +51,23 @@ namespace CIS.Web.Controllers
 
 
         [OutputCache(Duration = 60)]
-        public ActionResult Index()
+        public ActionResult Index(string alertType = "", string message = "")
         {
             var listCategory = _requestCategoryService.GetAll();
             ViewBag.RequestCategories = listCategory;
+            if (!string.IsNullOrEmpty(alertType) && !string.IsNullOrEmpty(message))
+            {
+                SetAlert(alertType, message);
+            }
             return View();
         }
 
 
         [HttpPost]
         public ActionResult SubmitRequest(RequestViewModel requestViewModel, HttpPostedFileBase[] files )
-        {                             
+        {
+            string alertType = "";
+            string message = "";
             requestViewModel.Code = GenerateCode();
             requestViewModel.Progress = CommonConstant.WaitingProgress;
             requestViewModel.CreatedDate = DateTime.Now;
@@ -171,17 +177,20 @@ namespace CIS.Web.Controllers
                         MailHepler.SendMail(networkTeamEmail, requestCategory, mes);
                     }
 
-                    SetAlert("success", "Gửi yêu cầu thành công.");
+                    alertType = "success";
+                    message = "Gửi yêu cầu thành công";                    
                 }
                 else
                 {
-                    SetAlert("error", "Kiểm tra lại thông tin yêu cầu.");
+                    alertType = "error";
+                    message = "Kiểm tra lại thông tin yêu cầu";                   
                 }
             }
             catch {
-                SetAlert("error", "Đã xảy ra vấn đề khi gửi yêu cầu.");
+                alertType = "error";
+                message = "Đã xảy ra vấn đề khi gửi yêu cầu";         
             }
-            return RedirectToAction("Index");
+            return RedirectToAction("Index", new { alertType = alertType, message= message });
         }
 
     }
