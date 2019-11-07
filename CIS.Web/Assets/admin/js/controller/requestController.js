@@ -4,6 +4,32 @@
     },
 
     registerEvents: function () {
+        $('#btnExportExcel').off('click').on('click', function (e) {
+            e.preventDefault();
+            var fromDate = $('#txtFromDate').val();
+            var toDate = $('#txtToDate').val();    
+            $.ajax({
+                url: "/Admin/Request/ExportExcel",
+                type: "GET",
+                data: {
+                    fromDate: fromDate,
+                    toDate: toDate,                  
+                },
+                datatype: "json",
+                success: function (response) {
+                    if (response.status) {
+                        toastr.success("Xuất file Excel thành công. Bấm Download để tải về");
+                        $('#btnDownload').prop('href', response.downloadPath);
+                        $('#btnExportExcel').hide();
+                        $('#btnDownload').show();
+                    }
+                    else {
+                        toastr.error(response.message);
+                    }
+                }
+            });
+        });
+
         $('.btnDelete').off('click').on('click', function (e) {
             e.preventDefault();
             var id = $(this).data("id");

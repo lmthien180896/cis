@@ -164,7 +164,9 @@
     <Compile Include="Areas\Admin\Controllers\RequestCategoryController.cs" />
     <Compile Include="Areas\Admin\Controllers\RequestController.cs" />
     <Compile Include="Areas\Admin\Controllers\SlideController.cs" />
+    <Compile Include="Areas\Admin\Infrastructure\Extensions\EntityExtensions.cs" />
     <Compile Include="Areas\Admin\Models\HomeViewModel.cs" />
+    <Compile Include="Areas\Admin\Models\ReportExcelViewModel.cs" />
     <Compile Include="Areas\Admin\Models\ViewRoleDetailViewModel.cs" />
     <Compile Include="Controllers\ErrorController.cs" />
     <Compile Include="Controllers\NewsController.cs" />
@@ -4725,6 +4727,7 @@
     <Content Include="Assets\client\CIS-pro\cis-img\icon-phone2.png" />
     <Content Include="Assets\client\CIS-pro\cis-img\iu-logo.png" />
     <Content Include="Assets\client\CIS-pro\cis-img\lienhe-dm.png" />
+    <Content Include="Assets\client\CIS-pro\cis-img\banner-iu.jpg" />
     <Content Include="Assets\client\CIS-pro\cis-img\thongtin-dm.png" />
     <Content Include="Assets\client\CIS-pro\cis-img\vendor\2017-07-17-11-54-50-walls-ice-cream-unilever-322-1-image1.jpg" />
     <Content Include="Assets\client\CIS-pro\cis-img\web.png" />
@@ -4868,6 +4871,7 @@
   <ItemGroup>
     <Folder Include="Areas\Admin\Views\Base\" />
     <Folder Include="Assets\admin\css\" />
+    <Folder Include="Reports\" />
     <Folder Include="UploadedFiles\network_files\" />
     <Folder Include="UploadedFiles\resume\" />
     <Folder Include="UploadedFiles\web_files\" />

@@ -94,28 +94,28 @@ namespace CIS.Web.Controllers
                         {
                             string filename = System.IO.Path.GetFileName(file.FileName);
                             filename = filename.Replace(" ", "-");
-                            string physicalPath = Server.MapPath("~/UploadedFiles/web_files/" + filename);
+                            string physicalPath = Server.MapPath("~" + ConfigHelper.GetByKey("WebFolder") + filename);
                             file.SaveAs(physicalPath);
                             fileUrls.Add(physicalPath);
-                            requestViewModel.Files += "/UploadedFiles/web_files/" + filename;
+                            requestViewModel.Files += ConfigHelper.GetByKey("WebFolder") + filename;
                         }
                         else if (requestCategory == "Vấn đề khác")
                         {
                             string filename = System.IO.Path.GetFileName(file.FileName);
                             filename = filename.Replace(" ", "-");
-                            string physicalPath = Server.MapPath("~/UploadedFiles/files/" + filename);
+                            string physicalPath = Server.MapPath("~" + ConfigHelper.GetByKey("UploadedFolder") + filename);
                             file.SaveAs(physicalPath);
                             fileUrls.Add(physicalPath);
-                            requestViewModel.Files += "/UploadedFiles/files/" + filename;
+                            requestViewModel.Files += ConfigHelper.GetByKey("UploadedFolder") + filename;
                         }
                         else
                         {
                             string filename = System.IO.Path.GetFileName(file.FileName);
                             filename = filename.Replace(" ", "-");
-                            string physicalPath = Server.MapPath("~/UploadedFiles/network_files/" + filename);
+                            string physicalPath = Server.MapPath("~" + ConfigHelper.GetByKey("NetworkFolder") + filename);
                             file.SaveAs(physicalPath);
                             fileUrls.Add(physicalPath);
-                            requestViewModel.Files += "/UploadedFiles/network_files/" + filename;
+                            requestViewModel.Files += ConfigHelper.GetByKey("NetworkFolder") + filename;
                         }
                     }
                     countFiles++;

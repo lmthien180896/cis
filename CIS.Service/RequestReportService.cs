@@ -18,6 +18,8 @@ namespace CIS.Service
 
         IEnumerable<RequestReport> GetAllByRequestID(int id);
 
+        string GetSupporter(int requestID);
+
         RequestReport GetById(int id);
 
         void SaveChanges();
@@ -26,11 +28,13 @@ namespace CIS.Service
     public class RequestReportService : IRequestReportService
     {
         private IRequestReportRepository _requestReportRepository;
+        private IUserRepository _userRepository;
         private IUnitOfWork _unitOfWork;
 
-        public RequestReportService(IRequestReportRepository requestReportRepository, IUnitOfWork unitOfWork)
+        public RequestReportService(IUserRepository userRepository, IRequestReportRepository requestReportRepository, IUnitOfWork unitOfWork)
         {
             this._requestReportRepository = requestReportRepository;
+            this._userRepository = userRepository;
             this._unitOfWork = unitOfWork;
         }
 
@@ -57,6 +61,13 @@ namespace CIS.Service
         public RequestReport GetById(int id)
         {
             return _requestReportRepository.GetSingleById(id);
+        }
+
+        public string GetSupporter(int requestID)
+        {
+            var report = _requestReportRepository.GetSingleByCondition(x => x.RequestID == requestID);
+            var suppoter = _userRepository.GetSingleById(report.SupporterID);
+            return suppoter.Fullname;
         }
 
         public void SaveChanges()

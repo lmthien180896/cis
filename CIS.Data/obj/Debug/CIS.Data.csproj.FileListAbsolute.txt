@@ -59,3 +59,5 @@ C:\Users\Thien\Desktop\LeMinhThien\Git\cis\CIS.Data\obj\Debug\CIS.Data.Migration
 C:\Users\Thien\Desktop\LeMinhThien\Git\cis\CIS.Data\obj\Debug\CIS.Data.Migrations.addApplicant.resources
 C:\Users\Thien\Desktop\LeMinhThien\Git\cis\CIS.Data\obj\Debug\CIS.Data.Migrations.addCreatedDate.resources
 C:\Users\Thien\Desktop\LeMinhThien\Git\cis\CIS.Data\obj\Debug\CIS.Data.Migrations.addInternalDetails.resources
+C:\Users\Thien\Desktop\LeMinhThien\Git\cis\CIS.Data\bin\Debug\EPPlus.dll
+C:\Users\Thien\Desktop\LeMinhThien\Git\cis\CIS.Data\bin\Debug\EPPlus.xml

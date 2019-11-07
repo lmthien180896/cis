@@ -179,7 +179,7 @@ namespace CIS.Service
 
         public IEnumerable<Request> GetAllFromDate(DateTime? fromDate)
         {
-            return _requestRepository.GetAllFromDate(fromDate) ;
+            return _requestRepository.GetAllFromDate(fromDate);
         }
 
         public IEnumerable<Request> GetAllToDate(DateTime? toDate)
@@ -197,6 +197,6 @@ namespace CIS.Service
                 return _requestRepository.GetAllToDate(toDate);
             else
                 return _requestRepository.GetMulti(x => x.CreatedDate <= toDate && x.CreatedDate >= fromDate);
-        }
+        }       
     }
 }

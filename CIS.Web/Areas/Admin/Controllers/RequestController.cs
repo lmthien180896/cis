@@ -2,10 +2,13 @@
 using CIS.Common;
 using CIS.Model.Models;
 using CIS.Service;
+using CIS.Web.Areas.Admin.Infrastructure.Extensions;
+using CIS.Web.Areas.Admin.Models;
 using CIS.Web.Infrastructure.Extensions;
 using CIS.Web.Models;
 using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Web.Mvc;
 using System.Web.Script.Serialization;
 
@@ -32,6 +35,11 @@ namespace CIS.Web.Areas.Admin.Controllers
             ViewBag.FromDate = fromDate;
             ViewBag.ToDate = toDate;
 
+            if (fromDate > toDate)
+            {
+                SetAlert("warning", "Chọn ngày không đúng");
+            }
+
             var listRequestCategory = _requestCategoryService.GetAll();
             var listRequestCategoryViewModel = Mapper.Map<IEnumerable<RequestCategory>, IEnumerable<RequestCategoryViewModel>>(listRequestCategory);
             ViewBag.ListRequestCategory = listRequestCategoryViewModel;
@@ -45,6 +53,68 @@ namespace CIS.Web.Areas.Admin.Controllers
             ViewBag.WaitingProgress = CommonConstant.WaitingProgress;
             ViewBag.SupportingProgress = CommonConstant.SupportingProgress;
             return View(listRequestViewModel);
+        }
+
+        [HasCredential(RoleID = "R_REQUEST")]
+        [HttpGet]
+        public JsonResult ExportExcel(string fromDate = null, string toDate = null)
+        {
+            DateTime? from = null;
+            DateTime? to = null;
+            List<ReportExcelViewModel> listReport = new List<ReportExcelViewModel>();
+
+            if (!string.IsNullOrEmpty(fromDate))
+            {
+                from = DateTime.ParseExact(fromDate, "yyyy-MM-dd", null);
+            }
+            if (!string.IsNullOrEmpty(toDate))
+            {
+                to = DateTime.ParseExact(toDate, "yyyy-MM-dd", null);
+            }
+            var listRequest = _requestService.GetAllRequests(from, to);
+            var listRequestVm = Mapper.Map<IEnumerable<Request>, IEnumerable<RequestViewModel>>(listRequest);
+            foreach (var request in listRequestVm)
+            {
+                request.SentDate = request.CreatedDate.Value.ToString("dd/MM/yyyy");
+                request.CategoryName = _requestCategoryService.GetById(request.CategoryID).Name;
+                if (request.ClosedDate.HasValue)
+                {
+                    request.CompletedDate = request.ClosedDate.Value.ToString("dd/MM/yyyy");
+                    request.Supporter = _requestReportService.GetSupporter(request.ID);
+                }
+
+
+                ReportExcelViewModel report = new ReportExcelViewModel();
+                report.UpdateReportExcel(request);
+                listReport.Add(report);
+            }
+
+            string fileName = string.Concat("Request" + DateTime.Now.ToString("yyyyMMdd-hhmmss") + ".xlsx");
+            var folderReport = ConfigHelper.GetByKey("ReportFolder");
+            string filePath = Server.MapPath("~" + folderReport);
+            string downloadPath = folderReport + fileName;
+            if (!Directory.Exists(filePath))
+            {
+                Directory.CreateDirectory(filePath);
+            }
+            string fullPath = Path.Combine(filePath, fileName);
+            try
+            {               
+                ReportHelper.GenerateXls(listReport, fullPath);
+                return Json(new
+                {
+                    status = true,
+                    downloadPath = downloadPath
+                }, JsonRequestBehavior.AllowGet);
+            }
+            catch (Exception ex)
+            {
+                return Json(new
+                {
+                    status = false,
+                    message = ex
+                }, JsonRequestBehavior.AllowGet);
+            }           
         }
 
         [HasCredential(RoleID = "R_REQUEST")]

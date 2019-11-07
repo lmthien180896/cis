@@ -22,6 +22,8 @@
             <div class="col-md-12 col-sm-12 col-xs-12">
                 <h2>Danh sách yêu cầu</h2>
             </div>
+            <a class="btn btn-info pull-right" style="display: none" id="btnDownload"><i class="fa fa-download"></i> Download</a>
+            <a class="btn btn-default pull-right" id="btnExportExcel" href="#"><i class="fa fa-file-excel-o"></i> Xuất ra Excel</a>
             <a class="btn btn-success pull-right" href="#" id="btnAdd" data-toggle="modal" data-target="#modalAddUpdate"><i class="fa fa-plus"></i> Tạo mới</a>
             <a class="btn btn-danger pull-right" id="btnDeleteAll" href="#"><i class="fa fa-trash"></i> Xoá</a>            
             <div class="col-md-7 pull-right form-inline">
@@ -29,13 +31,13 @@
                     <div class="col-md-5">
                         <div class="form-group">
                             <label>Từ</label>
-                            <input type="date" class="form-control" name="fromDate" value=@fromDate />
+                            <input type="date" class="form-control" name="fromDate" id="txtFromDate" value=@fromDate />
                         </div>
                     </div>
                     <div class="col-md-5">
                         <div class="form-group">
                             <label>Đến</label>
-                            <input type="date" class="form-control" name="toDate" value=@toDate />
+                            <input type="date" class="form-control" name="toDate" id="txtToDate" value=@toDate />
                         </div>
                     </div>
                     <div class="col-md-2">

@@ -51,6 +51,10 @@ namespace CIS.Web.Models
         //Extra
         public string SentDate { get; set; }
 
+        public string CompletedDate { get; set; }
+
+        public string Supporter { get; set; }
+
         public string CategoryName { get; set; }
 
         public IEnumerable<RequestCategoryViewModel> RequestCategories { get; set; }

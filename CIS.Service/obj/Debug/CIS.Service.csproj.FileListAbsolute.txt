@@ -34,3 +34,5 @@ C:\Users\Thien\Desktop\LeMinhThien\Git\cis\CIS.Service\obj\Debug\CIS.Service.dll
 C:\Users\Thien\Desktop\LeMinhThien\Git\cis\CIS.Service\obj\Debug\CIS.Service.pdb
 C:\Users\Thien\Desktop\LeMinhThien\Git\cis\CIS.Service\bin\Debug\System.Web.Mvc.dll
 C:\Users\Thien\Desktop\LeMinhThien\Git\cis\CIS.Service\bin\Debug\System.Web.Mvc.xml
+C:\Users\Thien\Desktop\LeMinhThien\Git\cis\CIS.Service\bin\Debug\EPPlus.dll
+C:\Users\Thien\Desktop\LeMinhThien\Git\cis\CIS.Service\bin\Debug\EPPlus.xml
